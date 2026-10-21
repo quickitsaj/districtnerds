@@ -61,6 +61,7 @@
         <a href="#schedule">Schedule</a>
         <a href="#camp">The Camp</a>
         <a href="#cause">The Cause</a>
+        <a href="#rsvp">RSVP</a>
         <a href="#smash">Smash Bracket</a>
         <a href="#watch">Watch</a>
         <a href="#faq">FAQ</a>
@@ -152,7 +153,7 @@
         </div>
 
         <div class="hero__cta reveal" data-reveal>
-          <a class="btn btn--gold btn--lg" data-link="rsvp" href="#smash">
+          <a class="btn btn--gold btn--lg" href="#rsvp">
             <span class="btn__glow" aria-hidden="true"></span>Join the Party
           </a>
           <a class="btn btn--coral btn--lg" data-link="donate" href="#cause">Donate for the Kids</a>
@@ -382,6 +383,131 @@
     </div>
   </section>
 
+  <!-- ===================== RSVP ===================== -->
+  <section class="section section--rsvp" id="rsvp">
+    <div class="container container--form">
+      <header class="section__head reveal" data-reveal>
+        <div class="scroll-banner"><h2>Join the Party</h2></div>
+        <p class="section__lede">One form for everyone: in person, online, or just cheering from the couch. Takes about a minute.</p>
+      </header>
+
+      <div class="rsvp reveal" data-reveal>
+        <div class="rsvp__corner rsvp__corner--tl" aria-hidden="true"></div>
+        <div class="rsvp__corner rsvp__corner--tr" aria-hidden="true"></div>
+        <div class="rsvp__corner rsvp__corner--bl" aria-hidden="true"></div>
+        <div class="rsvp__corner rsvp__corner--br" aria-hidden="true"></div>
+
+        <form class="rsvp__form" id="rsvpForm" novalidate>
+          <div class="field-row">
+            <label class="field">
+              <span class="field__label">Your name <b>*</b></span>
+              <input type="text" name="name" required maxlength="120" autocomplete="name" placeholder="What should we call you?">
+            </label>
+            <label class="field">
+              <span class="field__label">Email <b>*</b></span>
+              <input type="email" name="email" required maxlength="200" autocomplete="email" placeholder="so AJ can send you the address">
+            </label>
+          </div>
+
+          <fieldset class="field">
+            <legend class="field__label">How are you joining? <b>*</b></legend>
+            <div class="choice-grid">
+              <label class="choice"><input type="radio" name="attendance" value="in_person" required><span><i aria-hidden="true">🏠</i>In person</span></label>
+              <label class="choice"><input type="radio" name="attendance" value="online"><span><i aria-hidden="true">🎮</i>Playing online</span></label>
+              <label class="choice"><input type="radio" name="attendance" value="watching"><span><i aria-hidden="true">📺</i>Just watching</span></label>
+            </div>
+          </fieldset>
+
+          <div class="field-row" data-show-for="in_person" hidden>
+            <label class="field">
+              <span class="field__label">Bringing anyone?</span>
+              <select name="guests">
+                <option value="0">Just me</option>
+                <option value="1">+1</option>
+                <option value="2">+2</option>
+                <option value="3">+3</option>
+                <option value="4">+4 (a whole party)</option>
+              </select>
+            </label>
+            <label class="field">
+              <span class="field__label">Food notes</span>
+              <input type="text" name="dietary" maxlength="200" placeholder="allergies, vegetarian, etc.">
+            </label>
+          </div>
+
+          <fieldset class="field" data-show-for="in_person online" hidden>
+            <legend class="field__label">What do you want to play? <small>pick any</small></legend>
+            <div class="choice-grid choice-grid--wrap">
+              <label class="choice choice--check"><input type="checkbox" name="events" value="casual_smash"><span>Casual Smash Cup <em>3 PM · in person</em></span></label>
+              <label class="choice choice--check"><input type="checkbox" name="events" value="smash_championship"><span>Smash Championship <em>5:25 PM · local + remote</em></span></label>
+              <label class="choice choice--check"><input type="checkbox" name="events" value="friendslop"><span>friendslop <em>6:45 PM</em></span></label>
+              <label class="choice choice--check"><input type="checkbox" name="events" value="jackbox"><span>Casual Jackbox <em>4 PM · phone in hand</em></span></label>
+              <label class="choice choice--check"><input type="checkbox" name="events" value="fortnite"><span>Fortnite <em>8:30 PM · online</em></span></label>
+              <label class="choice choice--check"><input type="checkbox" name="events" value="freeplay"><span>Mario Kart &amp; tabletop <em>all day, no sign-up needed</em></span></label>
+            </div>
+          </fieldset>
+
+          <div class="field-row" data-show-for="in_person online" hidden>
+            <label class="field">
+              <span class="field__label">Nintendo friend code <small>for online Smash</small></span>
+              <input type="text" name="friend_code" maxlength="20" inputmode="numeric" placeholder="SW-0000-0000-0000">
+            </label>
+            <label class="field">
+              <span class="field__label">Discord handle <small>for remote voice</small></span>
+              <input type="text" name="discord" maxlength="60" placeholder="yourname">
+            </label>
+          </div>
+
+          <fieldset class="field" data-show-for="in_person" hidden>
+            <legend class="field__label">OK to appear on the stream?</legend>
+            <div class="choice-grid">
+              <label class="choice"><input type="radio" name="camera_ok" value="yes" checked><span><i aria-hidden="true">📷</i>Sure, put me on</span></label>
+              <label class="choice"><input type="radio" name="camera_ok" value="no"><span><i aria-hidden="true">🙈</i>I'd rather stay off camera</span></label>
+            </div>
+          </fieldset>
+
+          <label class="field">
+            <span class="field__label">Anything else for AJ?</span>
+            <textarea name="note" rows="3" maxlength="1000" placeholder="song requests, questions, trash talk…"></textarea>
+          </label>
+
+          <!-- honeypot: real people never see this -->
+          <label class="hp" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+
+          <div class="rsvp__actions">
+            <button class="btn btn--gold btn--lg" type="submit" id="rsvpSubmit"><span class="btn__glow" aria-hidden="true"></span>Count me in</button>
+            <p class="rsvp__status" id="rsvpStatus" role="status" aria-live="polite"></p>
+          </div>
+          <p class="fineprint fineprint--tight">The address is shared by email with in-person guests only. We won't use your email for anything else.</p>
+        </form>
+
+        <div class="rsvp__success" id="rsvpSuccess" hidden>
+          <div class="rsvp__success-icon" aria-hidden="true">🎉</div>
+          <h3>You're on the quest log!</h3>
+          <p id="rsvpSuccessText">AJ will send the details to your email before the big day.</p>
+          <div class="rsvp__success-actions">
+            <button class="btn btn--ghost" type="button" data-action="calendar">Add to calendar</button>
+            <a class="btn btn--coral" data-link="donate" href="#cause">Donate for the Kids</a>
+          </div>
+          <button class="linklike rsvp__again" type="button" id="rsvpAgain">RSVP for someone else</button>
+        </div>
+
+        <div class="rsvp__offline" id="rsvpOffline" hidden>
+          <p><strong>The RSVP form opens soon.</strong> In the meantime, copy this message and send it to AJ:</p>
+          <pre id="signupTemplate">Hey AJ! Count me in for AJ's Annual Quest.
+Name:
+Joining: in person / online / just watching
+Guests I'm bringing:
+Events: Casual Smash Cup / Championship / friendslop / Jackbox / Fortnite
+Nintendo friend code (for online Smash):
+Discord handle:
+Food notes:</pre>
+          <button class="btn btn--ghost" id="copySignup" type="button">Copy message</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===================== SMASH BRACKET ===================== -->
   <section class="section section--smash" id="smash">
     <div class="container">
@@ -420,20 +546,10 @@
       <div class="signup reveal" data-reveal>
         <div class="signup__head">
           <h3>Sign up to play</h3>
-          <p>One form for everyone, in person or remote. Walk-up sign-ups are welcome at the door, but remote Smash entrants should register ahead of time.</p>
+          <p>Tick the Smash events on the RSVP form and you're in the bracket. Walk-up sign-ups are welcome at the door; remote Championship entrants should register ahead of time.</p>
         </div>
         <div class="signup__actions">
-          <a class="btn btn--gold btn--lg" data-link="signup" href="#">Open sign-up form</a>
-          <span class="coming-soon" data-coming="signup">Sign-up form is coming soon. In the meantime, copy the message below and send it to AJ.</span>
-        </div>
-        <div class="signup__fallback" id="signupFallback">
-          <pre id="signupTemplate">Hey AJ! Sign me up for AJ's Annual Quest.
-Nickname:
-Joining: in person / remote
-Events: Casual Smash Cup / Championship / friendslop / Jackbox / Fortnite
-Nintendo friend code (for Smash online):
-Discord handle:</pre>
-          <button class="btn btn--ghost" id="copySignup" type="button">Copy message</button>
+          <a class="btn btn--gold btn--lg" href="#rsvp">Go to the RSVP form</a>
         </div>
       </div>
     </div>

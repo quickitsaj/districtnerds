@@ -15,16 +15,30 @@ window.QUEST_CONFIG = {
     donate:   "https://dd.extra-life.org/participants/quickitsaj",   // official Extra Life participant page
     rsvp:     "",   // party RSVP form
     signup:   "",   // Smash / game sign-up form (can be the same as rsvp)
-    stream:   "",   // e.g. https://twitch.tv/... or YouTube live URL
+    stream:   "https://www.twitch.tv/quickitsaj",
     discord:  "",   // invite for remote players (optional)
     extraLife: "https://www.extra-life.org",
     childrensNational: "https://childrensnational.org",
   },
 
-  // Optional stream embed (shown in the Watch section when set).
-  // Twitch:  "https://player.twitch.tv/?channel=CHANNEL&parent=districtnerds.com"
-  // YouTube: "https://www.youtube.com/embed/VIDEO_ID"
-  stream: { embedUrl: "" },
+  // Stream player in the Watch section.
+  // twitchChannel: the player appears automatically from 1 hour before doors
+  // until 1 hour after sign-off (set alwaysEmbed: true to show it year-round).
+  // embedUrl: alternative for YouTube etc. ("https://www.youtube.com/embed/VIDEO_ID").
+  stream: { twitchChannel: "quickitsaj", alwaysEmbed: false, embedUrl: "" },
+
+  // RSVP form backend. Pick ONE:
+  //  A) Supabase: create the table with supabase/migrations/0001_rsvps.sql, then
+  //     fill in url + anonKey (Project Settings → API). Only inserts are allowed
+  //     from the site; you read responses in the Supabase table editor.
+  //  B) endpoint: any URL that accepts a JSON POST (Formspree, a Google Apps
+  //     Script web app, a Netlify/Vercel function...).
+  // Leave both empty and the form shows a "coming soon" state with the copy-and-
+  // send fallback instead.
+  rsvp: {
+    supabase: { url: "", anonKey: "", table: "rsvps" },
+    endpoint: "",
+  },
 
   // Fundraising meter. Set goal to a number to show the progress bar.
   // Update "raised" by hand (or wire it to the Extra Life API later).

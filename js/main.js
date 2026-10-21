@@ -48,11 +48,6 @@
     }
   });
   $$("[data-coming]").forEach((el) => { if (!links[el.dataset.coming]) el.classList.add("is-visible"); });
-  if (!links.signup) $("#signupFallback")?.classList.add("is-visible");
-  if (CFG.contactEmail) {
-    const tpl = $("#signupTemplate");
-    if (tpl) tpl.textContent = tpl.textContent.replace("send it to AJ", "email it to " + CFG.contactEmail);
-  }
 
   /* ---------- copy sign-up template ---------- */
   $("#copySignup")?.addEventListener("click", async () => {
@@ -317,26 +312,143 @@
 
   /* ---------- stream embed + on-air ---------- */
   const onAir = $("#onAir");
-  const embed = (CFG.stream && CFG.stream.embedUrl) || "";
-  if (embed) {
+  const streamCfg = CFG.stream || {};
+  const HOUR = 3600 * 1000;
+  function streamWindow() { const now = new Date(); return now >= new Date(start - HOUR) && now <= new Date(streamEnd.getTime() + HOUR); }
+  function embedUrl() {
+    if (streamCfg.embedUrl) return streamCfg.embedUrl;
+    if (streamCfg.twitchChannel) {
+      // Twitch requires every embedding hostname as a parent= param.
+      const parents = new Set([location.hostname || "localhost"]);
+      try { if (document.referrer) parents.add(new URL(document.referrer).hostname); } catch (e) { /* ignore */ }
+      const p = Array.from(parents).filter(Boolean).map((h) => "parent=" + encodeURIComponent(h)).join("&");
+      return `https://player.twitch.tv/?channel=${encodeURIComponent(streamCfg.twitchChannel)}&${p}&muted=true&autoplay=true`;
+    }
+    return "";
+  }
+  let embedded = false;
+  function mountEmbed() {
+    const url = embedUrl();
+    if (!url || embedded) return;
+    embedded = true;
     const frame = $("#streamFrame");
     $("#streamPlaceholder")?.remove();
     const iframe = document.createElement("iframe");
-    iframe.src = embed; iframe.allowFullscreen = true; iframe.allow = "autoplay; fullscreen; picture-in-picture";
+    iframe.src = url; iframe.allowFullscreen = true; iframe.allow = "autoplay; fullscreen; picture-in-picture";
     iframe.title = "AJ's Annual Quest livestream";
     frame.appendChild(iframe);
   }
   function updateOnAir() {
     const now = new Date();
     const live = now >= start && now <= streamEnd;
-    onAir?.classList.toggle("is-live", live || !!embed);
-    if (live) {
-      const ph = $("#streamPlaceholder p b");
-      if (ph && !links.stream) ph.textContent = "We're live! Stream link coming to this page any minute.";
-      if (ph && links.stream) ph.textContent = "We're live right now. Tap below to watch.";
-    }
+    onAir?.classList.toggle("is-live", live);
+    if ((streamCfg.alwaysEmbed || streamWindow()) && embedUrl()) mountEmbed();
+    const ph = $("#streamPlaceholder p b");
+    if (ph && links.stream && !live) ph.textContent = "We go live November 7 at 2 PM ET.";
+    if (ph && live) ph.textContent = links.stream ? "We're live right now. Tap below to watch." : "We're live! Stream link coming to this page any minute.";
   }
   updateOnAir(); setInterval(updateOnAir, 30000);
+
+
+  /* ---------- RSVP form ---------- */
+  const rsvpCfg = CFG.rsvp || {};
+  const sb = rsvpCfg.supabase || {};
+  const rsvpBackend = (sb.url && sb.anonKey) ? "supabase" : (rsvpCfg.endpoint ? "endpoint" : "");
+  const rsvpForm = $("#rsvpForm"), rsvpSuccess = $("#rsvpSuccess"), rsvpOffline = $("#rsvpOffline"), rsvpStatus = $("#rsvpStatus");
+  if (rsvpForm) {
+    if (!rsvpBackend) { rsvpForm.hidden = true; rsvpOffline.hidden = false; }
+
+    // show/hide conditional groups based on attendance
+    const groups = $$("[data-show-for]", rsvpForm);
+    function syncGroups() {
+      const v = rsvpForm.attendance.value;
+      groups.forEach((g) => { g.hidden = !(v && g.dataset.showFor.split(" ").includes(v)); });
+    }
+    $$("input[name=attendance]", rsvpForm).forEach((r) => r.addEventListener("change", syncGroups));
+    syncGroups();
+
+    // returning visitor
+    try {
+      const prev = JSON.parse(localStorage.getItem("quest-rsvp") || "null");
+      if (prev && prev.name) showSuccess(prev);
+    } catch (e) { /* ignore */ }
+
+    function showSuccess(data) {
+      rsvpForm.hidden = true; rsvpSuccess.hidden = false;
+      const t = $("#rsvpSuccessText");
+      if (data.attendance === "in_person") t.textContent = `See you November 7, ${data.name}! AJ will send the address to ${data.email} before the big day.`;
+      else if (data.attendance === "online") t.textContent = `Welcome to the party, ${data.name}! Keep an eye on ${data.email} for Discord and match details.`;
+      else t.textContent = `Thanks, ${data.name}! The stream goes live November 7 at 2 PM ET. We'll see you in chat.`;
+    }
+    $("#rsvpAgain")?.addEventListener("click", () => {
+      try { localStorage.removeItem("quest-rsvp"); } catch (e) { /* ignore */ }
+      rsvpForm.reset(); syncGroups(); rsvpSuccess.hidden = true; rsvpForm.hidden = false; rsvpStatus.textContent = "";
+      rsvpForm.name.focus();
+    });
+    $("[data-action=calendar]", rsvpSuccess)?.addEventListener("click", () => $("#addToCal")?.click());
+
+    function collect() {
+      const fd = new FormData(rsvpForm);
+      const clean = (k, max = 200) => String(fd.get(k) || "").trim().slice(0, max);
+      return {
+        name: clean("name", 120),
+        email: clean("email", 200).toLowerCase(),
+        attendance: clean("attendance", 20),
+        guests: Math.max(0, Math.min(10, parseInt(fd.get("guests") || "0", 10) || 0)),
+        events: fd.getAll("events").map(String).slice(0, 10),
+        friend_code: clean("friend_code", 20),
+        discord: clean("discord", 60),
+        dietary: clean("dietary", 200),
+        camera_ok: clean("camera_ok", 3) || null,
+        note: clean("note", 1000),
+        user_agent: navigator.userAgent.slice(0, 200),
+      };
+    }
+    function validate(d) {
+      let bad = null;
+      $$("[aria-invalid]", rsvpForm).forEach((el) => el.removeAttribute("aria-invalid"));
+      if (!d.name) { bad = rsvpForm.name; rsvpStatus.textContent = "Tell us your name so we know who's coming."; }
+      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) { bad = rsvpForm.email; rsvpStatus.textContent = "That email doesn't look right."; }
+      else if (!d.attendance) { bad = $("input[name=attendance]", rsvpForm); rsvpStatus.textContent = "Let us know how you're joining."; }
+      if (bad) { bad.setAttribute("aria-invalid", "true"); bad.focus(); return false; }
+      return true;
+    }
+    async function submit(d) {
+      if (rsvpBackend === "supabase") {
+        const res = await fetch(`${sb.url.replace(/\/$/, "")}/rest/v1/${encodeURIComponent(sb.table || "rsvps")}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", apikey: sb.anonKey, Authorization: "Bearer " + sb.anonKey, Prefer: "return=minimal" },
+          body: JSON.stringify(d),
+        });
+        if (!res.ok) throw new Error("supabase " + res.status + " " + (await res.text().catch(() => "")));
+      } else {
+        const res = await fetch(rsvpCfg.endpoint, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(d) });
+        if (!res.ok) throw new Error("endpoint " + res.status);
+      }
+    }
+    rsvpForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (rsvpForm.website.value) { showSuccess(collect()); return; } // honeypot: pretend success
+      const d = collect();
+      if (!validate(d)) return;
+      const btn = $("#rsvpSubmit");
+      btn.classList.add("is-busy"); btn.disabled = true;
+      rsvpStatus.textContent = "Sending…"; rsvpStatus.classList.remove("is-ok");
+      try {
+        await submit(d);
+        try { localStorage.setItem("quest-rsvp", JSON.stringify({ name: d.name, email: d.email, attendance: d.attendance })); } catch (err) { /* ignore */ }
+        rsvpStatus.textContent = "";
+        showSuccess(d);
+        partyRain(true);
+        rsvpSuccess.scrollIntoView({ behavior: reduceMotion() ? "auto" : "smooth", block: "center" });
+      } catch (err) {
+        console.error(err);
+        rsvpStatus.textContent = "Hmm, that didn't go through. Check your connection and try again, or message AJ directly.";
+      } finally {
+        btn.classList.remove("is-busy"); btn.disabled = false;
+      }
+    });
+  }
 
   /* ---------- sky canvas: stars, shooting stars ---------- */
   const sky = $("#sky");
@@ -477,8 +589,9 @@
   /* ---------- easter egg: Konami code → party rain ---------- */
   const KONAMI = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
   let kIdx = 0;
-  function partyRain() {
-    toast("🎉 Secret unlocked! Happy birthday, AJ.");
+  function partyRain(quiet) {
+    if (!quiet) toast("🎉 Secret unlocked! Happy birthday, AJ.");
+    if (reduceMotion()) return;
     const colors = ["#f6c453", "#ff5c8a", "#4fd1d9", "#9be37d", "#b388ff", "#ff6a3d"];
     for (let i = 0; i < 120; i++) {
       const c = document.createElement("i");
