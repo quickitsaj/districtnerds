@@ -12,7 +12,7 @@ window.QUEST_CONFIG = {
 
   // Public links — fill in when confirmed. Empty = "coming soon".
   links: {
-    donate:   "",   // official Extra Life participant/team page
+    donate:   "https://dd.extra-life.org/participants/quickitsaj",   // official Extra Life participant page
     rsvp:     "",   // party RSVP form
     signup:   "",   // Smash / game sign-up form (can be the same as rsvp)
     stream:   "",   // e.g. https://twitch.tv/... or YouTube live URL
