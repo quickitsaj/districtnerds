@@ -101,6 +101,44 @@
     });
   });
 
+
+  /* ---------- hero motion: entrance, parallax, signpost hint ---------- */
+  const hero = $(".hero");
+  if (hero) {
+    const ready = () => hero.classList.add("is-ready");
+    if (document.readyState === "complete") setTimeout(ready, 80); else window.addEventListener("load", () => setTimeout(ready, 80));
+    setTimeout(ready, 1800); // never wait on a slow image
+
+    if (finePointer) {
+      let raf;
+      hero.addEventListener("pointermove", (e) => {
+        if (reduceMotion()) return;
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          const r = hero.getBoundingClientRect();
+          hero.style.setProperty("--mx", (((e.clientX - r.left) / r.width) * 2 - 1).toFixed(3));
+          hero.style.setProperty("--my", (((e.clientY - r.top) / Math.min(r.height, innerHeight)) * 2 - 1).toFixed(3));
+        });
+      });
+      hero.addEventListener("pointerleave", () => { hero.style.setProperty("--mx", 0); hero.style.setProperty("--my", 0); });
+    }
+
+    // once the scene is on screen, run a glow across the planks so people know they're buttons
+    const spots = $$(".hotspot[data-game]");
+    const sceneEl = $(".scene-art");
+    if (sceneEl && spots.length && "IntersectionObserver" in window) {
+      const io = new IntersectionObserver((en) => {
+        if (!en[0].isIntersecting) return;
+        io.disconnect();
+        if (reduceMotion()) return;
+        spots.forEach((s, i) => {
+          setTimeout(() => { s.classList.add("is-hint"); setTimeout(() => s.classList.remove("is-hint"), 420); }, 900 + i * 180);
+        });
+      }, { threshold: 0.5 });
+      io.observe(sceneEl);
+    }
+  }
+
   /* ---------- reveal on scroll ---------- */
   const revealEls = $$("[data-reveal]");
   if ("IntersectionObserver" in window && !reduceMotion()) {
@@ -231,6 +269,7 @@
         forestLayers.forEach((l) => { l.style.transform = `translate3d(0, ${(-y * parseFloat(l.dataset.depth)).toFixed(1)}px, 0)`; });
       }
       if (nav) nav.style.transform = y > 120 && y > lastY + 4 ? "translateY(-110%)" : "translateY(0)";
+      if (hero && !reduceMotion()) hero.style.setProperty("--sy", Math.min(y, 900));
       lastY = y;
       updateTimelinePath();
       ticking = false;
@@ -350,6 +389,7 @@
     const now = new Date();
     const live = now >= start && now <= streamEnd;
     onAir?.classList.toggle("is-live", live);
+    $(".scene-art")?.classList.toggle("is-live", live);
     if ((streamCfg.alwaysEmbed || streamWindow()) && embedUrl()) mountEmbed();
     const ph = $("#streamPlaceholder p b");
     if (ph && links.stream && !live) ph.textContent = "We go live November 7 at 2 PM ET.";
@@ -541,8 +581,15 @@
       raf = requestAnimationFrame(loop);
       ctx.clearRect(0, 0, W, H);
       if (Math.random() < 0.35) spawn(1);
+      if (Math.random() < 0.08) embers.push({ x: W / 2 + (Math.random() - 0.5) * 30, y: H / 2 + 40, vx: (Math.random() - 0.5) * 0.4, vy: -(0.5 + Math.random() * 0.5), r: 6 + Math.random() * 8, life: 1, smoke: true });
       embers = embers.filter((e) => e.life > 0 && e.y > 0);
       for (const e of embers) {
+        if (e.smoke) {
+          e.x += e.vx + Math.sin(e.y / 22) * 0.4; e.y += e.vy; e.life -= 0.006; e.r += 0.12;
+          ctx.globalAlpha = Math.max(0, e.life) * 0.12; ctx.fillStyle = "#cfd3e6"; ctx.shadowBlur = 0;
+          ctx.beginPath(); ctx.arc(e.x, e.y, e.r, 0, Math.PI * 2); ctx.fill();
+          continue;
+        }
         e.x += e.vx + Math.sin(e.y / 18) * 0.6; e.y += e.vy; e.life -= 0.012; e.vy *= 0.995;
         ctx.globalAlpha = Math.max(0, e.life);
         ctx.fillStyle = `hsl(${e.hue}, 100%, ${55 + (1 - e.life) * 20}%)`;
