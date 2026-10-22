@@ -19,7 +19,7 @@ var HEADERS = ["Submitted", "Name", "Email", "Joining", "Guests", "Events",
 
 var JOINING = { in_person: "In person", online: "Online", watching: "Watching" };
 var EVENTS = {
-  casual_smash: "Casual Smash Cup", smash_championship: "Smash Championship", friendslop: "friendslop",
+  smash: "Smash Ultimate", casual_smash: "Casual Smash Cup", smash_championship: "Smash Championship", friendslop: "friendslop",
   jackbox: "Casual Jackbox", fortnite: "Fortnite", freeplay: "Mario Kart & tabletop", watching: "Just watching"
 };
 

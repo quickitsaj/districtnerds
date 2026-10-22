@@ -346,6 +346,7 @@ button { font: inherit; }
 
 /* ---------- smash ---------- */
 .bracket { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; margin-bottom: 30px; }
+.bracket--single { max-width: 640px; margin-inline: auto; }
 .bracket__card { position: relative; padding: 30px 26px 22px; border-radius: var(--radius); background: linear-gradient(170deg, rgba(38, 33, 88, .85), rgba(26, 22, 64, .95)); border: 1px solid rgba(243, 196, 90, .3); box-shadow: var(--shadow); overflow: hidden; }
 .bracket__card--featured { border-color: rgba(243, 196, 90, .6); }
 .bracket__badge { position: absolute; top: 16px; right: -34px; background: var(--gold); color: var(--ink); font-family: var(--font-head); font-weight: 900; font-size: .85rem; letter-spacing: .08em; padding: 6px 44px; transform: rotate(35deg); box-shadow: 0 4px 10px rgba(0, 0, 0, .4); }

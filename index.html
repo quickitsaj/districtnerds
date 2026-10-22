@@ -201,22 +201,22 @@
             <ul class="tags"><li class="tag">Watch</li></ul>
           </article>
           <article class="game-panel" role="tabpanel" id="game-smash" aria-labelledby="tab-smash" hidden>
-            <span class="game-panel__time">3:00 PM &amp; 5:25 PM</span>
+            <span class="game-panel__time">5:25 PM · one bracket</span>
             <h3>Smash Ultimate</h3>
-            <p>A beginner-friendly Casual Cup in the afternoon, then the Championship bracket in the evening. Small prizes. Big bragging rights.</p>
+            <p>One open bracket for everyone who signs up: 1v1, 3 stock, no items. Small prize for the winner. Big bragging rights.</p>
             <ul class="tags"><li class="tag tag--play">Join in</li><li class="tag">Watch</li></ul>
             <a class="game-panel__link" href="#smash">Bracket details</a>
           </article>
           <article class="game-panel" role="tabpanel" id="game-friendslop" aria-labelledby="tab-friendslop" hidden>
-            <span class="game-panel__time">6:45 PM</span>
+            <span class="game-panel__time">6:15 PM · until intermission</span>
             <h3>friendslop</h3>
             <p>The featured party-game block. Loud, co-op, gloriously chaotic, with open seats for anyone who signs up. Game reveal coming soon.</p>
             <ul class="tags"><li class="tag tag--play">Join in</li><li class="tag">Watch</li></ul>
           </article>
           <article class="game-panel" role="tabpanel" id="game-kart" aria-labelledby="tab-kart" hidden>
-            <span class="game-panel__time">All day</span>
+            <span class="game-panel__time">3:00 PM · and between events</span>
             <h3>Mario Kart</h3>
-            <p>Pick-up races between the main events, with the occasional blue shell on stream.</p>
+            <p>Pick-up races on stream, with the occasional blue shell.</p>
             <ul class="tags"><li class="tag">Watch</li></ul>
           </article>
           <article class="game-panel" role="tabpanel" id="game-fortnite" aria-labelledby="tab-fortnite" hidden>
@@ -308,9 +308,8 @@
           <fieldset class="field">
             <legend class="field__label">What do you want to play? <small>pick any, or none to just watch</small></legend>
             <div class="choice-grid choice-grid--wrap">
-              <label class="choice choice--check"><input type="checkbox" name="events" value="casual_smash"><span>Casual Smash Cup <em>3 PM · beginner-friendly</em></span></label>
-              <label class="choice choice--check"><input type="checkbox" name="events" value="smash_championship"><span>Smash Championship <em>5:25 PM · bracket play</em></span></label>
-              <label class="choice choice--check"><input type="checkbox" name="events" value="friendslop"><span>friendslop <em>6:45 PM</em></span></label>
+              <label class="choice choice--check"><input type="checkbox" name="events" value="smash"><span>Smash Ultimate <em>5:25 PM · open bracket</em></span></label>
+              <label class="choice choice--check"><input type="checkbox" name="events" value="friendslop"><span>friendslop <em>6:15 PM</em></span></label>
               <label class="choice choice--check"><input type="checkbox" name="events" value="jackbox"><span>Casual Jackbox <em>4 PM · phone in hand</em></span></label>
               <label class="choice choice--check"><input type="checkbox" name="events" value="fortnite"><span>Fortnite <em>8:30 PM · squads</em></span></label>
               <label class="choice choice--check"><input type="checkbox" name="events" value="watching"><span>Just watching <em>cheering counts</em></span></label>
@@ -358,7 +357,7 @@
           <p><strong>The RSVP form opens soon.</strong> In the meantime, copy this message and send it to AJ:</p>
           <pre id="signupTemplate">Hey AJ! Count me in for AJ's Annual Quest.
 Name:
-Events: Casual Smash Cup / Championship / friendslop / Jackbox / Fortnite / just watching
+Events: Smash / friendslop / Jackbox / Fortnite / just watching
 Nintendo friend code (for Smash):
 Discord handle:</pre>
           <button class="btn btn--ghost" id="copySignup" type="button">Copy message</button>
@@ -374,28 +373,16 @@ Discord handle:</pre>
         <h2 class="display">Enter the Bracket</h2>
       </header>
 
-      <div class="bracket">
-        <article class="bracket__card reveal" data-reveal>
-          <div class="bracket__badge">3:00 PM</div>
-          <h3>Casual Smash Cup</h3>
-          <p class="bracket__tagline">Never played? Perfect.</p>
-          <ul class="checklist">
-            <li>4-player free-for-alls with items on</li>
-            <li>Short heats, simple rules, friendly trash talk</li>
-            <li>Entries close just before 3 PM</li>
-            <li>One small prize for the champion</li>
-          </ul>
-        </article>
-
+      <div class="bracket bracket--single">
         <article class="bracket__card bracket__card--featured reveal" data-reveal>
           <div class="bracket__badge">5:25 PM</div>
-          <h3>Competitive Championship</h3>
+          <h3>Smash Ultimate</h3>
           <p class="bracket__tagline">One bracket. Everyone who signs up.</p>
           <ul class="checklist">
             <li>1v1 · 3 stock · no items · agreed stage list</li>
-            <li>Short early rounds, best-of-three grand final if time allows</li>
+            <li>Short early rounds, best-of-three final if time allows</li>
             <li>Sign up the night before and check in on Discord 10–15 minutes before your match</li>
-            <li>Roster closes at 5 PM. Small prize for the winner</li>
+            <li>Sign-ups close at 5 PM. Small prize for the winner</li>
           </ul>
           <p class="fineprint fineprint--tight">Matches run through Smash Battle Arenas. Expect a little lag and a little patience.</p>
         </article>
@@ -404,7 +391,7 @@ Discord handle:</pre>
       <div class="signup reveal" data-reveal>
         <div class="signup__head">
           <h3>Sign up to play</h3>
-          <p>Tick the Smash events on the sign-up form and you're in the bracket. Register the night before so we can seed it, then watch Discord for your match call.</p>
+          <p>Tick Smash on the sign-up form and you're in the bracket. Register the night before so we can seed it, then watch Discord for your match call.</p>
         </div>
         <div class="signup__actions">
           <a class="btn btn--gold btn--lg" href="#rsvp">Go to the RSVP form</a>

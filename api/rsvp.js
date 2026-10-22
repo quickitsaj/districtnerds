@@ -5,7 +5,7 @@ import { put } from "@vercel/blob";
 import { randomUUID } from "node:crypto";
 
 const ATTENDANCE = new Set(["in_person", "online", "watching"]);
-const EVENTS = new Set(["casual_smash", "smash_championship", "friendslop", "jackbox", "fortnite", "freeplay", "watching"]);
+const EVENTS = new Set(["smash", "casual_smash", "smash_championship", "friendslop", "jackbox", "fortnite", "freeplay", "watching"]);
 
 const CORS = {
   "Access-Control-Allow-Origin": "*",
