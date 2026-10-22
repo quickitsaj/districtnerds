@@ -44,33 +44,6 @@
   <!-- Night sky: slow twinkle, the occasional shooting star -->
   <canvas id="sky" class="sky" aria-hidden="true"></canvas>
 
-  <!-- ===================== NAV ===================== -->
-  <header class="nav" id="nav">
-    <div class="nav__inner">
-      <a class="nav__brand" href="#top" aria-label="District Nerds — back to top">
-        <span class="nav__brand-badge" aria-hidden="true">
-          <svg viewBox="0 0 40 40" width="30" height="30"><rect x="4" y="12" width="32" height="18" rx="7" fill="#f3d58e" stroke="#3a2a14" stroke-width="2"/><path d="M12 17v8M8 21h8" stroke="#3a2a14" stroke-width="2.4" stroke-linecap="round"/><circle cx="27" cy="19" r="2" fill="#3a2a14"/><circle cx="31" cy="23" r="2" fill="#3a2a14"/></svg>
-        </span>
-        <span class="nav__brand-text">District <b>Nerds</b></span>
-      </a>
-      <nav class="nav__links" id="navLinks" aria-label="Sections">
-        <a href="#games">Games</a>
-        <a href="#schedule">Schedule</a>
-        <a href="#cause">The Cause</a>
-        <a href="#rsvp">Play</a>
-        <a href="#smash">Smash</a>
-        <a href="#watch">Watch</a>
-        <a href="#faq">FAQ</a>
-      </nav>
-      <div class="nav__actions">
-        <a class="btn btn--sm btn--coral" data-link="donate" href="#cause">Donate</a>
-        <button class="nav__burger" id="navBurger" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-  </header>
-
   <main id="main">
   <!-- ===================== HERO: the poster, rebuilt ===================== -->
   <section class="hero" id="top">
@@ -149,8 +122,6 @@
         </picture>
 
         <div class="wpg">
-          <h2 class="wpg__title reveal" data-reveal><span class="w" style="--i:0">Watch.</span> <span class="w" style="--i:1">Play.</span> <span class="w" style="--i:2">Give.</span></h2>
-          <p class="wpg__sub reveal" data-reveal>Tune into the livestream, join a game, or help support kids at Children's National Hospital.</p>
           <div class="hero__cta reveal" data-reveal>
             <a class="btn btn--ghost btn--lg" data-link="stream" href="#watch">Watch live</a>
             <a class="btn btn--gold btn--lg" href="#rsvp">Join the games</a>
@@ -176,14 +147,9 @@
             <a data-link="extraLife" target="_blank" rel="noopener"><img src="assets/logo-extra-life.png" alt="Extra Life. Play games. Heal kids." width="157" height="120"></a>
             <a data-link="childrensNational" target="_blank" rel="noopener"><img src="assets/logo-childrens-national.png" alt="Children's National Hospital" width="128" height="116"></a>
           </div>
-          <div class="wpg__plank reveal" data-reveal>
-            <span class="plank plank--link"><b>districtnerds.com</b><small>you're here</small></span>
+          <div class="wpg__links reveal" data-reveal>
             <button class="linklike" id="addToCal" type="button">Add to calendar</button>
             <button class="linklike" id="posterOpen" type="button">See the full poster</button>
-          </div>
-          <div class="qr reveal" data-reveal>
-            <img src="assets/qr-districtnerds.svg" width="160" height="160" alt="QR code linking to districtnerds.com">
-            <div class="qr__text"><b>Scan to watch, play, or donate.</b><span>districtnerds.com</span></div>
           </div>
         </div>
       </div>
@@ -267,7 +233,6 @@
           </article>
         </div>
       </div>
-      <p class="fineprint reveal" data-reveal>Lineup and times are the plan, not a prophecy. Things shift a little on the day.</p>
     </div>
   </section>
 
@@ -283,7 +248,6 @@
         </div>
       </header>
       <ol class="timeline" id="timeline" aria-live="polite"></ol>
-      <p class="fineprint reveal" data-reveal>All times Eastern. Sign-ups for the Smash events close at 5 PM.</p>
     </div>
   </section>
 
