@@ -184,15 +184,14 @@
 
   /* ---------- schedule ---------- */
   const SCHEDULE = [
-    { t: "2:00 PM", h: 14, m: 0, icon: "📡", title: "Stream goes live", desc: "Say hi in chat. Smash sign-ups are open until 5.", tags: ["watch"] },
-    { t: "2:30 PM", h: 14, m: 30, icon: "🔺", title: "Ocarina of Time remake showcase", desc: "AJ's first-ever playthrough, a full 90 minutes, live. No spoilers in chat.", tags: ["watch"] },
+    { t: "2:00 PM", h: 14, m: 0, icon: "📡", title: "Stream goes live", desc: "Smash sign-ups are open until 5.", tags: ["watch"] },
+    { t: "2:15 PM", h: 14, m: 15, icon: "🔺", title: "Ocarina of Time Remake", desc: "AJ's first playthrough, live.", tags: ["watch"] },
     { t: "4:00 PM", h: 16, m: 0, icon: "📱", title: "Casual Jackbox", desc: "Grab the room code off the stream and play from your phone.", tags: ["play", "watch"] },
-    { t: "5:00 PM", h: 17, m: 0, icon: "💛", title: "The fundraising moment", desc: "Where the total stands, who we're doing this for, and a toast to the kids.", tags: ["watch"], big: true },
-    { t: "5:25 PM", h: 17, m: 25, icon: "⭐", title: "Smash Ultimate bracket", desc: "One open bracket, about 50 minutes. 1v1, 3 stock, no items. Check in on Discord by 5:10.", tags: ["play", "watch"] },
-    { t: "6:15 PM", h: 18, m: 15, icon: "💬", title: "friendslop main event", desc: "The featured party-game block, now running until intermission, with open seats for anyone signed up. Game reveal coming soon.", tags: ["play", "watch"] },
-    { t: "7:30 PM", h: 19, m: 30, icon: "🌙", title: "Intermission", desc: "A 30-minute breather. Back at 8:00.", tags: ["watch"] },
-    { t: "8:00 PM", h: 20, m: 0, icon: "🎯", title: "Fortnite after dark", desc: "Squad session with everyone who signed up. Voice on Discord.", tags: ["play", "watch"] },
-    { t: "11:15 PM", h: 23, m: 15, icon: "💛", title: "Final fundraising recap & sign-off", desc: "The total, the thank-yous, and goodnight.", tags: ["watch"] },
+    { t: "5:25 PM", h: 17, m: 25, icon: "⭐", title: "Smash Ultimate bracket", desc: "Open bracket, about 50 minutes. 1v1, 3 stock, no items. Check in on Discord by 5:10.", tags: ["play", "watch"] },
+    { t: "6:15 PM", h: 18, m: 15, icon: "💬", title: "friendslop", desc: "Co-op party games until intermission, with open seats for anyone signed up. Game to be announced.", tags: ["play", "watch"] },
+    { t: "7:30 PM", h: 19, m: 30, icon: "🌙", title: "Intermission", desc: "30-minute break. Back at 8:00.", tags: ["watch"] },
+    { t: "8:00 PM", h: 20, m: 0, icon: "🎯", title: "Fortnite", desc: "Squads with everyone who signed up. Voice on Discord.", tags: ["play", "watch"] },
+    { t: "11:15 PM", h: 23, m: 15, icon: "💛", title: "Wrap-up", desc: "Final fundraising total and sign-off.", tags: ["watch"] },
   ];
   const TAG_LABEL = { play: ["Join in", "tag--play"], watch: ["Watch", "tag--watch"] };
   const timeline = $("#timeline");
