@@ -484,6 +484,7 @@
           res = await fetch(url, { method: "POST", mode: "no-cors", headers, body: JSON.stringify(d) });
         }
         if (res.type === "opaque") return;
+        if (res.status === 503) { const e = new Error("not open"); e.notOpen = true; throw e; }
         if (!res.ok) throw new Error("endpoint " + res.status);
         if (isAppsScript) {
           const out = await res.json().catch(() => ({ ok: true }));
@@ -508,7 +509,9 @@
         rsvpSuccess.scrollIntoView({ behavior: reduceMotion() ? "auto" : "smooth", block: "center" });
       } catch (err) {
         console.error(err);
-        rsvpStatus.textContent = "Hmm, that didn't go through. Check your connection and try again, or message AJ directly.";
+        rsvpStatus.textContent = err.notOpen
+          ? "RSVPs aren't open quite yet. Check back soon, or message AJ directly."
+          : "Hmm, that didn't go through. Check your connection and try again, or message AJ directly.";
       } finally {
         btn.classList.remove("is-busy"); btn.disabled = false;
       }

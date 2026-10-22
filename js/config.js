@@ -37,7 +37,7 @@ window.QUEST_CONFIG = {
   // send fallback instead.
   rsvp: {
     supabase: { url: "", anonKey: "", table: "rsvps" },
-    endpoint: "",
+    endpoint: "https://districtnerds.vercel.app/api/rsvp", // Vercel receiver (api/rsvp.js)
   },
 
   // Fundraising meter. Set goal to a number to show the progress bar.

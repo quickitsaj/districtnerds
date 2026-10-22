@@ -17,7 +17,7 @@ Vercel, Cloudflare Pages).
 | `links.discord` | Discord invite for remote players. |
 | `stream.twitchChannel` | Twitch channel for the embedded player. It appears from 1 hour before doors until 1 hour after sign-off; `alwaysEmbed: true` shows it year-round. `embedUrl` overrides it for YouTube etc. |
 | `rsvp.supabase` | `url` + `anonKey` of the Supabase project holding the `rsvps` table (see below). |
-| `rsvp.endpoint` | Alternative: any URL that accepts a JSON POST (Formspree, Google Apps Script, a serverless function). |
+| `rsvp.endpoint` | Where the form posts. Set to the Vercel receiver. Any URL that accepts a JSON POST works (Google Apps Script, Formspree, ...). |
 | `fundraising.goal` / `raised` | Set `goal` to a number to show the animated progress bar. Update `raised` by hand. |
 | `contactEmail` | Shown in the sign-up fallback text if you want people to email instead. |
 
@@ -36,7 +36,13 @@ Submissions go to whichever backend is configured in `js/config.js`:
   `rsvp.supabase.url` and `rsvp.supabase.anonKey`. The policy allows inserts only, so the anon
   key in the page can never read responses. View them in Table Editor → `rsvps` (or the
   `rsvp_summary` view) and export CSV from there.
-- **Google Sheet (chosen)** — the sheet "AJ's Annual Quest RSVPs" lives in AJ's Google Drive. Open it,
+- **Vercel receiver (live)** — `api/rsvp.js` and `api/rsvps.js` run as Vercel Functions in the
+  `districtnerds` project (Capno Labs team). Each RSVP is stored as one JSON file in a private Vercel
+  Blob store; `GET /api/rsvps?key=RSVP_ADMIN_KEY` downloads them all as CSV (`&format=json` for JSON).
+  `RSVP_ADMIN_KEY` is a project environment variable; the Blob store supplies `BLOB_READ_WRITE_TOKEN`
+  when connected to the project. Until a store is connected the receiver answers 503 and the form says
+  RSVPs aren't open yet. The site is deployed to Vercel with the REST API (no git link yet).
+- **Google Sheet (alternative)** — the sheet "AJ's Annual Quest RSVPs" lives in AJ's Google Drive. Open it,
   go to Extensions → Apps Script, paste `google-apps-script/Code.gs`, run `setup` once, then
   Deploy → New deployment → Web app, Execute as *Me*, Who has access *Anyone*. Paste the web app URL
   into `rsvp.endpoint`. Set `NOTIFY_EMAIL` in the script to get an email per RSVP. After editing the
