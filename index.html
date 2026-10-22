@@ -73,135 +73,102 @@
   </header>
 
   <main id="main">
-  <!-- ===================== HERO ===================== -->
+  <!-- ===================== HERO: the poster, rebuilt ===================== -->
   <section class="hero" id="top">
-    <div class="hero__moon" aria-hidden="true"></div>
-    <div class="hero__castle" aria-hidden="true">
-      <svg viewBox="0 0 360 260" preserveAspectRatio="xMidYMax meet">
-        <defs><linearGradient id="castleG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2c2a6a"/><stop offset="1" stop-color="#1a1848"/></linearGradient></defs>
-        <g fill="url(#castleG)">
-          <path d="M0 260 Q60 200 120 215 T240 205 T360 230 L360 260Z"/>
-          <rect x="88" y="150" width="184" height="110"/>
-          <path d="M88 150h16v-14h12v14h16v-14h12v14h16v-14h12v14h16v-14h12v14h16v-14h12v14h16v-14h12v14h16v14H88z"/>
-          <rect x="60" y="120" width="34" height="140"/><path d="M58 122l19-44 19 44z"/>
-          <rect x="266" y="120" width="34" height="140"/><path d="M264 122l19-44 19 44z"/>
-          <rect x="112" y="92" width="26" height="170"/><path d="M110 94l15-36 15 36z"/>
-          <rect x="222" y="92" width="26" height="170"/><path d="M220 94l15-36 15 36z"/>
-          <rect x="160" y="40" width="40" height="220"/><path d="M156 42l24-42 24 42z"/>
-        </g>
-        <g class="castle-windows" fill="#ffd36b">
-          <rect x="176" y="70" width="7" height="13" rx="3.5"/><rect x="176" y="110" width="7" height="13" rx="3.5"/>
-          <rect x="121" y="120" width="6" height="11" rx="3"/><rect x="231" y="128" width="6" height="11" rx="3"/>
-          <rect x="73" y="150" width="6" height="11" rx="3"/><rect x="279" y="156" width="6" height="11" rx="3"/>
-          <rect x="140" y="180" width="6" height="11" rx="3"/><rect x="200" y="186" width="6" height="11" rx="3"/>
-          <rect x="166" y="200" width="28" height="36" rx="14"/>
-        </g>
-      </svg>
-    </div>
-    <div class="lantern lantern--l" aria-hidden="true"><i></i></div>
-    <div class="lantern lantern--r" aria-hidden="true"><i></i></div>
+    <!-- Band 1: night sky, title -->
+    <div class="band band--sky">
+      <div class="band__inner">
+        <picture class="corner corner--tl" aria-hidden="true">
+          <source type="image/webp" srcset="assets/hero/top-left.webp"><img src="assets/hero/top-left.png" alt="" width="205" height="470" fetchpriority="high">
+        </picture>
+        <picture class="corner corner--tr" aria-hidden="true">
+          <source type="image/webp" srcset="assets/hero/top-right.webp"><img src="assets/hero/top-right.png" alt="" width="189" height="470" fetchpriority="high">
+        </picture>
+        <picture class="moon" aria-hidden="true">
+          <source type="image/webp" srcset="assets/hero/moon.webp"><img src="assets/hero/moon.png" alt="" width="104" height="100">
+        </picture>
 
-    <div class="hero__inner">
-      <div class="hero__copy">
-        <p class="hero__presents reveal" data-reveal>District Nerds Presents</p>
-        <h1 class="hero__title reveal" data-reveal>
-          <span class="title-line title-line--1">AJ's</span>
-          <span class="title-line title-line--2">Annual Quest</span>
-        </h1>
-        <div class="ribbon reveal" data-reveal><span class="ribbon__body">For the Kids</span></div>
-        <p class="hero__sub reveal" data-reveal>
-          An <strong>Extra Life</strong> gaming fundraiser benefiting <strong>Children's National Hospital</strong>
-        </p>
-        <p class="hero__paths reveal" data-reveal>Watch the stream, join the games, or just chip in.</p>
-
-        <div class="hero__when reveal" data-reveal>
-          <div class="plank">
-            <b>November 7</b><small>Saturday, 2026</small>
-          </div>
-          <div class="plank">
-            <b>Live from 2 PM</b><small>party till 10 PM+ · stream runs late</small>
-          </div>
-          <div class="plank plank--link">
-            <b>districtnerds.com</b><small>you're here</small>
-          </div>
-        </div>
-
-        <div class="hero__cta reveal" data-reveal>
-          <a class="btn btn--ghost btn--lg" data-link="stream" href="#watch">Watch live</a>
-          <a class="btn btn--gold btn--lg" href="#rsvp">Join the games</a>
-          <a class="btn btn--coral btn--lg" data-link="donate" href="#cause">Donate for the Kids</a>
-        </div>
-
-        <div class="countdown reveal" data-reveal id="countdown" aria-live="polite">
-          <div class="countdown__label" id="countdownLabel">The quest begins in</div>
-          <div class="countdown__grid">
-            <div class="countdown__cell"><span class="num" id="cdDays">00</span><span class="unit">days</span></div>
-            <div class="countdown__cell"><span class="num" id="cdHours">00</span><span class="unit">hours</span></div>
-            <div class="countdown__cell"><span class="num" id="cdMins">00</span><span class="unit">min</span></div>
-            <div class="countdown__cell"><span class="num" id="cdSecs">00</span><span class="unit">sec</span></div>
-          </div>
-          <button class="linklike countdown__cal" id="addToCal" type="button">Add to calendar</button>
+        <div class="hero__copy">
+          <p class="hero__presents reveal" data-reveal>District Nerds Presents</p>
+          <h1 class="hero__title reveal" data-reveal>
+            <span class="title-line title-line--1">AJ's</span>
+            <span class="title-line title-line--2">Annual Quest</span>
+          </h1>
+          <div class="ribbon reveal" data-reveal><span class="ribbon__body">For the Kids</span></div>
+          <p class="hero__sub reveal" data-reveal>An <strong>Extra Life</strong> gaming fundraiser<br>benefiting <strong>Children's National Hospital</strong></p>
         </div>
       </div>
+    </div>
 
-      <div class="hero__art">
-        <figure class="poster" id="poster">
-          <div class="poster__glow" aria-hidden="true"></div>
-          <div class="poster__frame" id="posterTilt">
-            <picture>
-              <source type="image/webp" srcset="assets/poster-720.webp 720w, assets/poster-1200.webp 1200w" sizes="(max-width: 900px) 86vw, 440px">
-              <img src="assets/poster-720.jpg" srcset="assets/poster-720.jpg 720w, assets/poster-1200.jpg 1200w" sizes="(max-width: 900px) 86vw, 440px" width="1024" height="1536" alt="Illustrated poster for AJ's Annual Quest — For the Kids: friends gathered around a campfire at a nighttime forest campsite with a streaming booth, a wooden signpost listing the games, and the details: November 7, live from 2 PM, districtnerds.com." loading="eager" fetchpriority="high">
-            </picture>
-          </div>
-          <figcaption class="poster__caption">Tap the poster to see it full size</figcaption>
-        </figure>
+    <!-- Band 2: the campsite -->
+    <div class="band band--scene">
+      <div class="band__inner">
+        <div class="scene-art">
+          <picture>
+            <source type="image/webp" srcset="assets/hero/scene.webp"><img src="assets/hero/scene.png" alt="Friends gathered around a campfire at a nighttime forest campsite: a wizard, a knight with a controller, a sleeping cat, a kid on a handheld, a streaming booth with an ON AIR sign, and a wooden signpost listing the games." width="1024" height="660" fetchpriority="high">
+          </picture>
+          <canvas id="emberCanvas" width="400" height="400" aria-hidden="true"></canvas>
+          <nav class="hotspots" aria-label="Games on the signpost">
+            <a class="hotspot" style="--t:5.5%;--h:8.6%" href="#games" data-game="ocarina"><span>Ocarina of Time Remake</span></a>
+            <a class="hotspot" style="--t:14.8%;--h:8.2%" href="#games" data-game="smash"><span>Smash Ultimate</span></a>
+            <a class="hotspot" style="--t:23.8%;--h:8%" href="#games" data-game="friendslop"><span>friendslop</span></a>
+            <a class="hotspot" style="--t:32.6%;--h:8%" href="#games" data-game="kart"><span>Mario Kart</span></a>
+            <a class="hotspot" style="--t:41.4%;--h:7.8%" href="#games" data-game="fortnite"><span>Fortnite</span></a>
+            <a class="hotspot" style="--t:50%;--h:8%" href="#games" data-game="tabletop"><span>Board Games</span></a>
+            <a class="hotspot hotspot--all" href="#games"><span>See the games</span></a>
+          </nav>
+        </div>
       </div>
     </div>
 
-    <!-- Treeline -->
-    <div class="forest" aria-hidden="true">
-      <svg class="forest__layer forest__layer--far" data-depth="0.12" viewBox="0 0 1440 220" preserveAspectRatio="none">
-        <path fill="#1c3652" d="M0 220V150l30-40 20 35 25-60 25 60 20-30 30 45 25-75 25 75 20-35 30 50 25-55 25 55 30-45 20 30 25-60 25 60 25-35 30 50 25-70 25 70 20-30 30 40 25-55 25 55 30-45 20 35 25-65 25 65 20-30 30 45 25-70 25 70 25-35 30 50 25-55 25 55 30-45 20 30 25-60 25 60 25-35 30 50 25-70 25 70 20-30 30 40 25-55 25 55 30-45 20 35 25-65 25 65 20-30 30 45 25-70 25 70V220z"/>
-      </svg>
-      <svg class="forest__layer forest__layer--mid" data-depth="0.22" viewBox="0 0 1440 220" preserveAspectRatio="none">
-        <path fill="#153b52" d="M0 220V130l40-60 30 50 35-90 35 90 25-40 40 60 35-100 35 100 25-45 40 70 35-80 35 80 40-60 30 45 35-85 35 85 30-50 40 65 35-95 35 95 25-40 40 55 35-80 35 80 40-60 30 45 35-85 35 85 25-40 40 60 35-100 35 100 30-50 40 70 35-80 35 80 40-60 30 45 35-85 35 85 30-50 40 65 35-95 35 95 25-40 40 55 35-80 35 80V220z"/>
-      </svg>
-      <svg class="forest__layer forest__layer--near" data-depth="0.36" viewBox="0 0 1440 220" preserveAspectRatio="none">
-        <path fill="#0e2c40" d="M0 220V110l50-70 40 60 45-100 45 100 30-50 50 70 45-110 45 110 30-55 50 80 45-90 45 90 50-70 40 55 45-95 45 95 40-60 50 75 45-105 45 105 30-50 50 65 45-90 45 90 50-70 40 55 45-95 45 95 30-50 50 70 45-110 45 110 40-60 50 80 45-90 45 90V220z"/>
-      </svg>
-      <div class="forest__ground"></div>
-    </div>
-  </section>
+    <!-- Band 3: Watch. Play. Give. -->
+    <div class="band band--bottom">
+      <div class="band__inner">
+        <picture class="corner corner--bl" aria-hidden="true">
+          <source type="image/webp" srcset="assets/hero/bottom-left.webp"><img src="assets/hero/bottom-left.png" alt="" width="172" height="258" loading="lazy">
+        </picture>
+        <picture class="corner corner--br" aria-hidden="true">
+          <source type="image/webp" srcset="assets/hero/bottom-right.webp"><img src="assets/hero/bottom-right.png" alt="" width="162" height="155" loading="lazy">
+        </picture>
 
-  <!-- ===================== WATCH. PLAY. GIVE. ===================== -->
-  <section class="section section--paths" aria-labelledby="pathsTitle">
-    <div class="container">
-      <header class="section__head reveal" data-reveal>
-        <h2 class="display" id="pathsTitle">Watch. Play. Give.</h2>
-        <p class="section__lede">Tune into the livestream, join a game, or help support kids at Children's National Hospital.</p>
-      </header>
-      <div class="paths">
-        <a class="path reveal" data-reveal href="#watch">
-          <span class="path__icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="12" width="26" height="22" rx="4"/><path d="M32 20l10-5v18l-10-5"/></svg>
-          </span>
-          <h3>Watch</h3>
-          <p>Free, from anywhere, 2 PM to late.</p>
-        </a>
-        <a class="path reveal" data-reveal href="#rsvp">
-          <span class="path__icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14h20a10 10 0 0 1 10 10v2a8 8 0 0 1-8 8h-1l-4-5H17l-4 5h-1a8 8 0 0 1-8-8v-2a10 10 0 0 1 10-10z"/><path d="M16 20v8M12 24h8"/><circle cx="32" cy="22" r="1.5" fill="currentColor"/><circle cx="36" cy="26" r="1.5" fill="currentColor"/></svg>
-          </span>
-          <h3>Play</h3>
-          <p>Grab a seat in Smash, friendslop, Jackbox or Fortnite. RSVP takes a minute.</p>
-        </a>
-        <a class="path path--give reveal" data-reveal data-link="donate" href="#cause">
-          <span class="path__icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M24 40c-6-6-14-11-14-20a8 8 0 0 1 14-5 8 8 0 0 1 14 5c0 9-8 14-14 20z"/></svg>
-          </span>
-          <h3>Give</h3>
-          <p>The whole point. 100% to Children's National.</p>
-        </a>
+        <div class="wpg">
+          <h2 class="wpg__title reveal" data-reveal>Watch. Play. Give.</h2>
+          <p class="wpg__sub reveal" data-reveal>Tune into the livestream, join a game, or help support kids at Children's National Hospital.</p>
+          <div class="hero__cta reveal" data-reveal>
+            <a class="btn btn--ghost btn--lg" data-link="stream" href="#watch">Watch live</a>
+            <a class="btn btn--gold btn--lg" href="#rsvp">Join the games</a>
+            <a class="btn btn--coral btn--lg" data-link="donate" href="#cause">Donate for the Kids</a>
+          </div>
+          <div class="wpg__date reveal" data-reveal>
+            <span class="wpg__day">November 7</span>
+            <span class="wpg__time">Live from 2 PM</span>
+          </div>
+          <div class="countdown reveal" data-reveal id="countdown" aria-live="polite">
+            <div class="countdown__label" id="countdownLabel">The quest begins in</div>
+            <div class="countdown__grid">
+              <div class="countdown__cell"><span class="num" id="cdDays">00</span><span class="unit">days</span></div>
+              <div class="countdown__cell"><span class="num" id="cdHours">00</span><span class="unit">hours</span></div>
+              <div class="countdown__cell"><span class="num" id="cdMins">00</span><span class="unit">min</span></div>
+              <div class="countdown__cell"><span class="num" id="cdSecs">00</span><span class="unit">sec</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="wpg__foot">
+          <div class="logos reveal" data-reveal>
+            <a data-link="extraLife" target="_blank" rel="noopener"><img src="assets/logo-extra-life.png" alt="Extra Life. Play games. Heal kids." width="157" height="120"></a>
+            <a data-link="childrensNational" target="_blank" rel="noopener"><img src="assets/logo-childrens-national.png" alt="Children's National Hospital" width="128" height="116"></a>
+          </div>
+          <div class="wpg__plank reveal" data-reveal>
+            <span class="plank plank--link"><b>districtnerds.com</b><small>you're here</small></span>
+            <button class="linklike" id="addToCal" type="button">Add to calendar</button>
+            <button class="linklike" id="posterOpen" type="button">See the full poster</button>
+          </div>
+          <div class="qr reveal" data-reveal>
+            <img src="assets/qr-districtnerds.svg" width="160" height="160" alt="QR code linking to districtnerds.com">
+            <div class="qr__text"><b>Scan to watch, play, or donate.</b><span>districtnerds.com</span></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -373,15 +340,6 @@
           <a class="btn btn--coral btn--lg" data-link="donate" href="#">Donate on Extra Life</a>
           <span class="coming-soon" data-coming="donate">Official donation link drops here soon</span>
         </div>
-        <div class="logos reveal" data-reveal>
-          <a data-link="extraLife" target="_blank" rel="noopener"><img src="assets/logo-extra-life.png" alt="Extra Life. Play games. Heal kids." width="157" height="120"></a>
-          <a data-link="childrensNational" target="_blank" rel="noopener"><img src="assets/logo-childrens-national.png" alt="Children's National Hospital" width="128" height="116"></a>
-        </div>
-      </div>
-      <div class="cause__qr">
-        <div class="qr reveal" data-reveal>
-          <img src="assets/qr-districtnerds.svg" width="160" height="160" alt="QR code linking to districtnerds.com">
-          <div class="qr__text"><b>Scan to watch, play, or donate.</b><span>districtnerds.com</span></div>
         </div>
       </div>
     </div>

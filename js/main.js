@@ -87,6 +87,9 @@
     signs.forEach((s) => { const on = s === btn; s.classList.toggle("is-active", on); s.setAttribute("aria-selected", String(on)); s.tabIndex = on ? 0 : -1; });
     panels.forEach((p) => { const on = p.id === btn.getAttribute("aria-controls"); p.hidden = !on; p.classList.toggle("is-active", on); });
   }
+  $$(".hotspot[data-game]").forEach((a) => {
+    a.addEventListener("click", () => { const btn = $("#tab-" + a.dataset.game); if (btn) selectSign(btn); });
+  });
   signs.forEach((btn, i) => {
     btn.addEventListener("click", () => selectSign(btn));
     btn.addEventListener("keydown", (e) => {
@@ -265,6 +268,7 @@
   function openLightbox() { lightbox.hidden = false; document.body.style.overflow = "hidden"; $("#lightboxClose").focus(); }
   function closeLightbox() { lightbox.hidden = true; document.body.style.overflow = ""; }
   posterFrame?.addEventListener("click", openLightbox);
+  $("#posterOpen")?.addEventListener("click", openLightbox);
   lightbox?.addEventListener("click", closeLightbox);
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !lightbox.hidden) closeLightbox(); });
 
@@ -454,18 +458,20 @@
     });
   }
 
-  /* ---------- sky canvas: stars, shooting stars ---------- */
-  const sky = $("#sky");
-  if (sky && sky.getContext) {
-    const ctx = sky.getContext("2d");
-    let W, H, stars = [], shooters = [], dpr = Math.min(window.devicePixelRatio || 1, 2), running = true;
+  /* ---------- star canvases: fixed page sky + the hero's sky band ---------- */
+  function starField(canvas, sizeOf, opts) {
+    if (!canvas || !canvas.getContext) return;
+    const ctx = canvas.getContext("2d");
+    const density = opts.density || 8000, shootRate = opts.shootRate || 0;
+    let W, H, stars = [], shooters = [], dpr = Math.min(window.devicePixelRatio || 1, 2), running = true, last = 0;
     function resize() {
-      W = sky.width = Math.floor(innerWidth * dpr); H = sky.height = Math.floor(innerHeight * dpr);
-      sky.style.width = innerWidth + "px"; sky.style.height = innerHeight + "px";
-      const n = Math.min(200, Math.floor((innerWidth * innerHeight) / 8000));
+      const { w, h } = sizeOf();
+      W = canvas.width = Math.floor(w * dpr); H = canvas.height = Math.floor(h * dpr);
+      canvas.style.width = w + "px"; canvas.style.height = h + "px";
+      const n = Math.min(opts.max || 200, Math.floor((w * h) / density));
       stars = Array.from({ length: n }, () => ({
-        x: Math.random() * W, y: Math.random() * H * 0.9, r: (Math.random() * 1.4 + 0.4) * dpr,
-        p: Math.random() * Math.PI * 2, s: 0.4 + Math.random() * 1.2,
+        x: Math.random() * W, y: Math.random() * H * (opts.yMax || 0.9), r: (Math.random() * 1.3 + 0.4) * dpr,
+        p: Math.random() * Math.PI * 2, s: 0.3 + Math.random() * 0.9,
         c: Math.random() < 0.12 ? "#ffd9e6" : Math.random() < 0.3 ? "#cdefff" : "#fff6d6",
       }));
     }
@@ -474,26 +480,21 @@
       stars.forEach((st) => { ctx.globalAlpha = 0.7; ctx.fillStyle = st.c; ctx.beginPath(); ctx.arc(st.x, st.y, st.r, 0, Math.PI * 2); ctx.fill(); });
       ctx.globalAlpha = 1;
     }
-    let last = 0;
     function frame(t) {
       if (!running) return;
       requestAnimationFrame(frame);
-      if (t - last < 1000 / 45) return; // cap ~45fps
+      if (t - last < 1000 / 30) return;
       last = t;
       if (reduceMotion()) { drawStatic(); running = false; return; }
       ctx.clearRect(0, 0, W, H);
       const time = t / 1000;
       for (const st of stars) {
         const a = 0.45 + 0.55 * Math.sin(time * st.s + st.p);
-        ctx.globalAlpha = a;
-        ctx.fillStyle = st.c;
+        ctx.globalAlpha = a; ctx.fillStyle = st.c;
         ctx.beginPath(); ctx.arc(st.x, st.y, st.r, 0, Math.PI * 2); ctx.fill();
-        if (st.r > 1.4 * dpr) { // little cross sparkle on bigger stars
-          ctx.globalAlpha = a * 0.5; ctx.fillRect(st.x - st.r * 3, st.y - 0.5 * dpr, st.r * 6, dpr); ctx.fillRect(st.x - 0.5 * dpr, st.y - st.r * 3, dpr, st.r * 6);
-        }
+        if (st.r > 1.4 * dpr) { ctx.globalAlpha = a * 0.5; ctx.fillRect(st.x - st.r * 3, st.y - 0.5 * dpr, st.r * 6, dpr); ctx.fillRect(st.x - 0.5 * dpr, st.y - st.r * 3, dpr, st.r * 6); }
       }
-      // shooting stars
-      if (Math.random() < 0.0025 && shooters.length < 1) {
+      if (shootRate && Math.random() < shootRate && shooters.length < 1) {
         shooters.push({ x: Math.random() * W * 0.8, y: Math.random() * H * 0.3, vx: (6 + Math.random() * 5) * dpr, vy: (2.5 + Math.random() * 2) * dpr, life: 1 });
       }
       ctx.globalAlpha = 1;
@@ -511,6 +512,13 @@
     document.addEventListener("visibilitychange", () => { if (document.hidden) running = false; else if (!reduceMotion() && !running) { running = true; requestAnimationFrame(frame); } });
     if (reduceMotion()) drawStatic(); else requestAnimationFrame(frame);
     html.addEventListener("quest:motionchange", () => { if (reduceMotion()) { running = false; drawStatic(); } else if (!running) { running = true; requestAnimationFrame(frame); } });
+  }
+  starField($("#sky"), () => ({ w: innerWidth, h: innerHeight }), { density: 8000, max: 200, shootRate: 0.0025 });
+  const skyBand = $(".band--sky");
+  if (skyBand) {
+    const c = document.createElement("canvas"); c.className = "band-stars"; c.setAttribute("aria-hidden", "true");
+    skyBand.prepend(c);
+    starField(c, () => ({ w: skyBand.clientWidth, h: skyBand.clientHeight }), { density: 5000, max: 220, yMax: 1, shootRate: 0.004 });
   }
 
   /* ---------- campfire embers (canvas) ---------- */
