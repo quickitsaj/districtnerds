@@ -14,9 +14,8 @@ Current lineup and run of show (all Eastern):
 | Time | Block | Joinable |
 | --- | --- | --- |
 | 2:00 | Stream goes live | watch |
-| 2:30 | Ocarina of Time remake showcase, 90 min, AJ's first playthrough | watch |
+| 2:15 | Ocarina of Time remake, AJ's first playthrough | watch |
 | 4:00 | Casual Jackbox, room code on stream | join |
-| 5:00 | The fundraising moment | watch |
 | 5:25 | Smash Ultimate, one open bracket, ~50 min, 1v1 / 3 stock / no items | join |
 | 6:15 | friendslop main event, runs to intermission | join |
 | 7:30 | Intermission, 30 min | — |
