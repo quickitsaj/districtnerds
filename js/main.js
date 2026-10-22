@@ -376,9 +376,9 @@
     function showSuccess(data) {
       rsvpForm.hidden = true; rsvpSuccess.hidden = false;
       const t = $("#rsvpSuccessText");
-      if (data.attendance === "in_person") t.textContent = `See you November 7, ${data.name}! AJ will send the address to ${data.email} before the big day.`;
-      else if (data.attendance === "online") t.textContent = `Welcome to the party, ${data.name}! Keep an eye on ${data.email} for Discord and match details.`;
-      else t.textContent = `Thanks, ${data.name}! The stream goes live November 7 at 2 PM ET. We'll see you in chat.`;
+      if (data.attendance === "in_person") t.textContent = `Your seat's saved, ${data.name}. AJ will send the address to ${data.email} before the big day.`;
+      else if (data.attendance === "online") t.textContent = `Your seat's saved, ${data.name}. Keep an eye on ${data.email} for Discord and match details.`;
+      else t.textContent = `Thanks, ${data.name}! The stream goes live November 7 at 2 PM ET. See you in chat.`;
     }
     $("#rsvpAgain")?.addEventListener("click", () => {
       try { localStorage.removeItem("quest-rsvp"); } catch (e) { /* ignore */ }

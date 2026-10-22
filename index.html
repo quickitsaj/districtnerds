@@ -61,7 +61,7 @@
         <a href="#schedule">Schedule</a>
         <a href="#camp">The Camp</a>
         <a href="#cause">The Cause</a>
-        <a href="#rsvp">RSVP</a>
+        <a href="#rsvp">Play</a>
         <a href="#smash">Smash Bracket</a>
         <a href="#watch">Watch</a>
         <a href="#faq">FAQ</a>
@@ -136,6 +136,7 @@
         <p class="hero__sub reveal" data-reveal>
           An <strong>Extra Life</strong> gaming fundraiser benefiting <strong>Children's National Hospital</strong>
         </p>
+        <p class="hero__paths reveal" data-reveal>Watch the stream, join the games, or just chip in.</p>
 
         <div class="hero__when reveal" data-reveal>
           <div class="when-chip">
@@ -153,10 +154,14 @@
         </div>
 
         <div class="hero__cta reveal" data-reveal>
-          <a class="btn btn--gold btn--lg" href="#rsvp">
-            <span class="btn__glow" aria-hidden="true"></span>Join the Party
+          <a class="btn btn--ghost btn--lg" data-link="stream" href="#watch">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="14" height="14" rx="3"/><path d="M17 10l4-2.5v9L17 14"/></svg>
+            Watch live
           </a>
-          <a class="btn btn--coral btn--lg" data-link="donate" href="#cause">Donate for the Kids</a>
+          <a class="btn btn--gold btn--lg" href="#rsvp">Join the games</a>
+          <a class="btn btn--coral btn--lg" data-link="donate" href="#cause">
+            <span class="btn__glow" aria-hidden="true"></span>Donate for the Kids
+          </a>
           <button class="btn btn--ghost btn--lg" id="addToCal" type="button">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4M12 14v4M10 16h4"/></svg>
             Add to calendar
@@ -213,6 +218,29 @@
     </div>
     </div>
   </div>
+
+  <!-- ===================== CHOOSE YOUR PATH ===================== -->
+  <section class="section section--paths" aria-label="Ways to take part">
+    <div class="container">
+      <div class="paths">
+        <a class="path reveal" data-reveal href="#watch">
+          <span class="path__icon" aria-hidden="true">🎥</span>
+          <h3>Watch</h3>
+          <p>Free, from anywhere, 2 PM to late.</p>
+        </a>
+        <a class="path reveal" data-reveal href="#rsvp">
+          <span class="path__icon" aria-hidden="true">🎮</span>
+          <h3>Play</h3>
+          <p>Grab a seat in Smash, friendslop, Jackbox or Fortnite. RSVP takes a minute.</p>
+        </a>
+        <a class="path path--donate reveal" data-reveal data-link="donate" href="#cause">
+          <span class="path__icon" aria-hidden="true">💛</span>
+          <h3>Donate</h3>
+          <p>The whole point. 100% to Children's National.</p>
+        </a>
+      </div>
+    </div>
+  </section>
 
   <!-- ===================== FEATURED EVENTS ===================== -->
   <section class="section section--events" id="events">
@@ -350,7 +378,7 @@
           <div class="scroll-banner"><h2>For the Kids</h2></div>
         </header>
         <p class="reveal" data-reveal>Every year AJ turns a birthday into a fundraiser. This year the whole party is in on it. We're raising money through <a data-link="extraLife" target="_blank" rel="noopener">Extra Life</a>, which sends <strong>100% of donations</strong> to <a data-link="childrensNational" target="_blank" rel="noopener">Children's National Hospital</a>.</p>
-        <p class="reveal" data-reveal>No pressure, no dares, no guilt trips. If you've got a few dollars to spare, scan the code or tap the button. If you don't, come play anyway. Cheering counts.</p>
+        <p class="reveal" data-reveal>Consider sending a few dollars to the kids at Children's National. Every dollar goes to the hospital, none to us. Scan the code or tap the button.</p>
 
         <div class="meter reveal" data-reveal id="meter" hidden>
           <div class="meter__labels"><span id="meterRaised">$0</span><span id="meterGoal">of $0</span></div>
@@ -483,8 +511,9 @@
 
         <div class="rsvp__success" id="rsvpSuccess" hidden>
           <div class="rsvp__success-icon" aria-hidden="true">🎉</div>
-          <h3>You're on the quest log!</h3>
+          <h3>You're in!</h3>
           <p id="rsvpSuccessText">AJ will send the details to your email before the big day.</p>
+          <p>If you're up for it, a donation for the kids would mean a lot.</p>
           <div class="rsvp__success-actions">
             <button class="btn btn--ghost" type="button" data-action="calendar">Add to calendar</button>
             <a class="btn btn--coral" data-link="donate" href="#cause">Donate for the Kids</a>
@@ -592,7 +621,7 @@ Food notes:</pre>
         </details>
         <details>
           <summary>Do I have to donate?</summary>
-          <p>No. Donations are welcome and go straight to Children's National Hospital through Extra Life, but showing up and having fun is a full contribution.</p>
+          <p>No. But it's the reason we do this. Donations go straight to Children's National Hospital through Extra Life, and even $5 counts.</p>
         </details>
         <details>
           <summary>Will I be on camera?</summary>
