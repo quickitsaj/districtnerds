@@ -15,7 +15,7 @@ var SHEET_NAME = "RSVPs";
 var NOTIFY_EMAIL = ""; // e.g. "you@example.com" to get an email per RSVP; leave "" for none
 
 var HEADERS = ["Submitted", "Name", "Email", "Joining", "Guests", "Events",
-  "Nintendo friend code", "Discord", "Food notes", "Camera OK", "Note", "User agent"];
+  "Nintendo friend code", "Discord", "Suggested game", "Food notes", "Camera OK", "Note", "User agent"];
 
 var JOINING = { in_person: "In person", online: "Online", watching: "Watching" };
 var EVENTS = {
@@ -47,7 +47,7 @@ function doPost(e) {
     if (sh.getLastRow() === 0) sh.appendRow(HEADERS);
 
     var row = [new Date(), name, email, joining, guests, events,
-      clip(data.friend_code, 20), clip(data.discord, 60), clip(data.dietary, 200),
+      clip(data.friend_code, 20), clip(data.discord, 60), clip(data.suggestion, 200), clip(data.dietary, 200),
       data.camera_ok === "no" ? "No" : (data.camera_ok === "yes" ? "Yes" : ""),
       clip(data.note, 1000), clip(data.user_agent, 200)];
     sh.appendRow(row);

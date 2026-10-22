@@ -185,8 +185,7 @@
   /* ---------- schedule ---------- */
   const SCHEDULE = [
     { t: "2:00 PM", h: 14, m: 0, icon: "📡", title: "Stream goes live", desc: "Say hi in chat. Smash sign-ups are open until 5.", tags: ["watch"] },
-    { t: "2:30 PM", h: 14, m: 30, icon: "🔺", title: "Ocarina of Time remake showcase", desc: "AJ's first-ever playthrough, 30 minutes, live. No spoilers in chat.", tags: ["watch"] },
-    { t: "3:00 PM", h: 15, m: 0, icon: "🏁", title: "Mario Kart pick-up races", desc: "Blue shells, bad decisions, and commentary from the booth.", tags: ["watch"] },
+    { t: "2:30 PM", h: 14, m: 30, icon: "🔺", title: "Ocarina of Time remake showcase", desc: "AJ's first-ever playthrough, a full 90 minutes, live. No spoilers in chat.", tags: ["watch"] },
     { t: "4:00 PM", h: 16, m: 0, icon: "📱", title: "Casual Jackbox", desc: "Grab the room code off the stream and play from your phone.", tags: ["play", "watch"] },
     { t: "5:00 PM", h: 17, m: 0, icon: "💛", title: "The fundraising moment", desc: "Where the total stands, who we're doing this for, and a toast to the kids.", tags: ["watch"], big: true },
     { t: "5:25 PM", h: 17, m: 25, icon: "⭐", title: "Smash Ultimate bracket", desc: "One open bracket, about 50 minutes. 1v1, 3 stock, no items. Check in on Discord by 5:10.", tags: ["play", "watch"] },
@@ -437,6 +436,7 @@
         events: fd.getAll("events").map(String).slice(0, 10),
         friend_code: clean("friend_code", 20),
         discord: clean("discord", 60),
+        suggestion: clean("suggestion", 200),
         note: clean("note", 1000),
         user_agent: navigator.userAgent.slice(0, 200),
       };

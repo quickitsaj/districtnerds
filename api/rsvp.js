@@ -45,6 +45,7 @@ export default async function handler(req, res) {
     events: (Array.isArray(data.events) ? data.events : []).map(String).filter((e) => EVENTS.has(e)).slice(0, 10),
     friend_code: clip(data.friend_code, 20),
     discord: clip(data.discord, 60),
+    suggestion: clip(data.suggestion, 200),
     dietary: clip(data.dietary, 200),
     camera_ok: data.camera_ok === "no" ? "no" : data.camera_ok === "yes" ? "yes" : "",
     note: clip(data.note, 1000),

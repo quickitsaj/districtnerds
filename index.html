@@ -102,7 +102,6 @@
             <a class="hotspot" style="--t:5.5%;--h:8.6%" href="#games" data-game="ocarina"><span>Ocarina of Time Remake</span></a>
             <a class="hotspot" style="--t:14.8%;--h:8.2%" href="#games" data-game="smash"><span>Smash Ultimate</span></a>
             <a class="hotspot" style="--t:23.8%;--h:8%" href="#games" data-game="friendslop"><span>friendslop</span></a>
-            <a class="hotspot" style="--t:32.6%;--h:8%" href="#games" data-game="kart"><span>Mario Kart</span></a>
             <a class="hotspot" style="--t:41.4%;--h:7.8%" href="#games" data-game="fortnite"><span>Fortnite</span></a>
             <a class="hotspot" style="--t:50%;--h:8%" href="#games" data-game="tabletop"><span>Board Games</span></a>
             <a class="hotspot hotspot--all" href="#games"><span>See the games</span></a>
@@ -161,7 +160,7 @@
     <div class="container">
       <header class="section__head reveal" data-reveal>
         <h2 class="display">On the Signpost</h2>
-        <p class="section__lede">Six ways to spend the day. Pick a sign.</p>
+        <p class="section__lede">Five ways to spend the day. Pick a sign.</p>
       </header>
 
       <div class="signpost-layout reveal" data-reveal>
@@ -179,10 +178,6 @@
             <span class="sign__icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="#3a2a14"><circle cx="10" cy="11" r="4"/><circle cx="22" cy="11" r="4"/><path d="M3 25c0-5 3-8 7-8s7 3 7 8zM15 25c0-5 3-8 7-8s7 3 7 8z"/></svg></span>
             friendslop
           </button>
-          <button class="sign" role="tab" aria-selected="false" aria-controls="game-kart" id="tab-kart" data-game="kart" tabindex="-1">
-            <span class="sign__icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5 16a11 11 0 0 1 22 0z" fill="#3a2a14"/><rect x="9" y="16" width="14" height="8" rx="3" fill="#3a2a14"/><circle cx="16" cy="9" r="2.4" fill="#f3d58e"/><circle cx="10" cy="13" r="1.8" fill="#f3d58e"/><circle cx="22" cy="13" r="1.8" fill="#f3d58e"/></svg></span>
-            Mario Kart
-          </button>
           <button class="sign" role="tab" aria-selected="false" aria-controls="game-fortnite" id="tab-fortnite" data-game="fortnite" tabindex="-1">
             <span class="sign__icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="#3a2a14"><path d="M6 18l6-8h8l6 8-4 8h-12z"/><circle cx="24" cy="9" r="3"/><rect x="8" y="26" width="3" height="3"/><rect x="21" y="26" width="3" height="3"/></svg></span>
             Fortnite
@@ -195,9 +190,9 @@
 
         <div class="game-panels">
           <article class="game-panel is-active" role="tabpanel" id="game-ocarina" aria-labelledby="tab-ocarina">
-            <span class="game-panel__time">2:30 PM · 30 minutes</span>
+            <span class="game-panel__time">2:30 PM · 90 minutes</span>
             <h3>Ocarina of Time Remake</h3>
-            <p>AJ sits down with the new Ocarina for the very first time, live. No spoilers in chat, please.</p>
+            <p>AJ sits down with the new Ocarina for the very first time, live, for a full hour and a half. No spoilers in chat, please.</p>
             <ul class="tags"><li class="tag">Watch</li></ul>
           </article>
           <article class="game-panel" role="tabpanel" id="game-smash" aria-labelledby="tab-smash" hidden>
@@ -212,12 +207,6 @@
             <h3>friendslop</h3>
             <p>The featured party-game block. Loud, co-op, gloriously chaotic, with open seats for anyone who signs up. Game reveal coming soon.</p>
             <ul class="tags"><li class="tag tag--play">Join in</li><li class="tag">Watch</li></ul>
-          </article>
-          <article class="game-panel" role="tabpanel" id="game-kart" aria-labelledby="tab-kart" hidden>
-            <span class="game-panel__time">3:00 PM · and between events</span>
-            <h3>Mario Kart</h3>
-            <p>Pick-up races on stream, with the occasional blue shell.</p>
-            <ul class="tags"><li class="tag">Watch</li></ul>
           </article>
           <article class="game-panel" role="tabpanel" id="game-fortnite" aria-labelledby="tab-fortnite" hidden>
             <span class="game-panel__time">8:30 PM onward</span>
@@ -328,6 +317,11 @@
           </div>
 
           <label class="field">
+            <span class="field__label">Suggest a game <small>something we should add to the lineup?</small></span>
+            <input type="text" name="suggestion" maxlength="200" placeholder="Something you'd love to see on stream">
+          </label>
+
+          <label class="field">
             <span class="field__label">Anything else for AJ?</span>
             <textarea name="note" rows="3" maxlength="1000" placeholder="song requests, questions, trash talk…"></textarea>
           </label>
@@ -359,7 +353,8 @@
 Name:
 Events: Smash / friendslop / Jackbox / Fortnite / just watching
 Nintendo friend code (for Smash):
-Discord handle:</pre>
+Discord handle:
+A game you'd suggest:</pre>
           <button class="btn btn--ghost" id="copySignup" type="button">Copy message</button>
         </div>
       </div>
