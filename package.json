@@ -1,0 +1,10 @@
+{
+  "name": "districtnerds",
+  "private": true,
+  "version": "1.0.0",
+  "description": "AJ's Annual Quest event site and RSVP receiver",
+  "type": "module",
+  "dependencies": {
+    "@vercel/blob": "^2.8.2"
+  }
+}
