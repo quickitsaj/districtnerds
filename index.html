@@ -4,22 +4,22 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>AJ's Annual Quest — For the Kids · District Nerds</title>
-  <meta name="description" content="District Nerds presents AJ's Annual Quest: an Extra Life gaming fundraiser benefiting Children's National Hospital. Saturday, November 7, 2026 · 2 PM – 10 PM+. Gather your party. Play for the kids.">
-  <meta name="theme-color" content="#140f33">
+  <meta name="description" content="District Nerds presents AJ's Annual Quest: an Extra Life gaming fundraiser benefiting Children's National Hospital. Saturday, November 7, 2026, live from 2 PM. Watch. Play. Give.">
+  <meta name="theme-color" content="#120f2e">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="apple-touch-icon" href="assets/icon-192.png">
   <link rel="canonical" href="https://districtnerds.com/">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="AJ's Annual Quest — For the Kids">
-  <meta property="og:description" content="An Extra Life gaming fundraiser benefiting Children's National Hospital. Nov 7 · 2 PM – 10 PM+ · Gather your party. Play for the kids.">
+  <meta property="og:description" content="An Extra Life gaming fundraiser benefiting Children's National Hospital. November 7, live from 2 PM. Watch. Play. Give.">
   <meta property="og:image" content="https://districtnerds.com/assets/og.jpg">
   <meta property="og:url" content="https://districtnerds.com/">
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Metamorphous&family=Montserrat:wght@600;700;800;900&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 
   <script type="application/ld+json">
@@ -41,28 +41,25 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Night sky: stars, moon, shooting stars (canvas) -->
+  <!-- Night sky: slow twinkle, the occasional shooting star -->
   <canvas id="sky" class="sky" aria-hidden="true"></canvas>
-  <div class="aurora" aria-hidden="true"></div>
-  <div class="fireflies" aria-hidden="true"></div>
-  <div class="sparkle-layer" id="sparkleLayer" aria-hidden="true"></div>
 
   <!-- ===================== NAV ===================== -->
   <header class="nav" id="nav">
     <div class="nav__inner">
       <a class="nav__brand" href="#top" aria-label="District Nerds — back to top">
         <span class="nav__brand-badge" aria-hidden="true">
-          <svg viewBox="0 0 48 48" width="34" height="34"><path d="M24 4l6 12 13 2-9.5 9 2.3 13L24 34l-11.8 6 2.3-13L5 18l13-2z" fill="#f6c453" stroke="#5a3a12" stroke-width="2" stroke-linejoin="round"/><circle cx="24" cy="22" r="4.5" fill="#ff5c8a"/></svg>
+          <svg viewBox="0 0 40 40" width="30" height="30"><rect x="4" y="12" width="32" height="18" rx="7" fill="#f3d58e" stroke="#3a2a14" stroke-width="2"/><path d="M12 17v8M8 21h8" stroke="#3a2a14" stroke-width="2.4" stroke-linecap="round"/><circle cx="27" cy="19" r="2" fill="#3a2a14"/><circle cx="31" cy="23" r="2" fill="#3a2a14"/></svg>
         </span>
         <span class="nav__brand-text">District <b>Nerds</b></span>
       </a>
       <nav class="nav__links" id="navLinks" aria-label="Sections">
-        <a href="#events">Quests</a>
+        <a href="#games">Games</a>
         <a href="#schedule">Schedule</a>
         <a href="#camp">The Camp</a>
         <a href="#cause">The Cause</a>
         <a href="#rsvp">Play</a>
-        <a href="#smash">Smash Bracket</a>
+        <a href="#smash">Smash</a>
         <a href="#watch">Watch</a>
         <a href="#faq">FAQ</a>
       </nav>
@@ -81,7 +78,7 @@
     <div class="hero__moon" aria-hidden="true"></div>
     <div class="hero__castle" aria-hidden="true">
       <svg viewBox="0 0 360 260" preserveAspectRatio="xMidYMax meet">
-        <defs><linearGradient id="castleG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a3596"/><stop offset="1" stop-color="#2a1f5e"/></linearGradient></defs>
+        <defs><linearGradient id="castleG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2c2a6a"/><stop offset="1" stop-color="#1a1848"/></linearGradient></defs>
         <g fill="url(#castleG)">
           <path d="M0 260 Q60 200 120 215 T240 205 T360 230 L360 260Z"/>
           <rect x="88" y="150" width="184" height="110"/>
@@ -99,73 +96,40 @@
           <rect x="140" y="180" width="6" height="11" rx="3"/><rect x="200" y="186" width="6" height="11" rx="3"/>
           <rect x="166" y="200" width="28" height="36" rx="14"/>
         </g>
-        <path d="M180 0v-16l16 6-16 6" fill="#ff5c8a"/>
       </svg>
     </div>
-
-    <!-- floating lanterns -->
-    <div class="lantern lantern--1" aria-hidden="true"><i></i></div>
-    <div class="lantern lantern--2" aria-hidden="true"><i></i></div>
-    <div class="lantern lantern--3" aria-hidden="true"><i></i></div>
-    <!-- subtle birthday balloons -->
-    <div class="balloon balloon--1" aria-hidden="true"></div>
-    <div class="balloon balloon--2" aria-hidden="true"></div>
-
-    <div class="signpost reveal" data-reveal aria-hidden="true">
-      <div class="signpost__post"></div>
-      <div class="signpost__sign s1">Games</div>
-      <div class="signpost__sign s2">Community</div>
-      <div class="signpost__sign s3">Good cause</div>
-      <div class="signpost__sign s4">All are welcome ♥</div>
-    </div>
+    <div class="lantern lantern--l" aria-hidden="true"><i></i></div>
+    <div class="lantern lantern--r" aria-hidden="true"><i></i></div>
 
     <div class="hero__inner">
       <div class="hero__copy">
-        <p class="hero__presents reveal" data-reveal>
-          <span class="star">✦</span> District Nerds Presents <span class="star">✦</span>
-        </p>
-        <h1 class="hero__title" aria-label="AJ's Annual Quest">
-          <span class="title-line title-line--1" data-text="AJ'S ANNUAL">AJ'S ANNUAL</span>
-          <span class="title-line title-line--2" data-text="QUEST">QUEST</span>
+        <p class="hero__presents reveal" data-reveal>District Nerds Presents</p>
+        <h1 class="hero__title reveal" data-reveal>
+          <span class="title-line title-line--1">AJ's</span>
+          <span class="title-line title-line--2">Annual Quest</span>
         </h1>
-        <div class="ribbon reveal" data-reveal>
-          <span class="ribbon__tail ribbon__tail--l" aria-hidden="true"></span>
-          <span class="ribbon__body"><span class="heart">♥</span> For the Kids <span class="pad" aria-hidden="true">🎮</span></span>
-          <span class="ribbon__tail ribbon__tail--r" aria-hidden="true"></span>
-        </div>
+        <div class="ribbon reveal" data-reveal><span class="ribbon__body">For the Kids</span></div>
         <p class="hero__sub reveal" data-reveal>
           An <strong>Extra Life</strong> gaming fundraiser benefiting <strong>Children's National Hospital</strong>
         </p>
         <p class="hero__paths reveal" data-reveal>Watch the stream, join the games, or just chip in.</p>
 
         <div class="hero__when reveal" data-reveal>
-          <div class="when-chip">
-            <span class="when-chip__icon" aria-hidden="true">📅</span>
-            <span><b>Saturday, November 7</b><small>2026</small></span>
+          <div class="plank">
+            <b>November 7</b><small>Saturday, 2026</small>
           </div>
-          <div class="when-chip">
-            <span class="when-chip__icon" aria-hidden="true">🕑</span>
-            <span><b>2 PM – 10 PM+</b><small>party · stream runs late</small></span>
+          <div class="plank">
+            <b>Live from 2 PM</b><small>party till 10 PM+ · stream runs late</small>
           </div>
-          <div class="when-chip">
-            <span class="when-chip__icon" aria-hidden="true">🌐</span>
-            <span><b>districtnerds.com</b><small>in person &amp; online</small></span>
+          <div class="plank plank--link">
+            <b>districtnerds.com</b><small>you're here</small>
           </div>
         </div>
 
         <div class="hero__cta reveal" data-reveal>
-          <a class="btn btn--ghost btn--lg" data-link="stream" href="#watch">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="14" height="14" rx="3"/><path d="M17 10l4-2.5v9L17 14"/></svg>
-            Watch live
-          </a>
+          <a class="btn btn--ghost btn--lg" data-link="stream" href="#watch">Watch live</a>
           <a class="btn btn--gold btn--lg" href="#rsvp">Join the games</a>
-          <a class="btn btn--coral btn--lg" data-link="donate" href="#cause">
-            <span class="btn__glow" aria-hidden="true"></span>Donate for the Kids
-          </a>
-          <button class="btn btn--ghost btn--lg" id="addToCal" type="button">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4M12 14v4M10 16h4"/></svg>
-            Add to calendar
-          </button>
+          <a class="btn btn--coral btn--lg" data-link="donate" href="#cause">Donate for the Kids</a>
         </div>
 
         <div class="countdown reveal" data-reveal id="countdown" aria-live="polite">
@@ -176,6 +140,7 @@
             <div class="countdown__cell"><span class="num" id="cdMins">00</span><span class="unit">min</span></div>
             <div class="countdown__cell"><span class="num" id="cdSecs">00</span><span class="unit">sec</span></div>
           </div>
+          <button class="linklike countdown__cal" id="addToCal" type="button">Add to calendar</button>
         </div>
       </div>
 
@@ -184,122 +149,139 @@
           <div class="poster__glow" aria-hidden="true"></div>
           <div class="poster__frame" id="posterTilt">
             <picture>
-              <source type="image/webp" srcset="assets/poster-720.webp 720w, assets/poster-1200.webp 1200w" sizes="(max-width: 900px) 86vw, 460px">
-              <img src="assets/poster-720.jpg" srcset="assets/poster-720.jpg 720w, assets/poster-1200.jpg 1200w" sizes="(max-width: 900px) 86vw, 460px" width="1055" height="1491" alt="Illustrated poster for AJ's Annual Quest — For the Kids: a cozy fantasy gaming campsite with mascots around a campfire, a streaming booth with an ON AIR sign, a castle in the night sky, and the event details: November 7, 2 PM to 10 PM+, districtnerds.com." loading="eager" fetchpriority="high">
+              <source type="image/webp" srcset="assets/poster-720.webp 720w, assets/poster-1200.webp 1200w" sizes="(max-width: 900px) 86vw, 440px">
+              <img src="assets/poster-720.jpg" srcset="assets/poster-720.jpg 720w, assets/poster-1200.jpg 1200w" sizes="(max-width: 900px) 86vw, 440px" width="1024" height="1536" alt="Illustrated poster for AJ's Annual Quest — For the Kids: friends gathered around a campfire at a nighttime forest campsite with a streaming booth, a wooden signpost listing the games, and the details: November 7, live from 2 PM, districtnerds.com." loading="eager" fetchpriority="high">
             </picture>
-            <span class="poster__shine" aria-hidden="true"></span>
           </div>
           <figcaption class="poster__caption">Tap the poster to see it full size</figcaption>
         </figure>
       </div>
     </div>
 
-    <!-- Parallax forest -->
+    <!-- Treeline -->
     <div class="forest" aria-hidden="true">
-      <svg class="forest__layer forest__layer--far" data-depth="0.15" viewBox="0 0 1440 220" preserveAspectRatio="none">
-        <path fill="#1d3a5a" d="M0 220V150l30-40 20 35 25-60 25 60 20-30 30 45 25-75 25 75 20-35 30 50 25-55 25 55 30-45 20 30 25-60 25 60 25-35 30 50 25-70 25 70 20-30 30 40 25-55 25 55 30-45 20 35 25-65 25 65 20-30 30 45 25-70 25 70 25-35 30 50 25-55 25 55 30-45 20 30 25-60 25 60 25-35 30 50 25-70 25 70 20-30 30 40 25-55 25 55 30-45 20 35 25-65 25 65 20-30 30 45 25-70 25 70V220z"/>
+      <svg class="forest__layer forest__layer--far" data-depth="0.12" viewBox="0 0 1440 220" preserveAspectRatio="none">
+        <path fill="#1c3652" d="M0 220V150l30-40 20 35 25-60 25 60 20-30 30 45 25-75 25 75 20-35 30 50 25-55 25 55 30-45 20 30 25-60 25 60 25-35 30 50 25-70 25 70 20-30 30 40 25-55 25 55 30-45 20 35 25-65 25 65 20-30 30 45 25-70 25 70 25-35 30 50 25-55 25 55 30-45 20 30 25-60 25 60 25-35 30 50 25-70 25 70 20-30 30 40 25-55 25 55 30-45 20 35 25-65 25 65 20-30 30 45 25-70 25 70V220z"/>
       </svg>
-      <svg class="forest__layer forest__layer--mid" data-depth="0.3" viewBox="0 0 1440 220" preserveAspectRatio="none">
-        <path fill="#16405a" d="M0 220V130l40-60 30 50 35-90 35 90 25-40 40 60 35-100 35 100 25-45 40 70 35-80 35 80 40-60 30 45 35-85 35 85 30-50 40 65 35-95 35 95 25-40 40 55 35-80 35 80 40-60 30 45 35-85 35 85 25-40 40 60 35-100 35 100 30-50 40 70 35-80 35 80 40-60 30 45 35-85 35 85 30-50 40 65 35-95 35 95 25-40 40 55 35-80 35 80V220z"/>
+      <svg class="forest__layer forest__layer--mid" data-depth="0.22" viewBox="0 0 1440 220" preserveAspectRatio="none">
+        <path fill="#153b52" d="M0 220V130l40-60 30 50 35-90 35 90 25-40 40 60 35-100 35 100 25-45 40 70 35-80 35 80 40-60 30 45 35-85 35 85 30-50 40 65 35-95 35 95 25-40 40 55 35-80 35 80 40-60 30 45 35-85 35 85 25-40 40 60 35-100 35 100 30-50 40 70 35-80 35 80 40-60 30 45 35-85 35 85 30-50 40 65 35-95 35 95 25-40 40 55 35-80 35 80V220z"/>
       </svg>
-      <svg class="forest__layer forest__layer--near" data-depth="0.5" viewBox="0 0 1440 220" preserveAspectRatio="none">
-        <path fill="#0f2f45" d="M0 220V110l50-70 40 60 45-100 45 100 30-50 50 70 45-110 45 110 30-55 50 80 45-90 45 90 50-70 40 55 45-95 45 95 40-60 50 75 45-105 45 105 30-50 50 65 45-90 45 90 50-70 40 55 45-95 45 95 30-50 50 70 45-110 45 110 40-60 50 80 45-90 45 90V220z"/>
+      <svg class="forest__layer forest__layer--near" data-depth="0.36" viewBox="0 0 1440 220" preserveAspectRatio="none">
+        <path fill="#0e2c40" d="M0 220V110l50-70 40 60 45-100 45 100 30-50 50 70 45-110 45 110 30-55 50 80 45-90 45 90 50-70 40 55 45-95 45 95 40-60 50 75 45-105 45 105 30-50 50 65 45-90 45 90 50-70 40 55 45-95 45 95 30-50 50 70 45-110 45 110 40-60 50 80 45-90 45 90V220z"/>
       </svg>
       <div class="forest__ground"></div>
     </div>
   </section>
 
-  <!-- ===================== MARQUEE ===================== -->
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee__band">
-    <div class="marquee__track">
-      <span>✦ Gather your party ✦ Play for the kids ✦ Games ✦ Community ✦ Good cause ✦ All are welcome ♥ ✦ November 7 ✦ 2 PM – 10 PM+ ✦ districtnerds.com ✦&nbsp;</span>
-      <span>✦ Gather your party ✦ Play for the kids ✦ Games ✦ Community ✦ Good cause ✦ All are welcome ♥ ✦ November 7 ✦ 2 PM – 10 PM+ ✦ districtnerds.com ✦&nbsp;</span>
-    </div>
-    </div>
-  </div>
-
-  <!-- ===================== CHOOSE YOUR PATH ===================== -->
-  <section class="section section--paths" aria-label="Ways to take part">
+  <!-- ===================== WATCH. PLAY. GIVE. ===================== -->
+  <section class="section section--paths" aria-labelledby="pathsTitle">
     <div class="container">
+      <header class="section__head reveal" data-reveal>
+        <h2 class="display" id="pathsTitle">Watch. Play. Give.</h2>
+        <p class="section__lede">Tune into the livestream, join a game, or help support kids at Children's National Hospital.</p>
+      </header>
       <div class="paths">
         <a class="path reveal" data-reveal href="#watch">
-          <span class="path__icon" aria-hidden="true">🎥</span>
+          <span class="path__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="12" width="26" height="22" rx="4"/><path d="M32 20l10-5v18l-10-5"/></svg>
+          </span>
           <h3>Watch</h3>
           <p>Free, from anywhere, 2 PM to late.</p>
         </a>
         <a class="path reveal" data-reveal href="#rsvp">
-          <span class="path__icon" aria-hidden="true">🎮</span>
+          <span class="path__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14h20a10 10 0 0 1 10 10v2a8 8 0 0 1-8 8h-1l-4-5H17l-4 5h-1a8 8 0 0 1-8-8v-2a10 10 0 0 1 10-10z"/><path d="M16 20v8M12 24h8"/><circle cx="32" cy="22" r="1.5" fill="currentColor"/><circle cx="36" cy="26" r="1.5" fill="currentColor"/></svg>
+          </span>
           <h3>Play</h3>
           <p>Grab a seat in Smash, friendslop, Jackbox or Fortnite. RSVP takes a minute.</p>
         </a>
-        <a class="path path--donate reveal" data-reveal data-link="donate" href="#cause">
-          <span class="path__icon" aria-hidden="true">💛</span>
-          <h3>Donate</h3>
+        <a class="path path--give reveal" data-reveal data-link="donate" href="#cause">
+          <span class="path__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M24 40c-6-6-14-11-14-20a8 8 0 0 1 14-5 8 8 0 0 1 14 5c0 9-8 14-14 20z"/></svg>
+          </span>
+          <h3>Give</h3>
           <p>The whole point. 100% to Children's National.</p>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ===================== FEATURED EVENTS ===================== -->
-  <section class="section section--events" id="events">
+  <!-- ===================== GAMES (signpost) ===================== -->
+  <section class="section section--games" id="games">
     <div class="container">
       <header class="section__head reveal" data-reveal>
-        <div class="scroll-banner"><h2>Featured Events</h2></div>
-        <p class="section__lede">Five quests. One campsite. Jump in anywhere, whether you main a character or just want cake and good company.</p>
+        <h2 class="display">On the Signpost</h2>
+        <p class="section__lede">Six ways to spend the day. Pick a sign.</p>
       </header>
 
-      <div class="cards" id="eventCards">
-        <article class="card tilt reveal" data-reveal style="--accent:#4fd1d9">
-          <div class="card__icon" aria-hidden="true">
-            <svg viewBox="0 0 64 64"><g fill="#4fd1d9" stroke="#0e2a3a" stroke-width="2.5" stroke-linejoin="round"><polygon points="32,8 44,30 20,30"/><polygon points="20,30 32,52 8,52"/><polygon points="44,30 56,52 32,52"/></g></svg>
-          </div>
-          <h3>Ocarina of Time remake</h3>
-          <p>AJ sits down with the new Ocarina for the very first time, live. No spoilers in chat, please.</p>
-          <ul class="tags"><li class="tag tag--stream">On stream</li><li class="tag tag--inperson">In person</li></ul>
-          <span class="card__time">2:30 PM · 30 min</span>
-        </article>
+      <div class="signpost-layout reveal" data-reveal>
+        <div class="signpost" role="tablist" aria-label="Games">
+          <div class="signpost__post" aria-hidden="true"></div>
+          <button class="sign is-active" role="tab" aria-selected="true" aria-controls="game-ocarina" id="tab-ocarina" data-game="ocarina">
+            <span class="sign__icon" aria-hidden="true"><svg viewBox="0 0 32 32"><g fill="#3a2a14"><polygon points="16,5 22,15 10,15"/><polygon points="10,15 16,25 4,25"/><polygon points="22,15 28,25 16,25"/></g></svg></span>
+            Ocarina of Time Remake
+          </button>
+          <button class="sign" role="tab" aria-selected="false" aria-controls="game-smash" id="tab-smash" data-game="smash" tabindex="-1">
+            <span class="sign__icon" aria-hidden="true"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="12" fill="#3a2a14"/><path d="M8 20c6-2 10-6 14-12" stroke="#f3d58e" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M12 24c4-1 8-4 11-8" stroke="#f3d58e" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg></span>
+            Smash Ultimate
+          </button>
+          <button class="sign" role="tab" aria-selected="false" aria-controls="game-friendslop" id="tab-friendslop" data-game="friendslop" tabindex="-1">
+            <span class="sign__icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="#3a2a14"><circle cx="10" cy="11" r="4"/><circle cx="22" cy="11" r="4"/><path d="M3 25c0-5 3-8 7-8s7 3 7 8zM15 25c0-5 3-8 7-8s7 3 7 8z"/></svg></span>
+            friendslop
+          </button>
+          <button class="sign" role="tab" aria-selected="false" aria-controls="game-kart" id="tab-kart" data-game="kart" tabindex="-1">
+            <span class="sign__icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5 16a11 11 0 0 1 22 0z" fill="#3a2a14"/><rect x="9" y="16" width="14" height="8" rx="3" fill="#3a2a14"/><circle cx="16" cy="9" r="2.4" fill="#f3d58e"/><circle cx="10" cy="13" r="1.8" fill="#f3d58e"/><circle cx="22" cy="13" r="1.8" fill="#f3d58e"/></svg></span>
+            Mario Kart
+          </button>
+          <button class="sign" role="tab" aria-selected="false" aria-controls="game-fortnite" id="tab-fortnite" data-game="fortnite" tabindex="-1">
+            <span class="sign__icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="#3a2a14"><path d="M6 18l6-8h8l6 8-4 8h-12z"/><circle cx="24" cy="9" r="3"/><rect x="8" y="26" width="3" height="3"/><rect x="21" y="26" width="3" height="3"/></svg></span>
+            Fortnite
+          </button>
+          <button class="sign" role="tab" aria-selected="false" aria-controls="game-tabletop" id="tab-tabletop" data-game="tabletop" tabindex="-1">
+            <span class="sign__icon" aria-hidden="true"><svg viewBox="0 0 32 32"><rect x="5" y="5" width="22" height="22" rx="5" fill="#3a2a14"/><g fill="#f3d58e"><circle cx="11" cy="11" r="2.2"/><circle cx="21" cy="11" r="2.2"/><circle cx="16" cy="16" r="2.2"/><circle cx="11" cy="21" r="2.2"/><circle cx="21" cy="21" r="2.2"/></g></svg></span>
+            Board Games
+          </button>
+        </div>
 
-        <article class="card tilt reveal" data-reveal style="--accent:#f6c453">
-          <div class="card__icon" aria-hidden="true">
-            <svg viewBox="0 0 64 64"><path d="M32 6l7.5 16 17.5 2.2-12.8 12 3.4 17.3L32 45l-15.6 8.5 3.4-17.3-12.8-12L24.5 22z" fill="#f6c453" stroke="#5a3a12" stroke-width="2.5" stroke-linejoin="round"/></svg>
-          </div>
-          <h3>Smash Ultimate</h3>
-          <p>A beginner-friendly Casual Cup in the afternoon, then a Championship bracket where local and remote players collide. Small prizes. Big bragging rights.</p>
-          <ul class="tags"><li class="tag tag--stream">On stream</li><li class="tag tag--inperson">In person</li><li class="tag tag--remote">Remote-friendly</li></ul>
-          <span class="card__time">3:00 PM &amp; 5:25 PM</span>
-        </article>
-
-        <article class="card tilt reveal" data-reveal style="--accent:#ff5c8a">
-          <div class="card__icon" aria-hidden="true">
-            <svg viewBox="0 0 64 64"><path d="M12 12h40a6 6 0 0 1 6 6v22a6 6 0 0 1-6 6H30l-12 10v-10h-6a6 6 0 0 1-6-6V18a6 6 0 0 1 6-6z" fill="#ff5c8a" stroke="#4a1030" stroke-width="2.5" stroke-linejoin="round"/><circle cx="22" cy="29" r="3.5" fill="#fff"/><circle cx="32" cy="29" r="3.5" fill="#fff"/><circle cx="42" cy="29" r="3.5" fill="#fff"/></svg>
-          </div>
-          <h3>friendslop</h3>
-          <p>The featured party-game block. Loud, co-op, gloriously chaotic, with open seats for remote friends. Game reveal coming soon.</p>
-          <ul class="tags"><li class="tag tag--stream">On stream</li><li class="tag tag--inperson">In person</li><li class="tag tag--remote">Remote-friendly</li></ul>
-          <span class="card__time">6:45 PM</span>
-        </article>
-
-        <article class="card tilt reveal" data-reveal style="--accent:#9be37d">
-          <div class="card__icon" aria-hidden="true">
-            <svg viewBox="0 0 64 64"><rect x="10" y="10" width="44" height="44" rx="4" fill="#fff" stroke="#1b1038" stroke-width="2.5"/><g fill="#1b1038"><rect x="10" y="10" width="11" height="11"/><rect x="32" y="10" width="11" height="11"/><rect x="21" y="21" width="11" height="11"/><rect x="43" y="21" width="11" height="11"/><rect x="10" y="32" width="11" height="11"/><rect x="32" y="32" width="11" height="11"/><rect x="21" y="43" width="11" height="11"/><rect x="43" y="43" width="11" height="11"/></g></svg>
-          </div>
-          <h3>Mario Kart · Board &amp; Card Games · Casual Jackbox</h3>
-          <p>Self-serve fun all day long. Grab a controller in the lounge, pull up a chair at the Tabletop Tavern, or hop into a Jackbox room from your phone.</p>
-          <ul class="tags"><li class="tag tag--inperson">In person</li><li class="tag tag--free">Free play · all day</li></ul>
-          <span class="card__time">2 PM onward</span>
-        </article>
-
-        <article class="card tilt reveal" data-reveal style="--accent:#b388ff">
-          <div class="card__icon" aria-hidden="true">
-            <svg viewBox="0 0 64 64" fill="none" stroke="#b388ff" stroke-width="3.5" stroke-linecap="round"><circle cx="32" cy="32" r="16"/><circle cx="32" cy="32" r="4" fill="#b388ff"/><path d="M32 6v10M32 48v10M6 32h10M48 32h10"/></svg>
-          </div>
-          <h3>Fortnite</h3>
-          <p>After dark, the stream shifts to an online Fortnite session with the remote crew while the house party keeps rolling at its own pace.</p>
-          <ul class="tags"><li class="tag tag--stream">On stream</li><li class="tag tag--remote">Remote</li></ul>
-          <span class="card__time">8:30 PM onward</span>
-        </article>
+        <div class="game-panels">
+          <article class="game-panel is-active" role="tabpanel" id="game-ocarina" aria-labelledby="tab-ocarina">
+            <span class="game-panel__time">2:30 PM · 30 minutes</span>
+            <h3>Ocarina of Time Remake</h3>
+            <p>AJ sits down with the new Ocarina for the very first time, live. No spoilers in chat, please.</p>
+            <ul class="tags"><li class="tag">On stream</li><li class="tag">In person</li></ul>
+          </article>
+          <article class="game-panel" role="tabpanel" id="game-smash" aria-labelledby="tab-smash" hidden>
+            <span class="game-panel__time">3:00 PM &amp; 5:25 PM</span>
+            <h3>Smash Ultimate</h3>
+            <p>A beginner-friendly Casual Cup in the afternoon, then a Championship bracket where local and remote players collide. Small prizes. Big bragging rights.</p>
+            <ul class="tags"><li class="tag">On stream</li><li class="tag">In person</li><li class="tag tag--remote">Remote-friendly</li></ul>
+            <a class="game-panel__link" href="#smash">Bracket details</a>
+          </article>
+          <article class="game-panel" role="tabpanel" id="game-friendslop" aria-labelledby="tab-friendslop" hidden>
+            <span class="game-panel__time">6:45 PM</span>
+            <h3>friendslop</h3>
+            <p>The featured party-game block. Loud, co-op, gloriously chaotic, with open seats for remote friends. Game reveal coming soon.</p>
+            <ul class="tags"><li class="tag">On stream</li><li class="tag">In person</li><li class="tag tag--remote">Remote-friendly</li></ul>
+          </article>
+          <article class="game-panel" role="tabpanel" id="game-kart" aria-labelledby="tab-kart" hidden>
+            <span class="game-panel__time">All day</span>
+            <h3>Mario Kart</h3>
+            <p>Self-serve races in the upstairs lounge on the Switch 2. Controller rotation is on the honor system.</p>
+            <ul class="tags"><li class="tag">In person</li><li class="tag">Free play</li></ul>
+          </article>
+          <article class="game-panel" role="tabpanel" id="game-fortnite" aria-labelledby="tab-fortnite" hidden>
+            <span class="game-panel__time">8:30 PM onward</span>
+            <h3>Fortnite</h3>
+            <p>After dark, the stream shifts to an online Fortnite session with the remote crew while the house party keeps rolling at its own pace.</p>
+            <ul class="tags"><li class="tag">On stream</li><li class="tag tag--remote">Remote</li></ul>
+          </article>
+          <article class="game-panel" role="tabpanel" id="game-tabletop" aria-labelledby="tab-tabletop" hidden>
+            <span class="game-panel__time">All day</span>
+            <h3>Board Games</h3>
+            <p>Codenames, Wavelength, Telestrations and a deck of cards at the Tabletop Tavern, plus casual Jackbox on whichever TV is free. Drop in, drop out.</p>
+            <ul class="tags"><li class="tag">In person</li><li class="tag">Free play</li></ul>
+          </article>
+        </div>
       </div>
       <p class="fineprint reveal" data-reveal>Lineup and times are the plan, not a prophecy. Things shift a little on the day.</p>
     </div>
@@ -309,8 +291,8 @@
   <section class="section section--schedule" id="schedule">
     <div class="container">
       <header class="section__head reveal" data-reveal>
-        <div class="scroll-banner"><h2>Quest Log</h2></div>
-        <p class="section__lede">The run of show for Saturday. Filter by how you're joining.</p>
+        <h2 class="display">Run of Show</h2>
+        <p class="section__lede">Saturday, start to finish. Filter by how you're joining.</p>
         <div class="filters" role="group" aria-label="Filter schedule">
           <button class="chip is-active" data-filter="all">All</button>
           <button class="chip" data-filter="stream">On stream</button>
@@ -327,44 +309,37 @@
   <section class="section section--camp" id="camp">
     <div class="container">
       <header class="section__head reveal" data-reveal>
-        <div class="scroll-banner"><h2>The Camp</h2></div>
-        <p class="section__lede">Stations around the house. Wander between them, there's no wrong way to spend the day.</p>
+        <h2 class="display">The Camp</h2>
+        <p class="section__lede">Stations around the house. Wander between them; there's no wrong way to spend the day.</p>
       </header>
       <div class="stations">
         <article class="station reveal" data-reveal>
-          <span class="station__emoji" aria-hidden="true">⚔️</span>
           <h3>Smash Arena</h3>
           <p>Main gaming floor. The tournament TV, the bracket board, and the loudest cheering in the house.</p>
         </article>
         <article class="station reveal" data-reveal>
-          <span class="station__emoji" aria-hidden="true">📡</span>
           <h3>Stream Desk</h3>
           <p>Mission control for the livestream. Wave at the webcam, but mind the cables.</p>
           <span class="onair onair--sm"><i></i>On Air</span>
         </article>
         <article class="station reveal" data-reveal>
-          <span class="station__emoji" aria-hidden="true">🏁</span>
           <h3>Mario Kart Lounge</h3>
           <p>Upstairs couch gaming on the Switch 2. Controller rotation is on the honor system.</p>
         </article>
         <article class="station reveal" data-reveal>
-          <span class="station__emoji" aria-hidden="true">🎲</span>
           <h3>Tabletop Tavern</h3>
           <p>Codenames, Wavelength, Telestrations and a deck of cards. Drop in, drop out, no rules explanations longer than two minutes.</p>
         </article>
         <article class="station reveal" data-reveal>
-          <span class="station__emoji" aria-hidden="true">📱</span>
           <h3>Jackbox Corner</h3>
           <p>Casual Jackbox on whichever TV is free. Join from your phone with the room code.</p>
         </article>
         <article class="station reveal" data-reveal>
-          <span class="station__emoji" aria-hidden="true">🍕</span>
           <h3>Snack Camp</h3>
           <p>Snacks from 2 PM, a proper meal around 4, and cake at 5. Kept a safe distance from the controllers.</p>
         </article>
       </div>
       <div class="camp-note reveal" data-reveal>
-        <span aria-hidden="true">🌙</span>
         <p><strong>Quiet hour, 7:30–8:30 PM.</strong> A tiny party member heads to bed, so we dial the volume down and keep the top floor camera-free. Board games and free play carry on.</p>
       </div>
     </div>
@@ -372,17 +347,25 @@
 
   <!-- ===================== THE CAUSE ===================== -->
   <section class="section section--cause" id="cause">
+    <div class="scene" aria-hidden="true">
+      <picture>
+        <source type="image/webp" srcset="assets/scene-campfire.webp">
+        <img src="assets/scene-campfire.jpg" alt="" loading="lazy" width="774" height="474">
+      </picture>
+      <canvas id="emberCanvas" width="400" height="400"></canvas>
+      <div class="scene__fade"></div>
+    </div>
     <div class="container cause">
       <div class="cause__copy">
         <header class="section__head section__head--left reveal" data-reveal>
-          <div class="scroll-banner"><h2>For the Kids</h2></div>
+          <h2 class="display">For the Kids</h2>
         </header>
         <p class="reveal" data-reveal>Every year AJ turns a birthday into a fundraiser. This year the whole party is in on it. We're raising money through <a data-link="extraLife" target="_blank" rel="noopener">Extra Life</a>, which sends <strong>100% of donations</strong> to <a data-link="childrensNational" target="_blank" rel="noopener">Children's National Hospital</a>.</p>
         <p class="reveal" data-reveal>Consider sending a few dollars to the kids at Children's National. Every dollar goes to the hospital, none to us. Scan the code or tap the button.</p>
 
         <div class="meter reveal" data-reveal id="meter" hidden>
           <div class="meter__labels"><span id="meterRaised">$0</span><span id="meterGoal">of $0</span></div>
-          <div class="meter__bar"><div class="meter__fill" id="meterFill" style="width:0%"><span class="meter__spark"></span></div></div>
+          <div class="meter__bar"><div class="meter__fill" id="meterFill" style="width:0%"></div></div>
           <div class="meter__pct" id="meterPct">0% of the way there</div>
         </div>
 
@@ -390,22 +373,15 @@
           <a class="btn btn--coral btn--lg" data-link="donate" href="#">Donate on Extra Life</a>
           <span class="coming-soon" data-coming="donate">Official donation link drops here soon</span>
         </div>
-      </div>
-
-      <div class="cause__art">
-        <div class="campfire reveal" data-reveal id="campfire" role="img" aria-label="Animated campfire. Tap it for a burst of embers.">
-          <canvas id="emberCanvas" width="360" height="360"></canvas>
-          <div class="campfire__flame">
-            <span class="flame flame--outer"></span>
-            <span class="flame flame--mid"></span>
-            <span class="flame flame--core"></span>
-          </div>
-          <div class="campfire__logs"><span></span><span></span></div>
-          <div class="campfire__stones"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="logos reveal" data-reveal>
+          <a data-link="extraLife" target="_blank" rel="noopener"><img src="assets/logo-extra-life.png" alt="Extra Life. Play games. Heal kids." width="157" height="120"></a>
+          <a data-link="childrensNational" target="_blank" rel="noopener"><img src="assets/logo-childrens-national.png" alt="Children's National Hospital" width="128" height="116"></a>
         </div>
+      </div>
+      <div class="cause__qr">
         <div class="qr reveal" data-reveal>
           <img src="assets/qr-districtnerds.svg" width="160" height="160" alt="QR code linking to districtnerds.com">
-          <div class="qr__text"><b>Scan to open this page</b><span>districtnerds.com</span></div>
+          <div class="qr__text"><b>Scan to watch, play, or donate.</b><span>districtnerds.com</span></div>
         </div>
       </div>
     </div>
@@ -415,16 +391,11 @@
   <section class="section section--rsvp" id="rsvp">
     <div class="container container--form">
       <header class="section__head reveal" data-reveal>
-        <div class="scroll-banner"><h2>Join the Party</h2></div>
+        <h2 class="display">Join the Party</h2>
         <p class="section__lede">One form for everyone: in person, online, or just cheering from the couch. Takes about a minute.</p>
       </header>
 
       <div class="rsvp reveal" data-reveal>
-        <div class="rsvp__corner rsvp__corner--tl" aria-hidden="true"></div>
-        <div class="rsvp__corner rsvp__corner--tr" aria-hidden="true"></div>
-        <div class="rsvp__corner rsvp__corner--bl" aria-hidden="true"></div>
-        <div class="rsvp__corner rsvp__corner--br" aria-hidden="true"></div>
-
         <form class="rsvp__form" id="rsvpForm" novalidate>
           <div class="field-row">
             <label class="field">
@@ -433,16 +404,16 @@
             </label>
             <label class="field">
               <span class="field__label">Email <b>*</b></span>
-              <input type="email" name="email" required maxlength="200" autocomplete="email" placeholder="so AJ can send you the address">
+              <input type="email" name="email" required maxlength="200" autocomplete="email" placeholder="so AJ can send you the details">
             </label>
           </div>
 
           <fieldset class="field">
             <legend class="field__label">How are you joining? <b>*</b></legend>
             <div class="choice-grid">
-              <label class="choice"><input type="radio" name="attendance" value="in_person" required><span><i aria-hidden="true">🏠</i>In person</span></label>
-              <label class="choice"><input type="radio" name="attendance" value="online"><span><i aria-hidden="true">🎮</i>Playing online</span></label>
-              <label class="choice"><input type="radio" name="attendance" value="watching"><span><i aria-hidden="true">📺</i>Just watching</span></label>
+              <label class="choice"><input type="radio" name="attendance" value="in_person" required><span>In person</span></label>
+              <label class="choice"><input type="radio" name="attendance" value="online"><span>Playing online</span></label>
+              <label class="choice"><input type="radio" name="attendance" value="watching"><span>Just watching</span></label>
             </div>
           </fieldset>
 
@@ -489,8 +460,8 @@
           <fieldset class="field" data-show-for="in_person" hidden>
             <legend class="field__label">OK to appear on the stream?</legend>
             <div class="choice-grid">
-              <label class="choice"><input type="radio" name="camera_ok" value="yes" checked><span><i aria-hidden="true">📷</i>Sure, put me on</span></label>
-              <label class="choice"><input type="radio" name="camera_ok" value="no"><span><i aria-hidden="true">🙈</i>I'd rather stay off camera</span></label>
+              <label class="choice"><input type="radio" name="camera_ok" value="yes" checked><span>Sure, put me on</span></label>
+              <label class="choice"><input type="radio" name="camera_ok" value="no"><span>I'd rather stay off camera</span></label>
             </div>
           </fieldset>
 
@@ -503,14 +474,13 @@
           <label class="hp" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off"></label>
 
           <div class="rsvp__actions">
-            <button class="btn btn--gold btn--lg" type="submit" id="rsvpSubmit"><span class="btn__glow" aria-hidden="true"></span>Count me in</button>
+            <button class="btn btn--gold btn--lg" type="submit" id="rsvpSubmit">Count me in</button>
             <p class="rsvp__status" id="rsvpStatus" role="status" aria-live="polite"></p>
           </div>
           <p class="fineprint fineprint--tight">The address is shared by email with in-person guests only. We won't use your email for anything else.</p>
         </form>
 
         <div class="rsvp__success" id="rsvpSuccess" hidden>
-          <div class="rsvp__success-icon" aria-hidden="true">🎉</div>
           <h3>You're in!</h3>
           <p id="rsvpSuccessText">AJ will send the details to your email before the big day.</p>
           <p>If you're up for it, a donation for the kids would mean a lot.</p>
@@ -541,11 +511,11 @@ Food notes:</pre>
   <section class="section section--smash" id="smash">
     <div class="container">
       <header class="section__head reveal" data-reveal>
-        <div class="scroll-banner"><h2>Enter the Bracket</h2></div>
+        <h2 class="display">Enter the Bracket</h2>
       </header>
 
       <div class="bracket">
-        <article class="bracket__card reveal" data-reveal style="--accent:#9be37d">
+        <article class="bracket__card reveal" data-reveal>
           <div class="bracket__badge">3:00 PM</div>
           <h3>Casual Smash Cup</h3>
           <p class="bracket__tagline">Never played? Perfect.</p>
@@ -557,7 +527,7 @@ Food notes:</pre>
           </ul>
         </article>
 
-        <article class="bracket__card bracket__card--featured reveal" data-reveal style="--accent:#f6c453">
+        <article class="bracket__card bracket__card--featured reveal" data-reveal>
           <div class="bracket__badge">5:25 PM</div>
           <h3>Competitive Championship</h3>
           <p class="bracket__tagline">One bracket. Local and remote players, together.</p>
@@ -587,21 +557,20 @@ Food notes:</pre>
   <section class="section section--watch" id="watch">
     <div class="container">
       <header class="section__head reveal" data-reveal>
-        <div class="scroll-banner"><h2>Watch Live</h2></div>
-        <p class="section__lede">Can't make it to the house? The stream runs from 2 PM until roughly 11:30 PM with cozy intermissions between quests.</p>
+        <h2 class="display">Watch Live</h2>
+        <p class="section__lede">Can't make it to the house? The stream runs from 2 PM until roughly 11:30 PM with cozy intermissions between games.</p>
       </header>
       <div class="booth reveal" data-reveal>
         <div class="booth__lights" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
         <div class="onair onair--lg" id="onAir"><i></i>On Air</div>
         <div class="booth__screen" id="streamFrame">
           <div class="booth__placeholder" id="streamPlaceholder">
-            <div class="booth__heart" aria-hidden="true">♥</div>
-            <p><b>Stream link drops here on November 7.</b></p>
-            <p class="small">Bookmark this page. The ON AIR sign lights up when we go live.</p>
+            <p><b>We go live November 7 at 2 PM ET.</b></p>
+            <p class="small">Bookmark this page. The ON AIR sign lights up when the stream starts.</p>
           </div>
         </div>
         <div class="booth__actions">
-          <a class="btn btn--gold" data-link="stream" href="#" target="_blank" rel="noopener">Open the stream</a>
+          <a class="btn btn--gold" data-link="stream" href="#" target="_blank" rel="noopener">Open the stream on Twitch</a>
           <a class="btn btn--ghost" data-link="discord" href="#" target="_blank" rel="noopener">Join the Discord</a>
         </div>
       </div>
@@ -612,7 +581,7 @@ Food notes:</pre>
   <section class="section section--faq" id="faq">
     <div class="container container--narrow">
       <header class="section__head reveal" data-reveal>
-        <div class="scroll-banner"><h2>Field Guide</h2></div>
+        <h2 class="display">Field Guide</h2>
       </header>
       <div class="faq reveal" data-reveal>
         <details>
@@ -650,17 +619,16 @@ Food notes:</pre>
 
   <!-- ===================== FOOTER ===================== -->
   <footer class="footer">
-    <div class="footer__campfire" aria-hidden="true"></div>
     <div class="container footer__inner">
-      <p class="footer__tagline">✦ Gather your party. Play for the kids. ✦</p>
-      <p class="footer__meta">AJ's Annual Quest is an Extra Life fundraiser benefiting Children's National Hospital, presented by District Nerds. Extra Life and Children's National Hospital names are the property of their respective organizations.</p>
+      <p class="footer__tagline display">Watch. Play. Give.</p>
+      <p class="footer__meta">AJ's Annual Quest is an Extra Life fundraiser benefiting Children's National Hospital, presented by District Nerds. Extra Life and Children's National Hospital names and logos are the property of their respective organizations.</p>
       <div class="footer__links">
         <a href="#top">Back to the top</a>
         <a data-link="extraLife" target="_blank" rel="noopener">Extra Life</a>
         <a data-link="childrensNational" target="_blank" rel="noopener">Children's National</a>
+        <a data-link="stream" target="_blank" rel="noopener">Twitch</a>
         <button type="button" class="linklike" id="motionToggle" aria-pressed="false">Reduce motion</button>
       </div>
-      <p class="footer__dice" aria-hidden="true"><span>⚅</span><span>⚂</span><span>⚄</span></p>
     </div>
   </footer>
 

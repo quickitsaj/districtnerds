@@ -42,10 +42,10 @@ With neither configured, the form is replaced by a copy-and-send message templat
 
 ## What's in here
 
-- `index.html` — the page. Schedule items live in `js/main.js` (`SCHEDULE` array).
-- `css/styles.css` — all styling and CSS animations. Honors `prefers-reduced-motion`; a footer toggle lets visitors turn effects off (stored in localStorage).
-- `js/main.js` — star canvas, countdown (goes "live" on event day), schedule filters and "NOW" marker, 3D tilt, parallax, campfire embers, add-to-calendar (.ics), sign-up copy helper, Konami-code easter egg.
-- `assets/poster-*.{webp,jpg}` — the approved poster, web-sized. `assets/qr-districtnerds.svg|png` — programmatically generated QR for https://districtnerds.com (verified to decode).
+- `index.html` — the page. The game signpost panels are in the HTML; schedule items live in `js/main.js` (`SCHEDULE` array).
+- `css/styles.css` — all styling. Palette: midnight indigo, forest teal, lantern gold, a little coral. Display type is Metamorphous, headings Montserrat, body Nunito (Google Fonts). Motion is limited to the world itself (star twinkle, lantern sway, castle windows, campfire embers). Honors `prefers-reduced-motion`; a footer toggle lets visitors turn effects off.
+- `js/main.js` — star canvas, countdown (goes "live" on event day), signpost tabs, schedule filters and "NOW" marker, parallax treeline, campfire embers, Twitch embed, RSVP form, add-to-calendar (.ics), Konami-code easter egg.
+- `assets/poster-*.{webp,jpg}` — the approved poster, web-sized. `assets/scene-campfire.*` is the campfire crop used behind the cause section; `assets/logo-*.png` are the Extra Life and Children's National marks lifted from the poster. `assets/qr-districtnerds.svg|png` — programmatically generated QR for https://districtnerds.com (verified to decode).
 - `assets/og.jpg` — social share image.
 
 ## Before it goes public

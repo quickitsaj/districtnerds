@@ -79,18 +79,23 @@
     sections.forEach((s) => spy.observe(s));
   }
 
-  /* ---------- hero title letters ---------- */
-  $$(".title-line").forEach((line) => {
-    const text = line.textContent;
-    line.textContent = "";
-    let i = 0;
-    for (const ch of text) {
-      const span = document.createElement("span");
-      span.className = "ch" + (ch === " " ? " sp" : "");
-      span.textContent = ch === " " ? "\u00a0" : ch;
-      span.style.setProperty("--i", i++);
-      line.appendChild(span);
-    }
+
+  /* ---------- signpost tabs ---------- */
+  const signs = $$(".sign");
+  const panels = $$(".game-panel");
+  function selectSign(btn) {
+    signs.forEach((s) => { const on = s === btn; s.classList.toggle("is-active", on); s.setAttribute("aria-selected", String(on)); s.tabIndex = on ? 0 : -1; });
+    panels.forEach((p) => { const on = p.id === btn.getAttribute("aria-controls"); p.hidden = !on; p.classList.toggle("is-active", on); });
+  }
+  signs.forEach((btn, i) => {
+    btn.addEventListener("click", () => selectSign(btn));
+    btn.addEventListener("keydown", (e) => {
+      const dir = e.key === "ArrowDown" || e.key === "ArrowRight" ? 1 : e.key === "ArrowUp" || e.key === "ArrowLeft" ? -1 : 0;
+      if (!dir) return;
+      e.preventDefault();
+      const next = signs[(i + dir + signs.length) % signs.length];
+      next.focus(); selectSign(next);
+    });
   });
 
   /* ---------- reveal on scroll ---------- */
@@ -248,10 +253,9 @@
     });
     el.addEventListener("pointerleave", () => { cancelAnimationFrame(raf); el.style.transform = ""; });
   }
-  $$(".card.tilt").forEach((c) => tilt(c, 8, 1.03));
   const posterFrame = $("#posterTilt");
   if (posterFrame) {
-    tilt(posterFrame, 12, 1.03);
+    tilt(posterFrame, 6, 1.01);
     posterFrame.addEventListener("pointerenter", () => { posterFrame.style.animationPlayState = "paused"; });
     posterFrame.addEventListener("pointerleave", () => { posterFrame.style.animationPlayState = ""; });
   }
@@ -458,7 +462,7 @@
     function resize() {
       W = sky.width = Math.floor(innerWidth * dpr); H = sky.height = Math.floor(innerHeight * dpr);
       sky.style.width = innerWidth + "px"; sky.style.height = innerHeight + "px";
-      const n = Math.min(260, Math.floor((innerWidth * innerHeight) / 6000));
+      const n = Math.min(200, Math.floor((innerWidth * innerHeight) / 8000));
       stars = Array.from({ length: n }, () => ({
         x: Math.random() * W, y: Math.random() * H * 0.9, r: (Math.random() * 1.4 + 0.4) * dpr,
         p: Math.random() * Math.PI * 2, s: 0.4 + Math.random() * 1.2,
@@ -489,7 +493,7 @@
         }
       }
       // shooting stars
-      if (Math.random() < 0.006 && shooters.length < 2) {
+      if (Math.random() < 0.0025 && shooters.length < 1) {
         shooters.push({ x: Math.random() * W * 0.8, y: Math.random() * H * 0.3, vx: (6 + Math.random() * 5) * dpr, vy: (2.5 + Math.random() * 2) * dpr, life: 1 });
       }
       ctx.globalAlpha = 1;
@@ -509,24 +513,8 @@
     html.addEventListener("quest:motionchange", () => { if (reduceMotion()) { running = false; drawStatic(); } else if (!running) { running = true; requestAnimationFrame(frame); } });
   }
 
-  /* ---------- fireflies ---------- */
-  const ff = $(".fireflies");
-  if (ff) {
-    const n = innerWidth < 700 ? 10 : 22;
-    for (let i = 0; i < n; i++) {
-      const s = document.createElement("i");
-      s.style.setProperty("--x", Math.random() * 100 + "%");
-      s.style.setProperty("--y", 20 + Math.random() * 75 + "%");
-      s.style.setProperty("--d", 7 + Math.random() * 9 + "s");
-      s.style.setProperty("--delay", -Math.random() * 12 + "s");
-      s.style.setProperty("--dx", (Math.random() * 120 - 60).toFixed(0) + "px");
-      s.style.setProperty("--dy", (Math.random() * -120 - 20).toFixed(0) + "px");
-      ff.appendChild(s);
-    }
-  }
-
   /* ---------- campfire embers (canvas) ---------- */
-  const fire = $("#campfire"), emberCanvas = $("#emberCanvas");
+  const fire = $(".scene"), emberCanvas = $("#emberCanvas");
   if (fire && emberCanvas && emberCanvas.getContext) {
     const ctx = emberCanvas.getContext("2d");
     const W = emberCanvas.width, H = emberCanvas.height;
@@ -534,7 +522,7 @@
     function spawn(n, burst = false) {
       for (let i = 0; i < n; i++) {
         embers.push({
-          x: W / 2 + (Math.random() - 0.5) * (burst ? 90 : 50), y: H - 120 - Math.random() * 20,
+          x: W / 2 + (Math.random() - 0.5) * 40, y: H / 2 + 60 - Math.random() * 20,
           vx: (Math.random() - 0.5) * (burst ? 3 : 1), vy: -(burst ? 2.5 + Math.random() * 3 : 0.8 + Math.random() * 1.4),
           r: 1.5 + Math.random() * 2.5, life: 1, hue: 20 + Math.random() * 30,
         });
@@ -544,7 +532,7 @@
       if (!visible || reduceMotion()) { ctx.clearRect(0, 0, W, H); return; }
       raf = requestAnimationFrame(loop);
       ctx.clearRect(0, 0, W, H);
-      if (Math.random() < 0.6) spawn(1);
+      if (Math.random() < 0.35) spawn(1);
       embers = embers.filter((e) => e.life > 0 && e.y > 0);
       for (const e of embers) {
         e.x += e.vx + Math.sin(e.y / 18) * 0.6; e.y += e.vy; e.life -= 0.012; e.vy *= 0.995;
@@ -558,61 +546,26 @@
     if ("IntersectionObserver" in window) {
       new IntersectionObserver((en) => { visible = en[0].isIntersecting; cancelAnimationFrame(raf); if (visible) loop(); }).observe(fire);
     } else { visible = true; loop(); }
-    fire.addEventListener("click", () => {
-      spawn(40, true);
-      fire.classList.add("is-burst");
-      setTimeout(() => fire.classList.remove("is-burst"), 350);
-      if (!visible) { visible = true; loop(); }
-    });
     html.addEventListener("quest:motionchange", () => { cancelAnimationFrame(raf); if (visible) loop(); });
-  }
-
-  /* ---------- cursor sparkle trail ---------- */
-  const sparkleLayer = $("#sparkleLayer");
-  if (sparkleLayer && finePointer) {
-    let lastSpark = 0;
-    window.addEventListener("pointermove", (e) => {
-      if (reduceMotion()) return;
-      const now = performance.now();
-      if (now - lastSpark < 45) return;
-      lastSpark = now;
-      const s = document.createElement("span");
-      s.className = "spark";
-      s.style.left = e.clientX + "px"; s.style.top = e.clientY + "px";
-      s.style.setProperty("--sx", (Math.random() * 30 - 15) + "px");
-      s.style.setProperty("--sy", (Math.random() * 30 + 10) + "px");
-      sparkleLayer.appendChild(s);
-      setTimeout(() => s.remove(), 750);
-    }, { passive: true });
   }
 
   /* ---------- easter egg: Konami code → party rain ---------- */
   const KONAMI = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
   let kIdx = 0;
   function partyRain(quiet) {
-    if (!quiet) toast("🎉 Secret unlocked! Happy birthday, AJ.");
+    if (!quiet) toast("Secret unlocked. Happy birthday, AJ.");
     if (reduceMotion()) return;
-    const colors = ["#f6c453", "#ff5c8a", "#4fd1d9", "#9be37d", "#b388ff", "#ff6a3d"];
-    for (let i = 0; i < 120; i++) {
+    const colors = ["#f3c45a", "#f6e6bd", "#e85d75", "#7fd3de"];
+    for (let i = 0; i < 70; i++) {
       const c = document.createElement("i");
       c.className = "confetti";
       c.style.left = Math.random() * 100 + "vw";
       c.style.background = colors[i % colors.length];
       c.style.setProperty("--d", 2.5 + Math.random() * 2.5 + "s");
-      c.style.animationDelay = Math.random() * 1.5 + "s";
+      c.style.animationDelay = Math.random() * 1.2 + "s";
       c.style.transform = `rotate(${Math.random() * 360}deg)`;
       document.body.appendChild(c);
       setTimeout(() => c.remove(), 6000);
-    }
-    for (let i = 0; i < 10; i++) {
-      const b = document.createElement("i");
-      b.className = "party-balloon";
-      b.style.left = 5 + Math.random() * 90 + "vw";
-      b.style.background = `radial-gradient(circle at 35% 30%, #fff8, ${colors[i % colors.length]} 50%, #0006)`;
-      b.style.setProperty("--d", 5 + Math.random() * 4 + "s");
-      b.style.animationDelay = Math.random() * 2 + "s";
-      document.body.appendChild(b);
-      setTimeout(() => b.remove(), 12000);
     }
   }
   document.addEventListener("keydown", (e) => {
