@@ -470,8 +470,25 @@
         });
         if (!res.ok) throw new Error("supabase " + res.status + " " + (await res.text().catch(() => "")));
       } else {
-        const res = await fetch(rsvpCfg.endpoint, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(d) });
+        const url = rsvpCfg.endpoint;
+        const isAppsScript = /script\.google(usercontent)?\.com/i.test(url);
+        // Apps Script web apps don't answer CORS preflights, so send a "simple" request:
+        // text/plain body (still JSON), and follow Google's redirect to the result.
+        const headers = isAppsScript ? { "Content-Type": "text/plain;charset=utf-8" } : { "Content-Type": "application/json", Accept: "application/json" };
+        let res;
+        try {
+          res = await fetch(url, { method: "POST", headers, body: JSON.stringify(d), redirect: "follow" });
+        } catch (netErr) {
+          if (!isAppsScript) throw netErr;
+          // CORS blocked reading the reply but the request reached Google; resend opaque and trust it.
+          res = await fetch(url, { method: "POST", mode: "no-cors", headers, body: JSON.stringify(d) });
+        }
+        if (res.type === "opaque") return;
         if (!res.ok) throw new Error("endpoint " + res.status);
+        if (isAppsScript) {
+          const out = await res.json().catch(() => ({ ok: true }));
+          if (out && out.ok === false) throw new Error("apps script: " + out.error);
+        }
       }
     }
     rsvpForm.addEventListener("submit", async (e) => {

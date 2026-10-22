@@ -36,7 +36,12 @@ Submissions go to whichever backend is configured in `js/config.js`:
   `rsvp.supabase.url` and `rsvp.supabase.anonKey`. The policy allows inserts only, so the anon
   key in the page can never read responses. View them in Table Editor → `rsvps` (or the
   `rsvp_summary` view) and export CSV from there.
-- **Any JSON endpoint** — set `rsvp.endpoint`. The body is a JSON object with the fields above.
+- **Google Sheet (chosen)** — the sheet "AJ's Annual Quest RSVPs" lives in AJ's Google Drive. Open it,
+  go to Extensions → Apps Script, paste `google-apps-script/Code.gs`, run `setup` once, then
+  Deploy → New deployment → Web app, Execute as *Me*, Who has access *Anyone*. Paste the web app URL
+  into `rsvp.endpoint`. Set `NOTIFY_EMAIL` in the script to get an email per RSVP. After editing the
+  script, Manage deployments → edit → New version, or the live URL keeps running the old code.
+- **Any other JSON endpoint** — set `rsvp.endpoint`. The body is a JSON object with the fields above.
 
 With neither configured, the form is replaced by a copy-and-send message template.
 
