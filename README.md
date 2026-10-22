@@ -25,9 +25,9 @@ Nothing on the site fabricates a URL: an empty value renders as a disabled butto
 
 ## The RSVP form
 
-The form on the page collects name, email, attendance mode (in person / online / watching),
-guest count, event interests, Nintendo friend code, Discord handle, food notes, camera
-preference and a note. It has a honeypot field for bots and remembers a completed RSVP in the
+The form on the page collects name, email, the events someone wants to join (or "just watching"),
+Nintendo friend code, Discord handle and a note. The public site never mentions the in-person
+party; those guests are invited privately. It has a honeypot field for bots and remembers a completed RSVP in the
 visitor's browser.
 
 Submissions go to whichever backend is configured in `js/config.js`:

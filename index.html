@@ -30,7 +30,7 @@
     "description": "An Extra Life gaming fundraiser benefiting Children's National Hospital, presented by District Nerds.",
     "startDate": "2026-11-07T14:00:00-05:00",
     "endDate": "2026-11-07T22:00:00-05:00",
-    "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+    "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
     "eventStatus": "https://schema.org/EventScheduled",
     "image": "https://districtnerds.com/assets/og.jpg",
     "organizer": { "@type": "Organization", "name": "District Nerds", "url": "https://districtnerds.com" },
@@ -56,7 +56,6 @@
       <nav class="nav__links" id="navLinks" aria-label="Sections">
         <a href="#games">Games</a>
         <a href="#schedule">Schedule</a>
-        <a href="#camp">The Camp</a>
         <a href="#cause">The Cause</a>
         <a href="#rsvp">Play</a>
         <a href="#smash">Smash</a>
@@ -233,38 +232,38 @@
             <span class="game-panel__time">2:30 PM · 30 minutes</span>
             <h3>Ocarina of Time Remake</h3>
             <p>AJ sits down with the new Ocarina for the very first time, live. No spoilers in chat, please.</p>
-            <ul class="tags"><li class="tag">On stream</li><li class="tag">In person</li></ul>
+            <ul class="tags"><li class="tag">Watch</li></ul>
           </article>
           <article class="game-panel" role="tabpanel" id="game-smash" aria-labelledby="tab-smash" hidden>
             <span class="game-panel__time">3:00 PM &amp; 5:25 PM</span>
             <h3>Smash Ultimate</h3>
-            <p>A beginner-friendly Casual Cup in the afternoon, then a Championship bracket where local and remote players collide. Small prizes. Big bragging rights.</p>
-            <ul class="tags"><li class="tag">On stream</li><li class="tag">In person</li><li class="tag tag--remote">Remote-friendly</li></ul>
+            <p>A beginner-friendly Casual Cup in the afternoon, then the Championship bracket in the evening. Small prizes. Big bragging rights.</p>
+            <ul class="tags"><li class="tag tag--play">Join in</li><li class="tag">Watch</li></ul>
             <a class="game-panel__link" href="#smash">Bracket details</a>
           </article>
           <article class="game-panel" role="tabpanel" id="game-friendslop" aria-labelledby="tab-friendslop" hidden>
             <span class="game-panel__time">6:45 PM</span>
             <h3>friendslop</h3>
-            <p>The featured party-game block. Loud, co-op, gloriously chaotic, with open seats for remote friends. Game reveal coming soon.</p>
-            <ul class="tags"><li class="tag">On stream</li><li class="tag">In person</li><li class="tag tag--remote">Remote-friendly</li></ul>
+            <p>The featured party-game block. Loud, co-op, gloriously chaotic, with open seats for anyone who signs up. Game reveal coming soon.</p>
+            <ul class="tags"><li class="tag tag--play">Join in</li><li class="tag">Watch</li></ul>
           </article>
           <article class="game-panel" role="tabpanel" id="game-kart" aria-labelledby="tab-kart" hidden>
             <span class="game-panel__time">All day</span>
             <h3>Mario Kart</h3>
-            <p>Self-serve races in the upstairs lounge on the Switch 2. Controller rotation is on the honor system.</p>
-            <ul class="tags"><li class="tag">In person</li><li class="tag">Free play</li></ul>
+            <p>Pick-up races between the main events, with the occasional blue shell on stream.</p>
+            <ul class="tags"><li class="tag">Watch</li></ul>
           </article>
           <article class="game-panel" role="tabpanel" id="game-fortnite" aria-labelledby="tab-fortnite" hidden>
             <span class="game-panel__time">8:30 PM onward</span>
             <h3>Fortnite</h3>
-            <p>After dark, the stream shifts to an online Fortnite session with the remote crew while the house party keeps rolling at its own pace.</p>
-            <ul class="tags"><li class="tag">On stream</li><li class="tag tag--remote">Remote</li></ul>
+            <p>After dark, the stream shifts to a Fortnite squad session. Sign up and we'll save you a slot in the party.</p>
+            <ul class="tags"><li class="tag tag--play">Join in</li><li class="tag">Watch</li></ul>
           </article>
           <article class="game-panel" role="tabpanel" id="game-tabletop" aria-labelledby="tab-tabletop" hidden>
             <span class="game-panel__time">All day</span>
             <h3>Board Games</h3>
-            <p>Codenames, Wavelength, Telestrations and a deck of cards at the Tabletop Tavern, plus casual Jackbox on whichever TV is free. Drop in, drop out.</p>
-            <ul class="tags"><li class="tag">In person</li><li class="tag">Free play</li></ul>
+            <p>Codenames, Wavelength and friends running between the main events, plus casual Jackbox you can join from your phone with the room code on stream.</p>
+            <ul class="tags"><li class="tag tag--play">Join in</li><li class="tag">Watch</li></ul>
           </article>
         </div>
       </div>
@@ -277,56 +276,14 @@
     <div class="container">
       <header class="section__head reveal" data-reveal>
         <h2 class="display">Run of Show</h2>
-        <p class="section__lede">Saturday, start to finish. Filter by how you're joining.</p>
+        <p class="section__lede">Saturday on the stream, start to finish.</p>
         <div class="filters" role="group" aria-label="Filter schedule">
-          <button class="chip is-active" data-filter="all">All</button>
-          <button class="chip" data-filter="stream">On stream</button>
-          <button class="chip" data-filter="inperson">In person</button>
-          <button class="chip" data-filter="remote">Remote-friendly</button>
+          <button class="chip is-active" data-filter="all">Everything</button>
+          <button class="chip" data-filter="play">Things you can join</button>
         </div>
       </header>
       <ol class="timeline" id="timeline" aria-live="polite"></ol>
-      <p class="fineprint reveal" data-reveal>All times Eastern. The 5 PM gathering is the one moment we'd love everyone in the room for.</p>
-    </div>
-  </section>
-
-  <!-- ===================== THE CAMP ===================== -->
-  <section class="section section--camp" id="camp">
-    <div class="container">
-      <header class="section__head reveal" data-reveal>
-        <h2 class="display">The Camp</h2>
-        <p class="section__lede">Stations around the house. Wander between them; there's no wrong way to spend the day.</p>
-      </header>
-      <div class="stations">
-        <article class="station reveal" data-reveal>
-          <h3>Smash Arena</h3>
-          <p>Main gaming floor. The tournament TV, the bracket board, and the loudest cheering in the house.</p>
-        </article>
-        <article class="station reveal" data-reveal>
-          <h3>Stream Desk</h3>
-          <p>Mission control for the livestream. Wave at the webcam, but mind the cables.</p>
-          <span class="onair onair--sm"><i></i>On Air</span>
-        </article>
-        <article class="station reveal" data-reveal>
-          <h3>Mario Kart Lounge</h3>
-          <p>Upstairs couch gaming on the Switch 2. Controller rotation is on the honor system.</p>
-        </article>
-        <article class="station reveal" data-reveal>
-          <h3>Tabletop Tavern</h3>
-          <p>Codenames, Wavelength, Telestrations and a deck of cards. Drop in, drop out, no rules explanations longer than two minutes.</p>
-        </article>
-        <article class="station reveal" data-reveal>
-          <h3>Jackbox Corner</h3>
-          <p>Casual Jackbox on whichever TV is free. Join from your phone with the room code.</p>
-        </article>
-        <article class="station reveal" data-reveal>
-          <h3>Snack Camp</h3>
-          <p>Snacks from 2 PM, a proper meal around 4, and cake at 5. Kept a safe distance from the controllers.</p>
-        </article>
-      </div>
-      <div class="camp-note reveal" data-reveal>
-        <p><strong>Quiet hour, 7:30–8:30 PM.</strong> A tiny party member heads to bed, so we dial the volume down and keep the top floor camera-free. Board games and free play carry on.</p>
-      </div>
+      <p class="fineprint reveal" data-reveal>All times Eastern. Sign-ups for the Smash events close at 5 PM.</p>
     </div>
   </section>
 
@@ -367,8 +324,8 @@
   <section class="section section--rsvp" id="rsvp">
     <div class="container container--form">
       <header class="section__head reveal" data-reveal>
-        <h2 class="display">Join the Party</h2>
-        <p class="section__lede">One form for everyone: in person, online, or just cheering from the couch. Takes about a minute.</p>
+        <h2 class="display">Sign Up to Play</h2>
+        <p class="section__lede">Sign up to play, or just to cheer. Takes about a minute.</p>
       </header>
 
       <div class="rsvp reveal" data-reveal>
@@ -380,66 +337,32 @@
             </label>
             <label class="field">
               <span class="field__label">Email <b>*</b></span>
-              <input type="email" name="email" required maxlength="200" autocomplete="email" placeholder="so AJ can send you the details">
+              <input type="email" name="email" required maxlength="200" autocomplete="email" placeholder="for match times and the Discord invite">
             </label>
           </div>
 
           <fieldset class="field">
-            <legend class="field__label">How are you joining? <b>*</b></legend>
-            <div class="choice-grid">
-              <label class="choice"><input type="radio" name="attendance" value="in_person" required><span>In person</span></label>
-              <label class="choice"><input type="radio" name="attendance" value="online"><span>Playing online</span></label>
-              <label class="choice"><input type="radio" name="attendance" value="watching"><span>Just watching</span></label>
-            </div>
-          </fieldset>
-
-          <div class="field-row" data-show-for="in_person" hidden>
-            <label class="field">
-              <span class="field__label">Bringing anyone?</span>
-              <select name="guests">
-                <option value="0">Just me</option>
-                <option value="1">+1</option>
-                <option value="2">+2</option>
-                <option value="3">+3</option>
-                <option value="4">+4 (a whole party)</option>
-              </select>
-            </label>
-            <label class="field">
-              <span class="field__label">Food notes</span>
-              <input type="text" name="dietary" maxlength="200" placeholder="allergies, vegetarian, etc.">
-            </label>
-          </div>
-
-          <fieldset class="field" data-show-for="in_person online" hidden>
-            <legend class="field__label">What do you want to play? <small>pick any</small></legend>
+            <legend class="field__label">What do you want to play? <small>pick any, or none to just watch</small></legend>
             <div class="choice-grid choice-grid--wrap">
-              <label class="choice choice--check"><input type="checkbox" name="events" value="casual_smash"><span>Casual Smash Cup <em>3 PM · in person</em></span></label>
-              <label class="choice choice--check"><input type="checkbox" name="events" value="smash_championship"><span>Smash Championship <em>5:25 PM · local + remote</em></span></label>
+              <label class="choice choice--check"><input type="checkbox" name="events" value="casual_smash"><span>Casual Smash Cup <em>3 PM · beginner-friendly</em></span></label>
+              <label class="choice choice--check"><input type="checkbox" name="events" value="smash_championship"><span>Smash Championship <em>5:25 PM · bracket play</em></span></label>
               <label class="choice choice--check"><input type="checkbox" name="events" value="friendslop"><span>friendslop <em>6:45 PM</em></span></label>
               <label class="choice choice--check"><input type="checkbox" name="events" value="jackbox"><span>Casual Jackbox <em>4 PM · phone in hand</em></span></label>
-              <label class="choice choice--check"><input type="checkbox" name="events" value="fortnite"><span>Fortnite <em>8:30 PM · online</em></span></label>
-              <label class="choice choice--check"><input type="checkbox" name="events" value="freeplay"><span>Mario Kart &amp; tabletop <em>all day, no sign-up needed</em></span></label>
+              <label class="choice choice--check"><input type="checkbox" name="events" value="fortnite"><span>Fortnite <em>8:30 PM · squads</em></span></label>
+              <label class="choice choice--check"><input type="checkbox" name="events" value="watching"><span>Just watching <em>cheering counts</em></span></label>
             </div>
           </fieldset>
 
-          <div class="field-row" data-show-for="in_person online" hidden>
+          <div class="field-row">
             <label class="field">
-              <span class="field__label">Nintendo friend code <small>for online Smash</small></span>
+              <span class="field__label">Nintendo friend code <small>for Smash</small></span>
               <input type="text" name="friend_code" maxlength="20" inputmode="numeric" placeholder="SW-0000-0000-0000">
             </label>
             <label class="field">
-              <span class="field__label">Discord handle <small>for remote voice</small></span>
+              <span class="field__label">Discord handle <small>for voice and match calls</small></span>
               <input type="text" name="discord" maxlength="60" placeholder="yourname">
             </label>
           </div>
-
-          <fieldset class="field" data-show-for="in_person" hidden>
-            <legend class="field__label">OK to appear on the stream?</legend>
-            <div class="choice-grid">
-              <label class="choice"><input type="radio" name="camera_ok" value="yes" checked><span>Sure, put me on</span></label>
-              <label class="choice"><input type="radio" name="camera_ok" value="no"><span>I'd rather stay off camera</span></label>
-            </div>
-          </fieldset>
 
           <label class="field">
             <span class="field__label">Anything else for AJ?</span>
@@ -453,7 +376,7 @@
             <button class="btn btn--gold btn--lg" type="submit" id="rsvpSubmit">Count me in</button>
             <p class="rsvp__status" id="rsvpStatus" role="status" aria-live="polite"></p>
           </div>
-          <p class="fineprint fineprint--tight">The address is shared by email with in-person guests only. We won't use your email for anything else.</p>
+          <p class="fineprint fineprint--tight">We only use your email for event details. Nothing else, ever.</p>
         </form>
 
         <div class="rsvp__success" id="rsvpSuccess" hidden>
@@ -471,12 +394,9 @@
           <p><strong>The RSVP form opens soon.</strong> In the meantime, copy this message and send it to AJ:</p>
           <pre id="signupTemplate">Hey AJ! Count me in for AJ's Annual Quest.
 Name:
-Joining: in person / online / just watching
-Guests I'm bringing:
-Events: Casual Smash Cup / Championship / friendslop / Jackbox / Fortnite
-Nintendo friend code (for online Smash):
-Discord handle:
-Food notes:</pre>
+Events: Casual Smash Cup / Championship / friendslop / Jackbox / Fortnite / just watching
+Nintendo friend code (for Smash):
+Discord handle:</pre>
           <button class="btn btn--ghost" id="copySignup" type="button">Copy message</button>
         </div>
       </div>
@@ -496,31 +416,31 @@ Food notes:</pre>
           <h3>Casual Smash Cup</h3>
           <p class="bracket__tagline">Never played? Perfect.</p>
           <ul class="checklist">
-            <li>In person, 4-player free-for-alls with items on</li>
+            <li>4-player free-for-alls with items on</li>
             <li>Short heats, simple rules, friendly trash talk</li>
-            <li>Sign up when you arrive. Entries close just before 3</li>
-            <li>One small prize for the champion, handed over immediately</li>
+            <li>Entries close just before 3 PM</li>
+            <li>One small prize for the champion</li>
           </ul>
         </article>
 
         <article class="bracket__card bracket__card--featured reveal" data-reveal>
           <div class="bracket__badge">5:25 PM</div>
           <h3>Competitive Championship</h3>
-          <p class="bracket__tagline">One bracket. Local and remote players, together.</p>
+          <p class="bracket__tagline">One bracket. Everyone who signs up.</p>
           <ul class="checklist">
             <li>1v1 · 3 stock · no items · agreed stage list</li>
             <li>Short early rounds, best-of-three grand final if time allows</li>
-            <li>Remote players: pre-register the night before and check in 10–15 min before your match on Discord</li>
+            <li>Sign up the night before and check in on Discord 10–15 minutes before your match</li>
             <li>Roster closes at 5 PM. Small prize for the winner</li>
           </ul>
-          <p class="fineprint fineprint--tight">Online matches run through Smash Battle Arenas. We're testing the cross-location setup ahead of time, but expect a little lag and a little patience.</p>
+          <p class="fineprint fineprint--tight">Matches run through Smash Battle Arenas. Expect a little lag and a little patience.</p>
         </article>
       </div>
 
       <div class="signup reveal" data-reveal>
         <div class="signup__head">
           <h3>Sign up to play</h3>
-          <p>Tick the Smash events on the RSVP form and you're in the bracket. Walk-up sign-ups are welcome at the door; remote Championship entrants should register ahead of time.</p>
+          <p>Tick the Smash events on the sign-up form and you're in the bracket. Register the night before so we can seed it, then watch Discord for your match call.</p>
         </div>
         <div class="signup__actions">
           <a class="btn btn--gold btn--lg" href="#rsvp">Go to the RSVP form</a>
@@ -534,7 +454,7 @@ Food notes:</pre>
     <div class="container">
       <header class="section__head reveal" data-reveal>
         <h2 class="display">Watch Live</h2>
-        <p class="section__lede">Can't make it to the house? The stream runs from 2 PM until roughly 11:30 PM with cozy intermissions between games.</p>
+        <p class="section__lede">The stream runs from 2 PM until roughly 11:30 PM with cozy intermissions between games.</p>
       </header>
       <div class="booth reveal" data-reveal>
         <div class="booth__lights" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
@@ -561,32 +481,24 @@ Food notes:</pre>
       </header>
       <div class="faq reveal" data-reveal>
         <details>
-          <summary>I'm not a gamer. Should I still come?</summary>
-          <p>Yes. Half the party is here for the snacks, the board games and the people. There's always a couch, a card game and someone to chat with.</p>
+          <summary>I'm not a gamer. Is this for me?</summary>
+          <p>Yes. Half the fun is the chat, the commentary and the chaos. Watch along, play Jackbox from your phone, and cheer for whoever's losing.</p>
         </details>
         <details>
           <summary>Do I have to donate?</summary>
           <p>No. But it's the reason we do this. Donations go straight to Children's National Hospital through Extra Life, and even $5 counts.</p>
         </details>
         <details>
-          <summary>Will I be on camera?</summary>
-          <p>Only if you want to be. The stream desk and Smash arena are on camera; the lounge and tabletop area are camera-free. Just let AJ know if you'd rather stay off stream.</p>
+          <summary>How do I play?</summary>
+          <p>Sign up above and pick your events. Smash runs through Battle Arenas, Jackbox through a room code on stream, and Fortnite as squads. Match times and the Discord invite come by email.</p>
         </details>
         <details>
-          <summary>Can I play from home?</summary>
-          <p>Absolutely. Remote players get scheduled slots in the Smash Championship, friendslop, casual Jackbox and the late Fortnite session. Register ahead so we can save you a seat.</p>
+          <summary>What do I need?</summary>
+          <p>A Switch with Smash Ultimate and Nintendo Switch Online for the Smash events, a phone for Jackbox, and Fortnite on anything it runs on. Discord for voice.</p>
         </details>
         <details>
-          <summary>What should I bring?</summary>
-          <p>Just yourself. If you have a favorite Switch controller, bring it; it helps during the tournament. Food and drinks are covered.</p>
-        </details>
-        <details>
-          <summary>What's the deal with quiet hour?</summary>
-          <p>Around 7:30 the littlest party member goes to bed. We turn the volume down for about an hour, keep the upstairs off-limits, and let AJ step away. After that, the house party continues while the stream moves to Fortnite.</p>
-        </details>
-        <details>
-          <summary>Where is it?</summary>
-          <p>At AJ's place. The address comes with your RSVP, not on the public site.</p>
+          <summary>Why does the stream go quiet around 7:30?</summary>
+          <p>Intermission. AJ steps away for about an hour, then the stream comes back at 8:30 for Fortnite.</p>
         </details>
       </div>
     </div>

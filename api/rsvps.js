@@ -4,7 +4,7 @@ import { list, get } from "@vercel/blob";
 
 const COLUMNS = ["submitted_at", "name", "email", "attendance", "guests", "events", "friend_code", "discord", "dietary", "camera_ok", "note", "user_agent"];
 const LABELS = { in_person: "In person", online: "Online", watching: "Watching" };
-const EVENT_LABELS = { casual_smash: "Casual Smash Cup", smash_championship: "Smash Championship", friendslop: "friendslop", jackbox: "Casual Jackbox", fortnite: "Fortnite", freeplay: "Mario Kart & tabletop" };
+const EVENT_LABELS = { casual_smash: "Casual Smash Cup", smash_championship: "Smash Championship", friendslop: "friendslop", jackbox: "Casual Jackbox", fortnite: "Fortnite", freeplay: "Mario Kart & tabletop", watching: "Just watching" };
 
 const csvCell = (v) => { const s = String(v ?? ""); return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; };
 

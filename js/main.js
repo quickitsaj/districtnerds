@@ -184,18 +184,18 @@
 
   /* ---------- schedule ---------- */
   const SCHEDULE = [
-    { t: "2:00 PM", h: 14, m: 0, icon: "🚪", title: "Doors open · stream goes live", desc: "Snacks out, consoles on, Smash sign-ups at the door. Say hi to the webcam.", tags: ["inperson", "stream"] },
-    { t: "2:30 PM", h: 14, m: 30, icon: "🔺", title: "Ocarina of Time remake showcase", desc: "AJ's first-ever playthrough, 30 minutes, live. No spoilers in chat.", tags: ["inperson", "stream"] },
-    { t: "3:00 PM", h: 15, m: 0, icon: "⭐", title: "Casual Smash Cup", desc: "Beginner-friendly free-for-alls. Items on, egos off. Small prize for the winner.", tags: ["inperson", "stream"] },
-    { t: "4:00 PM", h: 16, m: 0, icon: "📱", title: "Casual Jackbox · remote play", desc: "Online friends, this one's for you. Food lands around 4 too, so eat when you like.", tags: ["inperson", "remote", "stream"] },
-    { t: "5:00 PM", h: 17, m: 0, icon: "🎂", title: "Cake, group photo & the fundraising moment", desc: "The one time we gather everybody in one room. Bring your best photo face.", tags: ["inperson", "stream"], big: true },
-    { t: "5:25 PM", h: 17, m: 25, icon: "🏆", title: "Competitive Smash Championship", desc: "One bracket, local and remote players together. 1v1, 3 stock, no items. Remote entrants check in on Discord by 5:10.", tags: ["inperson", "remote", "stream"] },
-    { t: "6:45 PM", h: 18, m: 45, icon: "💬", title: "friendslop main event", desc: "The featured party-game block with open slots for remote players. Game reveal coming soon.", tags: ["inperson", "remote", "stream"] },
-    { t: "7:30 PM", h: 19, m: 30, icon: "🌙", title: "Quiet hour · free play", desc: "Volume down, board games up. Stream takes a cozy intermission.", tags: ["inperson"] },
-    { t: "8:30 PM", h: 20, m: 30, icon: "🎯", title: "Fortnite after dark", desc: "The stream shifts to an online squad session with the remote crew. The house party keeps rolling at its own pace.", tags: ["remote", "stream"] },
-    { t: "11:15 PM", h: 23, m: 15, icon: "💛", title: "Final fundraising recap & sign-off", desc: "The total, the thank-yous, and goodnight.", tags: ["stream"] },
+    { t: "2:00 PM", h: 14, m: 0, icon: "📡", title: "Stream goes live", desc: "Say hi in chat. Smash sign-ups are open until 5.", tags: ["watch"] },
+    { t: "2:30 PM", h: 14, m: 30, icon: "🔺", title: "Ocarina of Time remake showcase", desc: "AJ's first-ever playthrough, 30 minutes, live. No spoilers in chat.", tags: ["watch"] },
+    { t: "3:00 PM", h: 15, m: 0, icon: "⭐", title: "Casual Smash Cup", desc: "Beginner-friendly free-for-alls. Items on, egos off. Small prize for the winner.", tags: ["play", "watch"] },
+    { t: "4:00 PM", h: 16, m: 0, icon: "📱", title: "Casual Jackbox", desc: "Grab the room code off the stream and play from your phone.", tags: ["play", "watch"] },
+    { t: "5:00 PM", h: 17, m: 0, icon: "💛", title: "The fundraising moment", desc: "Where the total stands, who we're doing this for, and a toast to the kids.", tags: ["watch"], big: true },
+    { t: "5:25 PM", h: 17, m: 25, icon: "🏆", title: "Smash Championship", desc: "One bracket. 1v1, 3 stock, no items. Check in on Discord by 5:10 for your match call.", tags: ["play", "watch"] },
+    { t: "6:45 PM", h: 18, m: 45, icon: "💬", title: "friendslop main event", desc: "The featured party-game block with open seats for anyone signed up. Game reveal coming soon.", tags: ["play", "watch"] },
+    { t: "7:30 PM", h: 19, m: 30, icon: "🌙", title: "Intermission", desc: "The stream takes a breather. Back at 8:30.", tags: ["watch"] },
+    { t: "8:30 PM", h: 20, m: 30, icon: "🎯", title: "Fortnite after dark", desc: "Squad session with everyone who signed up. Voice on Discord.", tags: ["play", "watch"] },
+    { t: "11:15 PM", h: 23, m: 15, icon: "💛", title: "Final fundraising recap & sign-off", desc: "The total, the thank-yous, and goodnight.", tags: ["watch"] },
   ];
-  const TAG_LABEL = { inperson: ["In person", "tag--inperson"], remote: ["Remote-friendly", "tag--remote"], stream: ["On stream", "tag--stream"] };
+  const TAG_LABEL = { play: ["Join in", "tag--play"], watch: ["Watch", "tag--watch"] };
   const timeline = $("#timeline");
   function eventTime(it) {
     const d = new Date(start);
@@ -406,14 +406,6 @@
   if (rsvpForm) {
     if (!rsvpBackend) { rsvpForm.hidden = true; rsvpOffline.hidden = false; }
 
-    // show/hide conditional groups based on attendance
-    const groups = $$("[data-show-for]", rsvpForm);
-    function syncGroups() {
-      const v = rsvpForm.attendance.value;
-      groups.forEach((g) => { g.hidden = !(v && g.dataset.showFor.split(" ").includes(v)); });
-    }
-    $$("input[name=attendance]", rsvpForm).forEach((r) => r.addEventListener("change", syncGroups));
-    syncGroups();
 
     // returning visitor
     try {
@@ -424,13 +416,14 @@
     function showSuccess(data) {
       rsvpForm.hidden = true; rsvpSuccess.hidden = false;
       const t = $("#rsvpSuccessText");
-      if (data.attendance === "in_person") t.textContent = `Your seat's saved, ${data.name}. AJ will send the address to ${data.email} before the big day.`;
-      else if (data.attendance === "online") t.textContent = `Your seat's saved, ${data.name}. Keep an eye on ${data.email} for Discord and match details.`;
-      else t.textContent = `Thanks, ${data.name}! The stream goes live November 7 at 2 PM ET. See you in chat.`;
+      const playing = (data.events || []).some((e) => e !== "watching");
+      t.textContent = playing
+        ? `Your seat's saved, ${data.name}. Keep an eye on ${data.email} for the Discord invite and your match times.`
+        : `Thanks, ${data.name}! The stream goes live November 7 at 2 PM ET. See you in chat.`;
     }
     $("#rsvpAgain")?.addEventListener("click", () => {
       try { localStorage.removeItem("quest-rsvp"); } catch (e) { /* ignore */ }
-      rsvpForm.reset(); syncGroups(); rsvpSuccess.hidden = true; rsvpForm.hidden = false; rsvpStatus.textContent = "";
+      rsvpForm.reset(); rsvpSuccess.hidden = true; rsvpForm.hidden = false; rsvpStatus.textContent = "";
       rsvpForm.name.focus();
     });
     $("[data-action=calendar]", rsvpSuccess)?.addEventListener("click", () => $("#addToCal")?.click());
@@ -441,13 +434,9 @@
       return {
         name: clean("name", 120),
         email: clean("email", 200).toLowerCase(),
-        attendance: clean("attendance", 20),
-        guests: Math.max(0, Math.min(10, parseInt(fd.get("guests") || "0", 10) || 0)),
         events: fd.getAll("events").map(String).slice(0, 10),
         friend_code: clean("friend_code", 20),
         discord: clean("discord", 60),
-        dietary: clean("dietary", 200),
-        camera_ok: clean("camera_ok", 3) || null,
         note: clean("note", 1000),
         user_agent: navigator.userAgent.slice(0, 200),
       };
@@ -457,7 +446,6 @@
       $$("[aria-invalid]", rsvpForm).forEach((el) => el.removeAttribute("aria-invalid"));
       if (!d.name) { bad = rsvpForm.name; rsvpStatus.textContent = "Tell us your name so we know who's coming."; }
       else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) { bad = rsvpForm.email; rsvpStatus.textContent = "That email doesn't look right."; }
-      else if (!d.attendance) { bad = $("input[name=attendance]", rsvpForm); rsvpStatus.textContent = "Let us know how you're joining."; }
       if (bad) { bad.setAttribute("aria-invalid", "true"); bad.focus(); return false; }
       return true;
     }
@@ -502,7 +490,7 @@
       rsvpStatus.textContent = "Sending…"; rsvpStatus.classList.remove("is-ok");
       try {
         await submit(d);
-        try { localStorage.setItem("quest-rsvp", JSON.stringify({ name: d.name, email: d.email, attendance: d.attendance })); } catch (err) { /* ignore */ }
+        try { localStorage.setItem("quest-rsvp", JSON.stringify({ name: d.name, email: d.email, events: d.events })); } catch (err) { /* ignore */ }
         rsvpStatus.textContent = "";
         showSuccess(d);
         partyRain(true);

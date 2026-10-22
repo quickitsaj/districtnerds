@@ -20,7 +20,7 @@ var HEADERS = ["Submitted", "Name", "Email", "Joining", "Guests", "Events",
 var JOINING = { in_person: "In person", online: "Online", watching: "Watching" };
 var EVENTS = {
   casual_smash: "Casual Smash Cup", smash_championship: "Smash Championship", friendslop: "friendslop",
-  jackbox: "Casual Jackbox", fortnite: "Fortnite", freeplay: "Mario Kart & tabletop"
+  jackbox: "Casual Jackbox", fortnite: "Fortnite", freeplay: "Mario Kart & tabletop", watching: "Just watching"
 };
 
 function clip(v, max) { return String(v == null ? "" : v).trim().slice(0, max); }
@@ -35,8 +35,8 @@ function doPost(e) {
     if (data.website) return reply({ ok: true });
 
     var name = clip(data.name, 120), email = clip(data.email, 200).toLowerCase();
-    var joining = JOINING[clip(data.attendance, 20)];
-    if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !joining) return reply({ ok: false, error: "missing fields" });
+    var joining = JOINING[clip(data.attendance, 20)] || "";
+    if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return reply({ ok: false, error: "missing fields" });
 
     var events = (Array.isArray(data.events) ? data.events : []).slice(0, 10)
       .map(function (k) { return EVENTS[k] || clip(k, 40); }).join(", ");

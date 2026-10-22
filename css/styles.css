@@ -209,7 +209,8 @@ button { font: inherit; }
 
 .tags { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; }
 .tag { font-size: .7rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; padding: 4px 9px; border-radius: 4px; border: 1.5px solid rgba(243, 196, 90, .6); color: var(--gold); font-family: var(--font-head); }
-.tag--remote { color: #7fd3de; border-color: rgba(127, 211, 222, .6); }
+.tag--play { color: #7fd3de; border-color: rgba(127, 211, 222, .6); }
+.tag--watch { color: var(--muted); border-color: rgba(185, 176, 214, .5); }
 
 /* ---------- watch / play / give ---------- */
 .section--paths { padding-top: clamp(28px, 4vw, 48px); }

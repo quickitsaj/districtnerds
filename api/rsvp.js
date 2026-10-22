@@ -5,7 +5,7 @@ import { put } from "@vercel/blob";
 import { randomUUID } from "node:crypto";
 
 const ATTENDANCE = new Set(["in_person", "online", "watching"]);
-const EVENTS = new Set(["casual_smash", "smash_championship", "friendslop", "jackbox", "fortnite", "freeplay"]);
+const EVENTS = new Set(["casual_smash", "smash_championship", "friendslop", "jackbox", "fortnite", "freeplay", "watching"]);
 
 const CORS = {
   "Access-Control-Allow-Origin": "*",
@@ -30,8 +30,8 @@ export default async function handler(req, res) {
 
   const name = clip(data.name, 120);
   const email = clip(data.email, 200).toLowerCase();
-  const attendance = clip(data.attendance, 20);
-  if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !ATTENDANCE.has(attendance)) {
+  const attendance = ATTENDANCE.has(clip(data.attendance, 20)) ? clip(data.attendance, 20) : "";
+  if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return res.status(400).json({ ok: false, error: "missing fields" });
   }
 
