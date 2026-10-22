@@ -41,7 +41,7 @@ Submissions go to whichever backend is configured in `js/config.js`:
   Blob store; `GET /api/rsvps?key=RSVP_ADMIN_KEY` downloads them all as CSV (`&format=json` for JSON).
   `RSVP_ADMIN_KEY` is a project environment variable; the Blob store supplies `BLOB_READ_WRITE_TOKEN`
   when connected to the project. Until a store is connected the receiver answers 503 and the form says
-  RSVPs aren't open yet. The site is deployed to Vercel with the REST API (no git link yet).
+  RSVPs aren't open yet. The site is deployed to Vercel through the REST API: the build runs `scripts/fetch-source.sh`, which downloads the branch named by `SOURCE_REF` from GitHub and stages the static files in `public/` (add `GITHUB_TOKEN` while the repo is private).
 - **Google Sheet (alternative)** — the sheet "AJ's Annual Quest RSVPs" lives in AJ's Google Drive. Open it,
   go to Extensions → Apps Script, paste `google-apps-script/Code.gs`, run `setup` once, then
   Deploy → New deployment → Web app, Execute as *Me*, Who has access *Anyone*. Paste the web app URL
