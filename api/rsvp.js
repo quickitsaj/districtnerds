@@ -52,7 +52,7 @@ export default async function handler(req, res) {
     ip_hint: clip(req.headers["x-forwarded-for"], 60).split(",")[0],
   };
 
-  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+  if (!process.env.BLOB_READ_WRITE_TOKEN && !process.env.BLOB_STORE_ID) {
     return res.status(503).json({ ok: false, error: "storage not configured" });
   }
   try {

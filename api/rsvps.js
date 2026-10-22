@@ -14,7 +14,7 @@ export default async function handler(req, res) {
   if (!key || !given || given.length !== key.length || !timingSafeEqual(given, key)) {
     return res.status(401).json({ ok: false, error: "unauthorized" });
   }
-  if (!process.env.BLOB_READ_WRITE_TOKEN) return res.status(503).json({ ok: false, error: "storage not configured" });
+  if (!process.env.BLOB_READ_WRITE_TOKEN && !process.env.BLOB_STORE_ID) return res.status(503).json({ ok: false, error: "storage not configured" });
 
   const records = [];
   let cursor;
