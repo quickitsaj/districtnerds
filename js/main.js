@@ -257,6 +257,8 @@
   /* ---------- parallax forest + nav hide ---------- */
   const forestLayers = $$(".forest__layer");
   const nav = $("#nav");
+  const scrollHint = $("#scrollHint");
+  if (scrollHint) scrollHint.addEventListener("click", () => window.scrollBy({ top: window.innerHeight * 0.8, behavior: reduceMotion() ? "auto" : "smooth" }));
   let lastY = 0, ticking = false;
   function onScroll() {
     if (ticking) return;
@@ -268,6 +270,7 @@
       }
       if (nav) nav.style.transform = y > 120 && y > lastY + 4 ? "translateY(-110%)" : "translateY(0)";
       if (hero && !reduceMotion()) hero.style.setProperty("--sy", Math.min(y, 900));
+      if (scrollHint) scrollHint.classList.toggle("is-hidden", y > 60);
       lastY = y;
       updateTimelinePath();
       ticking = false;
