@@ -16,7 +16,7 @@ window.QUEST_CONFIG = {
     rsvp:     "",   // party RSVP form
     signup:   "",   // Smash / game sign-up form (can be the same as rsvp)
     stream:   "https://www.twitch.tv/quickitsaj",
-    discord:  "",   // invite for remote players (optional)
+    discord:  "https://discord.gg/upgXwh2fN",   // invite for remote players (optional)
     extraLife: "https://www.extra-life.org",
     childrensNational: "https://childrensnational.org",
   },

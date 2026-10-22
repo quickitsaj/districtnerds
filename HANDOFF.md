@@ -32,7 +32,7 @@ the footer); no districtnerds.com plank or QR card on the page; no fineprint lin
 quiet-hour section; no in-person language; one Smash bracket instead of two; intermission is 30
 minutes; the intermission FAQ and the email fineprint are gone.
 
-Sign-up form fields: name, email, events (Smash, friendslop, Jackbox, Fortnite, Just watching),
+Sign-up form fields: name, email, events (Smash, friendslop, Fortnite; none = just watching),
 Nintendo friend code, Discord handle, Suggest a game, note, plus a honeypot.
 
 ## 2. Links and config
@@ -42,7 +42,7 @@ Everything outward lives in `js/config.js`:
 - Donate: https://dd.extra-life.org/participants/quickitsaj (live on three buttons).
 - Stream: https://www.twitch.tv/quickitsaj. The Twitch player embeds itself from one hour before
   doors to one hour after sign-off (`stream.twitchChannel`, `alwaysEmbed` to force).
-- Discord invite: not set. The "Join the Discord" button is greyed out until `links.discord` has a URL.
+- Discord invite: set in `links.discord` (https://discord.gg/upgXwh2fN).
 - RSVP endpoint: https://districtnerds.vercel.app/api/rsvp (see §4).
 - Fundraising meter: hidden until `fundraising.goal` is a number; `raised` is updated by hand.
 - Event timing: `eventStart` 2026-11-07T14:00-05:00, `streamEnd` 23:30. The countdown flips to a
@@ -115,7 +115,7 @@ attendance (legacy, blank now), guests (legacy), events, friend_code, discord, s
 1. **friendslop**: decide the actual game; the panel and schedule say "game reveal coming soon".
 2. **Ocarina of Time remake**: confirm title, release, platform and streaming rules before the day;
    fall back to a Zelda showcase if needed.
-3. **Discord invite** into `links.discord`.
+3. ~~**Discord invite** into `links.discord`~~ (done).
 4. **Fundraising meter**: set a goal if wanted; update `raised` by hand or wire the Extra Life API.
 5. **Poster**: the hero art still shows a Mario Kart plank; a new export would fix it.
 6. **Promote to main** and point `SOURCE_REF` at it once content is final.
