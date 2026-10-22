@@ -40,10 +40,14 @@ Submissions go to whichever backend is configured in `js/config.js`:
   `rsvp_summary` view) and export CSV from there.
 - **Vercel receiver (live)** — `api/rsvp.js` and `api/rsvps.js` run as Vercel Functions in the
   `districtnerds` project (Capno Labs team). Each RSVP is stored as one JSON file in a private Vercel
-  Blob store; `GET /api/rsvps?key=RSVP_ADMIN_KEY` downloads them all as CSV (`&format=json` for JSON).
+  Blob store; `GET /api/rsvps?key=RSVP_ADMIN_KEY` downloads them all as CSV (`&format=json` for JSON, `&format=html` for a phone-friendly list with
+  event counts, filters and search). With `RESEND_API_KEY` and `RSVP_NOTIFY_TO` set, each new sign-up
+  is emailed to the host through Resend (`api/_notify.js`); a failed email never fails the sign-up.
   `RSVP_ADMIN_KEY` is a project environment variable; the Blob store supplies `BLOB_READ_WRITE_TOKEN`
   when connected to the project. Until a store is connected the receiver answers 503 and the form says
-  RSVPs aren't open yet. The site is deployed to Vercel through the REST API: the build runs `scripts/fetch-source.sh`, which downloads the branch named by `SOURCE_REF` from GitHub and stages the static files in `public/` (add `GITHUB_TOKEN` while the repo is private).
+  RSVPs aren't open yet. The site is deployed to Vercel through the REST API: the build runs `scripts/fetch-source.sh`, which downloads the branch named by `SOURCE_REF` from GitHub and stages the static files in `public/` (add `GITHUB_TOKEN` while the repo is private). That script only stages the static site: the `api/`
+  functions are whatever files the deployment uploaded, so changes under `api/` need a deploy that
+  uploads them; a plain redeploy keeps the old functions.
 - **Google Sheet (alternative)** — the sheet "AJ's Annual Quest RSVPs" lives in AJ's Google Drive. Open it,
   go to Extensions → Apps Script, paste `google-apps-script/Code.gs`, run `setup` once, then
   Deploy → New deployment → Web app, Execute as *Me*, Who has access *Anyone*. Paste the web app URL

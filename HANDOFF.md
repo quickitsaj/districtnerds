@@ -99,11 +99,17 @@ the Capno Labs team, so the project is not linked to the repo. Instead the build
 **RSVP receiver.** `api/rsvp.js` validates and stores one JSON blob per sign-up in the private Blob
 store `districtnerds-rsvps` (`store_kbM9C4dTPQTuqca2`), authenticated through `BLOB_STORE_ID` plus
 Vercel OIDC (no read-write token variable exists; the SDK handles it). `api/rsvps.js` exports CSV
-(`?format=json` for JSON) and `api/health.js` does a write-read probe, both gated by
+(`?format=json` for JSON, `?format=html` for the phone view) and `api/health.js` does a write-read probe, both gated by
 `RSVP_ADMIN_KEY`, a sensitive project env var whose value was shared with AJ in chat and is not in
 the repo. One real sign-up exists (AJ's test). Export columns: submitted_at, name, email,
 attendance (legacy, blank now), guests (legacy), events, friend_code, discord, suggestion, dietary
 (legacy), camera_ok (legacy), note, user_agent.
+
+**Sign-up emails.** `api/_notify.js` emails `RSVP_NOTIFY_TO` (arthurke117@gmail.com) on every
+sign-up via Resend: the new person's details, running event totals, and a "See everyone" link to
+the phone view. Needs `RESEND_API_KEY`. The sender defaults to `onboarding@resend.dev`, which only
+delivers to the Resend account owner's own address; to send from `@districtnerds.com`, verify the
+domain in Resend (DNS is at GoDaddy) and set `RSVP_NOTIFY_FROM`.
 
 **Alternatives kept in the repo but unused:** `google-apps-script/Code.gs` plus the Google Sheet
 "AJ's Annual Quest RSVPs" in AJ's Drive (never deployed; needs a desktop to publish the script), and

@@ -3,6 +3,7 @@
 // two people submitting at once never overwrite each other.
 import { put } from "@vercel/blob";
 import { randomUUID } from "node:crypto";
+import { notifySignup } from "./_notify.js";
 
 const ATTENDANCE = new Set(["in_person", "online", "watching"]);
 const EVENTS = new Set(["smash", "casual_smash", "smash_championship", "friendslop", "jackbox", "fortnite", "freeplay", "watching"]);
@@ -63,9 +64,12 @@ export default async function handler(req, res) {
       contentType: "application/json",
       addRandomSuffix: false,
     });
-    return res.status(200).json({ ok: true });
   } catch (err) {
     console.error("rsvp store failed", err);
     return res.status(500).json({ ok: false, error: "store failed" });
   }
+  // Stored; now tell the host. Awaited so the function isn't frozen mid-send,
+  // but notifySignup never throws and gives up after a few seconds.
+  await notifySignup(record);
+  return res.status(200).json({ ok: true });
 }
