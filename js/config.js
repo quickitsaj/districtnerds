@@ -7,8 +7,7 @@
 window.QUEST_CONFIG = {
   // Event timing (Eastern Time; DST ends Nov 1 2026 so Nov 7 is EST / UTC-5)
   eventStart: "2026-11-07T14:00:00-05:00", // doors + stream go live
-  partyEnd:   "2026-11-07T22:00:00-05:00", // advertised "10 PM+"
-  streamEnd:  "2026-11-07T23:30:00-05:00", // approximate sign-off
+  streamEnd:  "2026-11-08T02:30:00-05:00", // approximate sign-off (wrap-up starts 2 AM)
 
   // Public links — fill in when confirmed. Empty = "coming soon".
   links: {

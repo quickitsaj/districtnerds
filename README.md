@@ -1,7 +1,7 @@
 # AJ's Annual Quest — For the Kids
 
 Event site for **District Nerds presents AJ's Annual Quest**, an Extra Life gaming fundraiser
-benefiting Children's National Hospital. Saturday, November 7, 2026 · 2 PM – 10 PM+ · districtnerds.com
+benefiting Children's National Hospital. Saturday, November 7, 2026 · 2 PM – 2 AM · districtnerds.com
 
 See `HANDOFF.md` for the full state of the project, hosting and open items.
 

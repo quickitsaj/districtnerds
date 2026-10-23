@@ -152,8 +152,7 @@
 
   /* ---------- countdown ---------- */
   const start = new Date(CFG.eventStart || "2026-11-07T14:00:00-05:00");
-  const partyEnd = new Date(CFG.partyEnd || "2026-11-07T22:00:00-05:00");
-  const streamEnd = new Date(CFG.streamEnd || "2026-11-07T23:30:00-05:00");
+  const streamEnd = new Date(CFG.streamEnd || "2026-11-08T02:30:00-05:00");
   const cd = { d: $("#cdDays"), h: $("#cdHours"), m: $("#cdMins"), s: $("#cdSecs"), label: $("#countdownLabel"), wrap: $("#countdown") };
   const pad = (n) => String(n).padStart(2, "0");
   function setNum(el, v) {
@@ -161,18 +160,39 @@
     el.textContent = v;
     if (!reduceMotion()) { el.classList.remove("tick"); void el.offsetWidth; el.classList.add("tick"); }
   }
+  // While the stream is live, the booth (player + Twitch/Discord buttons) takes the countdown's place in the hero.
+  const heroBooth = $("#heroBooth");
+  const watchSection = $("#watch");
+  const booth = $(".booth");
+  const boothHome = booth?.parentElement;
+  let boothInHero = false;
+  function placeBooth(live) {
+    if (!booth || !heroBooth || live === boothInHero) return;
+    boothInHero = live;
+    if (live) {
+      heroBooth.appendChild(booth);
+      booth.classList.add("is-in");
+      heroBooth.hidden = false;
+      if (watchSection) watchSection.hidden = true;
+    } else {
+      boothHome?.appendChild(booth);
+      heroBooth.hidden = true;
+      if (watchSection) watchSection.hidden = false;
+    }
+    if (cd.wrap) cd.wrap.hidden = live;
+  }
   function tickCountdown() {
     const now = new Date();
-    let diff = start - now;
-    if (diff <= 0 && now < streamEnd) {
-      cd.wrap?.classList.add("is-live");
-      cd.label.textContent = now < partyEnd ? "The quest is underway! Stream ends in" : "Party's still going. Stream ends in";
-      diff = streamEnd - now;
-    } else if (diff <= 0) {
+    const diff = start - now;
+    const live = diff <= 0 && now < streamEnd;
+    placeBooth(live);
+    if (live) return;
+    if (diff <= 0) {
       cd.label.textContent = "The quest is complete. Thank you for playing for the kids!";
       $(".countdown__grid")?.setAttribute("hidden", "");
       return;
     }
+    cd.label.textContent = "The quest begins in";
     const s = Math.floor(diff / 1000);
     setNum(cd.d, pad(Math.floor(s / 86400)));
     setNum(cd.h, pad(Math.floor((s % 86400) / 3600)));
@@ -191,24 +211,35 @@
     { t: "6:15 PM", h: 18, m: 15, icon: "💬", title: "friendslop", desc: "Co-op party games until intermission, with open seats for anyone signed up. Game to be announced.", tags: ["play", "watch"] },
     { t: "7:30 PM", h: 19, m: 30, icon: "🌙", title: "Intermission", desc: "30-minute break. Back at 8:00.", tags: ["watch"] },
     { t: "8:00 PM", h: 20, m: 0, icon: "🎯", title: "Fortnite", desc: "Squads with everyone who signed up. Voice on Discord.", tags: ["play", "watch"] },
-    { t: "11:15 PM", h: 23, m: 15, icon: "💛", title: "Wrap-up", desc: "Final fundraising total and sign-off.", tags: ["watch"] },
+    { t: "2:00 AM", h: 26, m: 0, icon: "💛", title: "Wrap-up", desc: "Final fundraising total and sign-off.", tags: ["watch"] },
   ];
   const TAG_LABEL = { play: ["Join in", "tag--play"], watch: ["Watch", "tag--watch"] };
   const timeline = $("#timeline");
+  // Schedule hours are Eastern and relative to the 2 PM start, so the NOW marker is right in any time zone.
+  const START_MIN = 14 * 60;
   function eventTime(it) {
-    const d = new Date(start);
-    d.setHours(it.h, it.m, 0, 0);
-    return d;
+    return new Date(start.getTime() + ((it.h * 60 + it.m) - START_MIN) * 60000);
+  }
+  let lastNowIdx = null;
+  function currentSlot(now, isEventDay) {
+    let idx = -1;
+    if (isEventDay) SCHEDULE.forEach((it, i) => { if (eventTime(it) <= now) idx = i; });
+    return idx;
+  }
+  function applyFilter() {
+    const f = $(".filters .chip.is-active")?.dataset.filter || "all";
+    $$(".timeline__item").forEach((li) => {
+      const show = f === "all" || li.dataset.tags.split(" ").includes(f);
+      li.classList.toggle("is-hidden", !show);
+    });
   }
   function renderSchedule() {
     if (!timeline) return;
     timeline.innerHTML = "";
     const now = new Date();
-    const isEventDay = now.toDateString() === start.toDateString();
-    let nowIdx = -1;
-    if (isEventDay) {
-      SCHEDULE.forEach((it, i) => { if (eventTime(it) <= now) nowIdx = i; });
-    }
+    const isEventDay = now >= start && now <= streamEnd;
+    const nowIdx = currentSlot(now, isEventDay);
+    lastNowIdx = nowIdx;
     SCHEDULE.forEach((it, i) => {
       const li = document.createElement("li");
       li.className = "timeline__item" + (it.big ? " timeline__item--big" : "") + (i === nowIdx ? " timeline__item--now" : "") + (isEventDay && i < nowIdx ? " timeline__item--past" : "");
@@ -224,6 +255,7 @@
       timeline.appendChild(li);
     });
     observeTimeline();
+    applyFilter();
   }
   function observeTimeline() {
     const items = $$(".timeline__item");
@@ -234,15 +266,16 @@
     items.forEach((el) => io.observe(el));
   }
   renderSchedule();
+  // Move the NOW marker along during the event without a reload.
+  setInterval(() => {
+    const now = new Date();
+    if (currentSlot(now, now >= start && now <= streamEnd) !== lastNowIdx) renderSchedule();
+  }, 60000);
   $$(".filters .chip").forEach((chip) => {
     chip.addEventListener("click", () => {
       $$(".filters .chip").forEach((c) => c.classList.remove("is-active"));
       chip.classList.add("is-active");
-      const f = chip.dataset.filter;
-      $$(".timeline__item").forEach((li) => {
-        const show = f === "all" || li.dataset.tags.split(" ").includes(f);
-        li.classList.toggle("is-hidden", !show);
-      });
+      applyFilter();
     });
   });
   // timeline path draws as you scroll
@@ -316,14 +349,14 @@
   $("#addToCal")?.addEventListener("click", () => {
     const fmt = (d) => d.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
     const esc = (s) => s.replace(/\\/g, "\\\\").replace(/;/g, "\;").replace(/,/g, "\\,").replace(/\n/g, "\\n");
-    const desc = "District Nerds presents AJ's Annual Quest — For the Kids. An Extra Life gaming fundraiser benefiting Children's National Hospital. Party 2 PM–10 PM+, stream runs until ~11:30 PM. Details: " + (CFG.siteUrl || "https://districtnerds.com");
+    const desc = "District Nerds presents AJ's Annual Quest — For the Kids. An Extra Life gaming fundraiser benefiting Children's National Hospital. Live on Twitch from 2 PM until around 2 AM. Details: " + (CFG.siteUrl || "https://districtnerds.com");
     const ics = [
       "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//District Nerds//AJs Annual Quest//EN", "CALSCALE:GREGORIAN", "METHOD:PUBLISH",
       "BEGIN:VEVENT",
       "UID:ajs-annual-quest-2026@districtnerds.com",
       "DTSTAMP:" + fmt(new Date()),
       "DTSTART:" + fmt(start),
-      "DTEND:" + fmt(partyEnd),
+      "DTEND:" + fmt(streamEnd),
       "SUMMARY:" + esc("AJ's Annual Quest — For the Kids (District Nerds)"),
       "DESCRIPTION:" + esc(desc),
       "URL:" + (CFG.siteUrl || "https://districtnerds.com"),

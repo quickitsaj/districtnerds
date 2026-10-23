@@ -175,6 +175,8 @@ html.reduce-motion .scroll-hint__arrow { animation: none; transform: translateY(
 .wpg__day { font-family: var(--font-head); font-weight: 900; font-size: clamp(2rem, 4.6vw, 3.4rem); color: #fff3c9; letter-spacing: .03em; text-transform: uppercase; line-height: 1; text-shadow: 0 3px 0 #6a4710, 0 8px 20px rgba(0, 0, 0, .5); }
 .wpg__time { font-family: var(--font-head); font-weight: 800; font-size: clamp(1rem, 1.9vw, 1.35rem); color: var(--gold); letter-spacing: .22em; text-transform: uppercase; margin-top: 6px; }
 .countdown { display: inline-block; }
+.hero-booth { width: 100%; max-width: 900px; margin: 6px auto 0; text-align: center; }
+.hero-booth .booth { opacity: 1; transform: none; }
 .countdown__label { font-family: var(--font-head); font-weight: 700; text-transform: uppercase; letter-spacing: .22em; font-size: .7rem; color: var(--muted); margin-bottom: 8px; }
 .countdown__grid { display: flex; justify-content: center; gap: 10px; }
 .countdown__cell { min-width: 64px; padding: 8px 6px; text-align: center; border-radius: 8px; background: rgba(10, 8, 30, .55); border: 1px solid rgba(243, 196, 90, .3); }

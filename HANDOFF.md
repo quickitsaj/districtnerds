@@ -20,7 +20,7 @@ Current lineup and run of show (all Eastern):
 | 6:15 | friendslop main event, runs to intermission | join |
 | 7:30 | Intermission, 30 min | — |
 | 8:00 | Fortnite after dark, squads | join |
-| 11:15 | Final fundraising recap and sign-off | watch |
+| 2:00 AM | Final fundraising recap and sign-off | watch |
 
 Signpost games (hero art and "On the Signpost" tabs): Ocarina of Time Remake, Smash Ultimate,
 friendslop, Fortnite, Board Games. Mario Kart was removed from the lineup; the painted signpost in
@@ -45,8 +45,11 @@ Everything outward lives in `js/config.js`:
 - Discord invite: set in `links.discord` (https://discord.gg/upgXwh2fN).
 - RSVP endpoint: https://districtnerds.vercel.app/api/rsvp (see §4).
 - Fundraising meter: hidden until `fundraising.goal` is a number; `raised` is updated by hand.
-- Event timing: `eventStart` 2026-11-07T14:00-05:00, `streamEnd` 23:30. The countdown flips to a
-  live state on the day and the schedule marks the current block "NOW".
+- Event timing: `eventStart` 2026-11-07T14:00-05:00, `streamEnd` 2026-11-08T02:30-05:00. On the day,
+  the countdown is replaced by the stream booth (player, Twitch and Discord buttons) in the hero, the
+  Watch section below hides, the ON AIR signs light, and the schedule marks the current block "NOW"
+  (times computed from the start, so the marker is right in any time zone). After `streamEnd` the
+  booth moves back down and the hero shows a thank-you line.
 
 ## 3. Site architecture
 
