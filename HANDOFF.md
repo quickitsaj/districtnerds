@@ -99,6 +99,12 @@ the Capno Labs team, so the project is not linked to the repo. Instead the build
 - Auto-deploy options: a GitHub Action with a Vercel token (needs the token as a repo secret), or
   connecting the quickitsaj GitHub account inside the Capno Labs team from a desktop.
 
+**Analytics.** Vercel Web Analytics: `index.html` loads `/_vercel/insights/script.js`, which Vercel
+serves for the project once Web Analytics is enabled (project → Analytics → Enable). Cookieless, so no
+consent banner. Page views, referrers, countries, devices and UTM tags show in the dashboard; the
+Vercel MCP `count_pageviews` / `aggregate_pageviews` tools read the same data. Off Vercel (local
+preview) the script 404s harmlessly.
+
 **RSVP receiver.** `api/rsvp.js` validates and stores one JSON blob per sign-up in the private Blob
 store `districtnerds-rsvps` (`store_kbM9C4dTPQTuqca2`), authenticated through `BLOB_STORE_ID` plus
 Vercel OIDC (no read-write token variable exists; the SDK handles it). `api/rsvps.js` exports CSV
