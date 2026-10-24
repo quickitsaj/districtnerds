@@ -160,6 +160,39 @@
     <svg class="scroll-hint__arrow" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 4v15M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
 
+  <!-- ===================== THE CAUSE ===================== -->
+  <section class="section section--cause" id="cause">
+    <div class="scene" aria-hidden="true">
+      <picture>
+        <source type="image/webp" srcset="assets/scene-campfire.webp">
+        <img src="assets/scene-campfire.jpg" alt="" loading="lazy" width="774" height="474">
+      </picture>
+      <canvas id="emberCanvas" width="400" height="400"></canvas>
+      <div class="scene__fade"></div>
+    </div>
+    <div class="container cause">
+      <div class="cause__copy">
+        <header class="section__head section__head--left reveal" data-reveal>
+          <h2 class="display">For the Kids</h2>
+        </header>
+        <p class="reveal" data-reveal>Help AJ celebrate his birthday by joining in on the fun and giving to a good cause. We're raising money through <a data-link="extraLife" target="_blank" rel="noopener">Extra Life</a>, which sends <strong>100% of donations</strong> to <a data-link="childrensNational" target="_blank" rel="noopener">Children's National Hospital</a>.</p>
+        <p class="reveal" data-reveal>Consider sending a few dollars to the kids at Children's National. Every dollar goes to the hospital, none to us. Scan the code or tap the button.</p>
+
+        <div class="meter reveal" data-reveal id="meter" hidden>
+          <div class="meter__labels"><span id="meterRaised">$0</span><span id="meterGoal">of $0</span></div>
+          <div class="meter__bar"><div class="meter__fill" id="meterFill" style="width:0%"></div></div>
+          <div class="meter__pct" id="meterPct">0% of the way there</div>
+        </div>
+
+        <div class="cause__cta reveal" data-reveal>
+          <a class="btn btn--coral btn--lg" data-link="donate" href="#">Donate on Extra Life</a>
+          <span class="coming-soon" data-coming="donate">Official donation link drops here soon</span>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===================== GAMES (signpost) ===================== -->
   <section class="section section--games" id="games">
     <div class="container">
@@ -242,39 +275,6 @@
         </div>
       </header>
       <ol class="timeline" id="timeline" aria-live="polite"></ol>
-    </div>
-  </section>
-
-  <!-- ===================== THE CAUSE ===================== -->
-  <section class="section section--cause" id="cause">
-    <div class="scene" aria-hidden="true">
-      <picture>
-        <source type="image/webp" srcset="assets/scene-campfire.webp">
-        <img src="assets/scene-campfire.jpg" alt="" loading="lazy" width="774" height="474">
-      </picture>
-      <canvas id="emberCanvas" width="400" height="400"></canvas>
-      <div class="scene__fade"></div>
-    </div>
-    <div class="container cause">
-      <div class="cause__copy">
-        <header class="section__head section__head--left reveal" data-reveal>
-          <h2 class="display">For the Kids</h2>
-        </header>
-        <p class="reveal" data-reveal>Help AJ celebrate his birthday by joining in on the fun and giving to a good cause. We're raising money through <a data-link="extraLife" target="_blank" rel="noopener">Extra Life</a>, which sends <strong>100% of donations</strong> to <a data-link="childrensNational" target="_blank" rel="noopener">Children's National Hospital</a>.</p>
-        <p class="reveal" data-reveal>Consider sending a few dollars to the kids at Children's National. Every dollar goes to the hospital, none to us. Scan the code or tap the button.</p>
-
-        <div class="meter reveal" data-reveal id="meter" hidden>
-          <div class="meter__labels"><span id="meterRaised">$0</span><span id="meterGoal">of $0</span></div>
-          <div class="meter__bar"><div class="meter__fill" id="meterFill" style="width:0%"></div></div>
-          <div class="meter__pct" id="meterPct">0% of the way there</div>
-        </div>
-
-        <div class="cause__cta reveal" data-reveal>
-          <a class="btn btn--coral btn--lg" data-link="donate" href="#">Donate on Extra Life</a>
-          <span class="coming-soon" data-coming="donate">Official donation link drops here soon</span>
-        </div>
-        </div>
-      </div>
     </div>
   </section>
 
