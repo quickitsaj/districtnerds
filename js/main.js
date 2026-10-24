@@ -605,7 +605,7 @@
   }
 
   /* ---------- campfire embers (canvas) ---------- */
-  const fire = $(".scene"), emberCanvas = $("#emberCanvas");
+  const fire = $(".scene-art"), emberCanvas = $("#emberCanvas");
   if (fire && emberCanvas && emberCanvas.getContext) {
     const ctx = emberCanvas.getContext("2d");
     const W = emberCanvas.width, H = emberCanvas.height;
@@ -637,7 +637,7 @@
         ctx.globalAlpha = Math.max(0, e.life);
         ctx.fillStyle = `hsl(${e.hue}, 100%, ${55 + (1 - e.life) * 20}%)`;
         ctx.shadowBlur = 10; ctx.shadowColor = "rgba(255,140,50,.9)";
-        ctx.beginPath(); ctx.arc(e.x, e.y, e.r * e.life, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(e.x, e.y, e.r * Math.max(0, e.life), 0, Math.PI * 2); ctx.fill();
       }
       ctx.globalAlpha = 1; ctx.shadowBlur = 0;
     }
