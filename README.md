@@ -5,6 +5,20 @@ benefiting Children's National Hospital. Saturday, November 7, 2026 · 2 PM – 
 
 See `HANDOFF.md` for the full state of the project, hosting and open items.
 
+## Post-event state (November 9, 2026)
+
+The event is over and the site is now a thank-you page: the hero art, the final total, a thank-you
+section and the footer. The total is the District Nerds team total on Extra Life ($2,750 from 26
+donations when read on November 9). `js/config.js` holds `fundraising.raised` / `donations` as the
+recorded figures, and `fundraising.liveUrl` (public Extra Life API) refreshes them in the browser so
+late donations count; set `liveUrl` to `""` to freeze them. The Donate buttons stay because the
+Extra Life page still accepts donations.
+
+Removed from the page: countdown, signpost games, run of show, sign-up form, Smash bracket, Watch
+Live booth, FAQ, Add to calendar, and the Twitch and Discord links. The RSVP functions in `api/` are
+untouched so the sign-up export still works. The sections below describe the pre-event site; the
+last pre-event version is commit `95cea6f`.
+
 Static site, no build step. Open `index.html` or host the folder anywhere (GitHub Pages, Netlify,
 Vercel, Cloudflare Pages).
 

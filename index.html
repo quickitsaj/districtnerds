@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>AJ's Annual Quest — For the Kids · District Nerds</title>
-  <meta name="description" content="District Nerds presents AJ's Annual Quest: an Extra Life gaming fundraiser benefiting Children's National Hospital. Saturday, November 7, 2026, live from 2 PM. Watch. Play. Give.">
+  <title>AJ's Annual Quest — Thank You · District Nerds</title>
+  <meta name="description" content="District Nerds presents AJ's Annual Quest: thank you for helping raise $2,750 for Children's National Hospital through Extra Life on November 7, 2026.">
   <meta name="theme-color" content="#120f2e">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="apple-touch-icon" href="assets/icon-192.png">
@@ -12,7 +12,7 @@
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="AJ's Annual Quest — For the Kids">
-  <meta property="og:description" content="An Extra Life gaming fundraiser benefiting Children's National Hospital. November 7, live from 2 PM. Watch. Play. Give.">
+  <meta property="og:description" content="Quest complete. Together we raised $2,750 for Children's National Hospital through Extra Life. Thank you.">
   <meta property="og:image" content="https://districtnerds.com/assets/og.jpg">
   <meta property="og:url" content="https://districtnerds.com/">
   <meta name="twitter:card" content="summary_large_image">
@@ -98,19 +98,11 @@
             <i class="fx fx--firefly" style="--x:66%;--y:70%;--d:-12s"></i>
           </div>
           <canvas id="emberCanvas" width="400" height="400" aria-hidden="true"></canvas>
-          <nav class="hotspots" aria-label="Games on the signpost">
-            <a class="hotspot" style="--t:5.5%;--h:8.6%" href="#games" data-game="ocarina"><span>Ocarina of Time Remake</span></a>
-            <a class="hotspot" style="--t:14.8%;--h:8.2%" href="#games" data-game="smash"><span>Smash Ultimate</span></a>
-            <a class="hotspot" style="--t:23.8%;--h:8%" href="#games" data-game="friendslop"><span>friendslop</span></a>
-            <a class="hotspot" style="--t:41.4%;--h:7.8%" href="#games" data-game="fortnite"><span>Fortnite</span></a>
-            <a class="hotspot" style="--t:50%;--h:8%" href="#games" data-game="tabletop"><span>Board Games</span></a>
-            <a class="hotspot hotspot--all" href="#games"><span>See the games</span></a>
-          </nav>
         </div>
       </div>
     </div>
 
-    <!-- Band 3: Watch. Play. Give. -->
+    <!-- Band 3: the total and the thank-you -->
     <div class="band band--bottom">
       <div class="band__inner">
         <picture class="corner corner--bl" aria-hidden="true">
@@ -121,25 +113,15 @@
         </picture>
 
         <div class="wpg">
-          <div class="hero__cta reveal" data-reveal>
-            <a class="btn btn--ghost btn--lg" data-link="stream" href="#watch">Watch live</a>
-            <a class="btn btn--gold btn--lg" href="#rsvp">Join the games</a>
-            <a class="btn btn--coral btn--lg" data-link="donate" href="#cause">Donate for the Kids</a>
-          </div>
+          <p class="wpg__kicker reveal" data-reveal>Quest complete · November 7, 2026</p>
           <div class="wpg__date reveal" data-reveal>
-            <span class="wpg__day">November 7</span>
-            <span class="wpg__time">Live from 2 PM</span>
+            <span class="wpg__day" data-raised>$2,750</span>
+            <span class="wpg__time">Raised for the kids</span>
           </div>
-          <div class="countdown reveal" data-reveal id="countdown" aria-live="polite">
-            <div class="countdown__label" id="countdownLabel">The quest begins in</div>
-            <div class="countdown__grid">
-              <div class="countdown__cell"><span class="num" id="cdDays">00</span><span class="unit">days</span></div>
-              <div class="countdown__cell"><span class="num" id="cdHours">00</span><span class="unit">hours</span></div>
-              <div class="countdown__cell"><span class="num" id="cdMins">00</span><span class="unit">min</span></div>
-              <div class="countdown__cell"><span class="num" id="cdSecs">00</span><span class="unit">sec</span></div>
-            </div>
+          <p class="wpg__sub reveal" data-reveal>Thank you to everyone who watched, played and gave.</p>
+          <div class="hero__cta reveal" data-reveal>
+            <a class="btn btn--coral btn--lg" data-link="donate" href="#thanks">Still want to give?</a>
           </div>
-          <div class="hero-booth" id="heroBooth" hidden></div>
         </div>
 
         <div class="wpg__foot">
@@ -148,7 +130,6 @@
             <a data-link="childrensNational" target="_blank" rel="noopener"><img src="assets/logo-childrens-national.png" alt="Children's National Hospital" width="137" height="116"></a>
           </div>
           <div class="wpg__links reveal" data-reveal>
-            <button class="linklike" id="addToCal" type="button">Add to calendar</button>
             <button class="linklike" id="posterOpen" type="button">See the full poster</button>
           </div>
         </div>
@@ -160,8 +141,8 @@
     <svg class="scroll-hint__arrow" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 4v15M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
 
-  <!-- ===================== THE CAUSE ===================== -->
-  <section class="section section--cause" id="cause">
+  <!-- ===================== THANK YOU ===================== -->
+  <section class="section section--cause" id="thanks">
     <div class="scene" aria-hidden="true">
       <picture>
         <source type="image/webp" srcset="assets/scene-campfire.webp">
@@ -172,276 +153,20 @@
     <div class="container cause">
       <div class="cause__copy">
         <header class="section__head section__head--left reveal" data-reveal>
-          <h2 class="display">For the Kids</h2>
+          <h2 class="display">Thank You</h2>
         </header>
-        <p class="reveal" data-reveal>Help AJ celebrate his birthday by joining in on the fun and giving to a good cause. We're raising money through <a data-link="extraLife" target="_blank" rel="noopener">Extra Life</a>, which sends <strong>100% of donations</strong> to <a data-link="childrensNational" target="_blank" rel="noopener">Children's National Hospital</a>.</p>
-        <p class="reveal" data-reveal>Consider sending a few dollars to the kids at Children's National. Every dollar goes to the hospital, none to us. Scan the code or tap the button.</p>
-
-        <div class="meter reveal" data-reveal id="meter" hidden>
-          <div class="meter__labels"><span id="meterRaised">$0</span><span id="meterGoal">of $0</span></div>
-          <div class="meter__bar"><div class="meter__fill" id="meterFill" style="width:0%"></div></div>
-          <div class="meter__pct" id="meterPct">0% of the way there</div>
+        <div class="total reveal" data-reveal>
+          <span class="total__amount" data-raised>$2,750</span>
+          <span class="total__label">raised for Children's National Hospital<br>across <b data-donations>26 donations</b></span>
         </div>
+        <p class="reveal" data-reveal>AJ's Annual Quest wrapped on November 7, and you showed up for the kids. Whether you donated, picked up a controller, or kept the chat company, thank you. This is your total.</p>
+        <p class="reveal" data-reveal><strong>100% of it</strong> goes to Children's National Hospital through Extra Life. None of it goes to us.</p>
+        <p class="reveal" data-reveal>The donation page is still open, and anything given now still counts for the kids.</p>
 
         <div class="cause__cta reveal" data-reveal>
           <a class="btn btn--coral btn--lg" data-link="donate" href="#">Donate on Extra Life</a>
-          <span class="coming-soon" data-coming="donate">Official donation link drops here soon</span>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== GAMES (signpost) ===================== -->
-  <section class="section section--games" id="games">
-    <div class="container">
-      <header class="section__head reveal" data-reveal>
-        <h2 class="display">On the Signpost</h2>
-        <p class="section__lede">Five ways to spend the day. Pick a sign.</p>
-      </header>
-
-      <div class="signpost-layout reveal" data-reveal>
-        <div class="signpost" role="tablist" aria-label="Games">
-          <div class="signpost__post" aria-hidden="true"></div>
-          <button class="sign is-active" role="tab" aria-selected="true" aria-controls="game-ocarina" id="tab-ocarina" data-game="ocarina">
-            <span class="sign__icon" aria-hidden="true"><svg viewBox="0 0 32 32"><g fill="#3a2a14"><polygon points="16,5 22,15 10,15"/><polygon points="10,15 16,25 4,25"/><polygon points="22,15 28,25 16,25"/></g></svg></span>
-            Ocarina of Time Remake
-          </button>
-          <button class="sign" role="tab" aria-selected="false" aria-controls="game-smash" id="tab-smash" data-game="smash" tabindex="-1">
-            <span class="sign__icon" aria-hidden="true"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="12" fill="#3a2a14"/><path d="M8 20c6-2 10-6 14-12" stroke="#f3d58e" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M12 24c4-1 8-4 11-8" stroke="#f3d58e" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg></span>
-            Smash Ultimate
-          </button>
-          <button class="sign" role="tab" aria-selected="false" aria-controls="game-friendslop" id="tab-friendslop" data-game="friendslop" tabindex="-1">
-            <span class="sign__icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="#3a2a14"><circle cx="10" cy="11" r="4"/><circle cx="22" cy="11" r="4"/><path d="M3 25c0-5 3-8 7-8s7 3 7 8zM15 25c0-5 3-8 7-8s7 3 7 8z"/></svg></span>
-            friendslop
-          </button>
-          <button class="sign" role="tab" aria-selected="false" aria-controls="game-fortnite" id="tab-fortnite" data-game="fortnite" tabindex="-1">
-            <span class="sign__icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="#3a2a14"><path d="M6 18l6-8h8l6 8-4 8h-12z"/><circle cx="24" cy="9" r="3"/><rect x="8" y="26" width="3" height="3"/><rect x="21" y="26" width="3" height="3"/></svg></span>
-            Fortnite
-          </button>
-          <button class="sign" role="tab" aria-selected="false" aria-controls="game-tabletop" id="tab-tabletop" data-game="tabletop" tabindex="-1">
-            <span class="sign__icon" aria-hidden="true"><svg viewBox="0 0 32 32"><rect x="5" y="5" width="22" height="22" rx="5" fill="#3a2a14"/><g fill="#f3d58e"><circle cx="11" cy="11" r="2.2"/><circle cx="21" cy="11" r="2.2"/><circle cx="16" cy="16" r="2.2"/><circle cx="11" cy="21" r="2.2"/><circle cx="21" cy="21" r="2.2"/></g></svg></span>
-            Board Games
-          </button>
-        </div>
-
-        <div class="game-panels">
-          <article class="game-panel is-active" role="tabpanel" id="game-ocarina" aria-labelledby="tab-ocarina">
-            <span class="game-panel__time">2:15 PM</span>
-            <h3>Ocarina of Time Remake</h3>
-            <p>AJ's first time playing the Ocarina remake, live on stream.</p>
-            <ul class="tags"><li class="tag">Watch</li></ul>
-          </article>
-          <article class="game-panel" role="tabpanel" id="game-smash" aria-labelledby="tab-smash" hidden>
-            <span class="game-panel__time">5:25 PM · one bracket</span>
-            <h3>Smash Ultimate</h3>
-            <p>An open bracket for anyone who signs up. 1v1, 3 stock, no items. Small prize for the winner.</p>
-            <ul class="tags"><li class="tag tag--play">Join in</li><li class="tag">Watch</li></ul>
-            <a class="game-panel__link" href="#smash">Bracket details</a>
-          </article>
-          <article class="game-panel" role="tabpanel" id="game-friendslop" aria-labelledby="tab-friendslop" hidden>
-            <span class="game-panel__time">6:15 PM · until intermission</span>
-            <h3>friendslop</h3>
-            <p>Co-op party games with open seats for anyone who signs up. Game to be announced.</p>
-            <ul class="tags"><li class="tag tag--play">Join in</li><li class="tag">Watch</li></ul>
-          </article>
-          <article class="game-panel" role="tabpanel" id="game-fortnite" aria-labelledby="tab-fortnite" hidden>
-            <span class="game-panel__time">8:00 PM onward</span>
-            <h3>Fortnite</h3>
-            <p>Fortnite squads for the rest of the night. Sign up and we'll get you into a party.</p>
-            <ul class="tags"><li class="tag tag--play">Join in</li><li class="tag">Watch</li></ul>
-          </article>
-          <article class="game-panel" role="tabpanel" id="game-tabletop" aria-labelledby="tab-tabletop" hidden>
-            <span class="game-panel__time">All day</span>
-            <h3>Board Games</h3>
-            <p>Codenames, Wavelength and more between the main events, plus Jackbox you can join from your phone with the room code on stream.</p>
-            <ul class="tags"><li class="tag tag--play">Join in</li><li class="tag">Watch</li></ul>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== SCHEDULE ===================== -->
-  <section class="section section--schedule" id="schedule">
-    <div class="container">
-      <header class="section__head reveal" data-reveal>
-        <h2 class="display">Run of Show</h2>
-        <p class="section__lede">Saturday on the stream, start to finish.</p>
-        <div class="filters" role="group" aria-label="Filter schedule">
-          <button class="chip is-active" data-filter="all">Everything</button>
-          <button class="chip" data-filter="play">Things you can join</button>
-        </div>
-      </header>
-      <ol class="timeline" id="timeline" aria-live="polite"></ol>
-    </div>
-  </section>
-
-  <!-- ===================== RSVP ===================== -->
-  <section class="section section--rsvp" id="rsvp">
-    <div class="container container--form">
-      <header class="section__head reveal" data-reveal>
-        <h2 class="display">Sign Up to Play</h2>
-        <p class="section__lede">Sign up to play, or just to cheer. Takes about a minute.</p>
-      </header>
-
-      <div class="rsvp reveal" data-reveal>
-        <form class="rsvp__form" id="rsvpForm" novalidate>
-          <div class="field-row">
-            <label class="field">
-              <span class="field__label">Your name <b>*</b></span>
-              <input type="text" name="name" required maxlength="120" autocomplete="name" placeholder="What should we call you?">
-            </label>
-            <label class="field">
-              <span class="field__label">Email <b>*</b></span>
-              <input type="email" name="email" required maxlength="200" autocomplete="email" placeholder="for match times and the Discord invite">
-            </label>
-          </div>
-
-          <fieldset class="field">
-            <legend class="field__label">What do you want to play? <small>pick any, or none to just watch</small></legend>
-            <div class="choice-grid choice-grid--wrap">
-              <label class="choice choice--check"><input type="checkbox" name="events" value="smash"><span>Smash Ultimate <em>5:25 PM · open bracket</em></span></label>
-              <label class="choice choice--check"><input type="checkbox" name="events" value="friendslop"><span>friendslop <em>6:15 PM</em></span></label>
-              <label class="choice choice--check"><input type="checkbox" name="events" value="fortnite"><span>Fortnite <em>8:00 PM · squads</em></span></label>
-            </div>
-          </fieldset>
-
-          <div class="field-row">
-            <label class="field">
-              <span class="field__label">Nintendo friend code <small>for Smash</small></span>
-              <input type="text" name="friend_code" maxlength="20" inputmode="numeric" placeholder="SW-0000-0000-0000">
-            </label>
-            <label class="field">
-              <span class="field__label">Discord handle <small>for voice and match calls</small></span>
-              <input type="text" name="discord" maxlength="60" placeholder="yourname">
-            </label>
-          </div>
-
-          <label class="field">
-            <span class="field__label">Suggest a game <small>something we should add to the lineup?</small></span>
-            <input type="text" name="suggestion" maxlength="200" placeholder="Something you'd love to see on stream">
-          </label>
-
-          <label class="field">
-            <span class="field__label">Anything else for AJ?</span>
-            <textarea name="note" rows="3" maxlength="1000" placeholder="song requests, questions, trash talk…"></textarea>
-          </label>
-
-          <!-- honeypot: real people never see this -->
-          <label class="hp" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off"></label>
-
-          <div class="rsvp__actions">
-            <button class="btn btn--gold btn--lg" type="submit" id="rsvpSubmit">Count me in</button>
-            <p class="rsvp__status" id="rsvpStatus" role="status" aria-live="polite"></p>
-          </div>
-        </form>
-
-        <div class="rsvp__success" id="rsvpSuccess" hidden>
-          <h3>You're in!</h3>
-          <p id="rsvpSuccessText">AJ will send the details to your email before the big day.</p>
-          <p>If you're up for it, a donation for the kids would mean a lot.</p>
-          <div class="rsvp__success-actions">
-            <button class="btn btn--ghost" type="button" data-action="calendar">Add to calendar</button>
-            <a class="btn btn--coral" data-link="donate" href="#cause">Donate for the Kids</a>
-          </div>
-          <button class="linklike rsvp__again" type="button" id="rsvpAgain">RSVP for someone else</button>
-        </div>
-
-        <div class="rsvp__offline" id="rsvpOffline" hidden>
-          <p><strong>The RSVP form opens soon.</strong> In the meantime, copy this message and send it to AJ:</p>
-          <pre id="signupTemplate">Hey AJ! Count me in for AJ's Annual Quest.
-Name:
-Events: Smash / friendslop / Fortnite
-Nintendo friend code (for Smash):
-Discord handle:
-A game you'd suggest:</pre>
-          <button class="btn btn--ghost" id="copySignup" type="button">Copy message</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== SMASH BRACKET ===================== -->
-  <section class="section section--smash" id="smash">
-    <div class="container">
-      <header class="section__head reveal" data-reveal>
-        <h2 class="display">Enter the Bracket</h2>
-      </header>
-
-      <div class="bracket bracket--single">
-        <article class="bracket__card bracket__card--featured reveal" data-reveal>
-          <div class="bracket__badge">5:25 PM</div>
-          <h3>Smash Ultimate</h3>
-          <p class="bracket__tagline">One bracket. Everyone who signs up.</p>
-          <ul class="checklist">
-            <li>1v1 · 3 stock · no items · agreed stage list</li>
-            <li>Short early rounds, best-of-three final if time allows</li>
-            <li>Sign up the night before and check in on Discord 10–15 minutes before your match</li>
-            <li>Sign-ups close at 5 PM. Small prize for the winner</li>
-          </ul>
-          <p class="fineprint fineprint--tight">Matches run through Smash Battle Arenas. Expect a little lag and a little patience.</p>
-        </article>
-      </div>
-
-      <div class="signup reveal" data-reveal>
-        <div class="signup__head">
-          <h3>Sign up to play</h3>
-          <p>Tick Smash on the sign-up form and you're in the bracket. Register the night before so we can seed it, then watch Discord for your match call.</p>
-        </div>
-        <div class="signup__actions">
-          <a class="btn btn--gold btn--lg" href="#rsvp">Go to the RSVP form</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== WATCH ===================== -->
-  <section class="section section--watch" id="watch">
-    <div class="container">
-      <header class="section__head reveal" data-reveal>
-        <h2 class="display">Watch Live</h2>
-        <p class="section__lede">The stream runs from 2 PM until around 2 AM with cozy intermissions between games.</p>
-      </header>
-      <div class="booth reveal" data-reveal>
-        <div class="booth__lights" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        <div class="onair onair--lg" id="onAir"><i></i>On Air</div>
-        <div class="booth__screen" id="streamFrame">
-          <div class="booth__placeholder" id="streamPlaceholder">
-            <p><b>We go live November 7 at 2 PM ET.</b></p>
-            <p class="small">Bookmark this page. When the stream starts, the player moves to the top of the page.</p>
-          </div>
-        </div>
-        <div class="booth__actions">
-          <a class="btn btn--gold" data-link="stream" href="#" target="_blank" rel="noopener">Open the stream on Twitch</a>
-          <a class="btn btn--ghost" data-link="discord" href="#" target="_blank" rel="noopener">Join the Discord</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== FAQ ===================== -->
-  <section class="section section--faq" id="faq">
-    <div class="container container--narrow">
-      <header class="section__head reveal" data-reveal>
-        <h2 class="display">Field Guide</h2>
-      </header>
-      <div class="faq reveal" data-reveal>
-        <details>
-          <summary>I'm not a gamer. Is this for me?</summary>
-          <p>Yes. Half the fun is the chat, the commentary and the chaos. Watch along, play Jackbox from your phone, and cheer for whoever's losing.</p>
-        </details>
-        <details>
-          <summary>Do I have to donate?</summary>
-          <p>No. But it's the reason we do this. Donations go straight to Children's National Hospital through Extra Life, and even $5 counts.</p>
-        </details>
-        <details>
-          <summary>How do I play?</summary>
-          <p>Sign up above and pick your events. Smash runs through Battle Arenas, Jackbox through a room code on stream, and Fortnite as squads. Match times and the Discord invite come by email.</p>
-        </details>
-        <details>
-          <summary>What do I need?</summary>
-          <p>A Switch with Smash Ultimate and Nintendo Switch Online for the Smash events, a phone for Jackbox, and Fortnite on anything it runs on. Discord for voice.</p>
-        </details>
+        <p class="cause__sign reveal" data-reveal>See you at the next quest.<br>AJ and District Nerds</p>
       </div>
     </div>
   </section>
@@ -450,13 +175,10 @@ A game you'd suggest:</pre>
   <!-- ===================== FOOTER ===================== -->
   <footer class="footer">
     <div class="container footer__inner">
-      <p class="footer__tagline display">Watch. Play. Give.</p>
-      <p class="footer__meta">AJ's Annual Quest is an Extra Life fundraiser benefiting Children's National Hospital, presented by District Nerds. Extra Life and Children's National Hospital names and logos are the property of their respective organizations.</p>
+      <p class="footer__tagline display">Thank you for playing.</p>
+      <p class="footer__meta">AJ's Annual Quest was an Extra Life fundraiser benefiting Children's National Hospital, presented by District Nerds. Extra Life and Children's National Hospital names and logos are the property of their respective organizations.</p>
       <div class="footer__links">
         <a href="#top">Back to the top</a>
-        <a data-link="extraLife" target="_blank" rel="noopener">Extra Life</a>
-        <a data-link="childrensNational" target="_blank" rel="noopener">Children's National</a>
-        <a data-link="stream" target="_blank" rel="noopener">Twitch</a>
         <button type="button" class="linklike" id="motionToggle" aria-pressed="false">Reduce motion</button>
       </div>
     </div>

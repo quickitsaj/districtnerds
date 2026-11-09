@@ -1,51 +1,25 @@
 /* ============================================================
-   AJ's Annual Quest — site configuration
+   AJ's Annual Quest — site configuration (post-event)
    Edit this file only. Everything else reads from here.
-   Leave a link as "" until you have the real URL; the site will
-   show a "coming soon" state instead of a broken link.
    ============================================================ */
 window.QUEST_CONFIG = {
-  // Event timing (Eastern Time; DST ends Nov 1 2026 so Nov 7 is EST / UTC-5)
-  eventStart: "2026-11-07T14:00:00-05:00", // doors + stream go live
-  streamEnd:  "2026-11-08T02:30:00-05:00", // approximate sign-off (wrap-up starts 2 AM)
-
-  // Public links — fill in when confirmed. Empty = "coming soon".
+  // Public links. An empty value renders as a disabled link.
   links: {
-    donate:   "https://dd.extra-life.org/participants/quickitsaj",   // official Extra Life participant page
-    rsvp:     "",   // party RSVP form
-    signup:   "",   // Smash / game sign-up form (can be the same as rsvp)
-    stream:   "https://www.twitch.tv/quickitsaj",
-    discord:  "https://discord.gg/upgXwh2fN",   // invite for remote players (optional)
+    donate: "https://dd.extra-life.org/participants/quickitsaj", // Extra Life page, still accepting donations
     extraLife: "https://www.extra-life.org",
     childrensNational: "https://childrensnational.org",
   },
 
-  // Stream player in the Watch section.
-  // twitchChannel: the player appears automatically from 1 hour before doors
-  // until 1 hour after sign-off (set alwaysEmbed: true to show it year-round).
-  // embedUrl: alternative for YouTube etc. ("https://www.youtube.com/embed/VIDEO_ID").
-  stream: { twitchChannel: "quickitsaj", alwaysEmbed: false, embedUrl: "" },
-
-  // RSVP form backend. Pick ONE:
-  //  A) Supabase: create the table with supabase/migrations/0001_rsvps.sql, then
-  //     fill in url + anonKey (Project Settings → API). Only inserts are allowed
-  //     from the site; you read responses in the Supabase table editor.
-  //  B) endpoint: any URL that accepts a JSON POST (Formspree, a Google Apps
-  //     Script web app, a Netlify/Vercel function...).
-  // Leave both empty and the form shows a "coming soon" state with the copy-and-
-  // send fallback instead.
-  rsvp: {
-    supabase: { url: "", anonKey: "", table: "rsvps" },
-    endpoint: "https://districtnerds.vercel.app/api/rsvp", // Vercel receiver (api/rsvp.js)
+  // Final total: the District Nerds team on Extra Life (AJ's page plus teammates'),
+  // as read on November 9, 2026. The page shows these figures immediately, then
+  // refreshes from liveUrl (public Extra Life API) so late donations are counted.
+  // Set liveUrl to "" to freeze the numbers below.
+  fundraising: {
+    raised: 2750,
+    donations: 26,
+    currency: "USD",
+    liveUrl: "https://dd.extra-life.org/api/teams/75170",
   },
 
-  // Fundraising meter. Set goal to a number to show the progress bar.
-  // Update "raised" by hand (or wire it to the Extra Life API later).
-  fundraising: { goal: null, raised: null, currency: "USD" },
-
-  // Where the QR code on the poster and site points.
   siteUrl: "https://districtnerds.com",
-
-  // Public contact for sign-ups until a form exists (optional, e.g. "hello@districtnerds.com")
-  contactEmail: "",
 };

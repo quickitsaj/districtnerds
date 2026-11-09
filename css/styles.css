@@ -535,3 +535,13 @@ html.reduce-motion .sky { display: none; }
 @media (prefers-reduced-motion: reduce) { .fx { opacity: .7; } .fx--firefly { opacity: 0; } .hero .corner, .hero .moon, .hero .scene-art, .wpg__title .w { opacity: 1 !important; transform: none !important; } }
 html.reduce-motion .fx { opacity: .7; } html.reduce-motion .fx--firefly { opacity: 0; }
 html.reduce-motion .hero .corner, html.reduce-motion .hero .moon, html.reduce-motion .hero .scene-art, html.reduce-motion .wpg__title .w { opacity: 1 !important; transform: none !important; }
+
+/* ---------- post-event: total and thank-you ---------- */
+.wpg__kicker { font-family: var(--font-head); font-weight: 700; text-transform: uppercase; letter-spacing: .22em; font-size: .75rem; color: var(--muted); margin: 0 0 12px; }
+.wpg__day[data-raised] { font-size: clamp(3rem, 9vw, 5.6rem); font-variant-numeric: tabular-nums; }
+.total { display: flex; flex-direction: column; gap: 6px; margin: 4px 0 22px; padding-left: 18px; border-left: 3px solid var(--gold); }
+.total__amount { font-family: var(--font-head); font-weight: 900; font-size: clamp(2.6rem, 6vw, 4rem); line-height: 1; color: var(--gold); font-variant-numeric: tabular-nums; text-shadow: 0 3px 0 #6a4710, 0 8px 20px rgba(0, 0, 0, .5); }
+.total__label { font-family: var(--font-head); font-weight: 600; color: var(--cream-2); line-height: 1.4; }
+.total__label b { font-weight: 800; color: var(--cream); }
+.cause__sign { margin-top: 26px; font-family: var(--font-head); font-weight: 700; color: var(--cream-2) !important; }
+@media (max-width: 1000px) { .cause__copy { text-align: center; } .total { align-items: center; padding-left: 0; border-left: 0; } }
