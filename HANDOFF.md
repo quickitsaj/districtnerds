@@ -15,7 +15,8 @@ Extra Life page still accepts donations.
 Removed from the page: countdown, signpost games, run of show, sign-up form, Smash bracket, Watch
 Live booth, FAQ, Add to calendar, and the Twitch and Discord links. The RSVP functions in `api/` are
 untouched so the sign-up export still works. The sections below describe the pre-event site; the
-last pre-event version is commit `95cea6f`.
+last pre-event version is commit `95cea6f`. The live site now builds from branch
+`claude/zealous-hypatia-5zwwji` (Vercel env `SOURCE_REF`).
 
 ## 1. What the public site says (current state)
 
